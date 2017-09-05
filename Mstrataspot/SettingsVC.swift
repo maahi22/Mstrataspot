@@ -10,7 +10,10 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
-    var settingsArray = [["icon":"showProfile","segu":"showProfile","text":"About strataspot"],["icon":"showProfile","segu":"showChangePassword","text":"Edit company Information"],["icon":"showProfile","segu":"showChangePic","text":"Change Profile Photo"]]
+    var settingsArray = [["icon":"showProfile","segu":"toAboutstrataspot","text":"About strataspot"],["icon":"showProfile","segu":"toEditCompanyInformation","text":"Edit Company Information"],["icon":"showProfile","segu":"toPostFeedback","text":"Post Feedback"], ["icon":"showProfile","segu":"toImageSavingOption","text":"Image Saving Option"],["icon":"showProfile","segu":"toRoutine Inspection Settings","text":"Routine Inspection Settings"],
+        ["icon":"showProfile","segu":"toBackupRestore","text":"Backup / Restore"],
+        ["icon":"showProfile","segu":"toMailSettings","text":"Mail Settings"],
+        ["icon":"showProfile","segu":"toPINSettings","text":"PIN Settings"]]
     @IBOutlet weak var settingsTblView: UITableView!
     
     
@@ -30,7 +33,7 @@ class SettingsVC: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -38,7 +41,7 @@ class SettingsVC: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
 

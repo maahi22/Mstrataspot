@@ -22,6 +22,9 @@
 		5D8F57D41F5E88230098B13B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57D31F5E88230098B13B /* Constant.swift */; };
 		5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */; };
 		5D8F57DA1F5E9D570098B13B /* beep-beep.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 5D8F57D91F5E9D570098B13B /* beep-beep.aiff */; };
+		5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */; };
+		5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */; };
+		5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */; };
 		D0ECB9B23DFC008B84D1750D /* Pods_Mstrataspot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		5D8F57D31F5E88230098B13B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHelper.swift; sourceTree = "<group>"; };
 		5D8F57D91F5E9D570098B13B /* beep-beep.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = "beep-beep.aiff"; sourceTree = "<group>"; };
+		5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCompanyInfoVC.swift; sourceTree = "<group>"; };
+		5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSettingVC.swift; sourceTree = "<group>"; };
 		6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.debug.xcconfig"; sourceTree = "<group>"; };
 		A07A624F0250BC9CB65AA8E3 /* Pods-MstrataspotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MstrataspotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MstrataspotTests/Pods-MstrataspotTests.release.xcconfig"; sourceTree = "<group>"; };
 		A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +158,9 @@
 		5D8F57D11F5E87FF0098B13B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */,
+				5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */,
+				5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -388,10 +397,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */,
+				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
 				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
+				5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,
 				5D8F57AE1F5E75310098B13B /* Mstrataspot.xcdatamodeld in Sources */,
 				5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */,
