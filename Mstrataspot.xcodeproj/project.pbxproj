@@ -19,6 +19,8 @@
 		5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57CA1F5E77880098B13B /* ProjectsVC.swift */; };
 		5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57CC1F5E77980098B13B /* Reports.swift */; };
 		5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57CE1F5E77AB0098B13B /* SettingsVC.swift */; };
+		5D8F57D41F5E88230098B13B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57D31F5E88230098B13B /* Constant.swift */; };
+		5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */; };
 		D0ECB9B23DFC008B84D1750D /* Pods_Mstrataspot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		5D8F57CA1F5E77880098B13B /* ProjectsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsVC.swift; sourceTree = "<group>"; };
 		5D8F57CC1F5E77980098B13B /* Reports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reports.swift; sourceTree = "<group>"; };
 		5D8F57CE1F5E77AB0098B13B /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		5D8F57D31F5E88230098B13B /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHelper.swift; sourceTree = "<group>"; };
 		6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.debug.xcconfig"; sourceTree = "<group>"; };
 		A07A624F0250BC9CB65AA8E3 /* Pods-MstrataspotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MstrataspotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MstrataspotTests/Pods-MstrataspotTests.release.xcconfig"; sourceTree = "<group>"; };
 		A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +112,9 @@
 		5D8F57A41F5E752F0098B13B /* Mstrataspot */ = {
 			isa = PBXGroup;
 			children = (
+				5D8F57D21F5E88080098B13B /* Helper */,
+				5D8F57D11F5E87FF0098B13B /* Settings */,
+				5D8F57D01F5E87F50098B13B /* Home */,
 				5D8F57A51F5E752F0098B13B /* AppDelegate.swift */,
 				5D8F57A71F5E752F0098B13B /* ViewController.swift */,
 				5D8F57A91F5E75300098B13B /* Main.storyboard */,
@@ -130,6 +137,29 @@
 				5D8F57BF1F5E75320098B13B /* Info.plist */,
 			);
 			path = MstrataspotTests;
+			sourceTree = "<group>";
+		};
+		5D8F57D01F5E87F50098B13B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		5D8F57D11F5E87FF0098B13B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		5D8F57D21F5E88080098B13B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5D8F57D31F5E88230098B13B /* Constant.swift */,
+				5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		916B9C523969D6249E671406 /* Pods */ = {
@@ -349,10 +379,12 @@
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
+				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,
 				5D8F57AE1F5E75310098B13B /* Mstrataspot.xcdatamodeld in Sources */,
 				5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */,
 				5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */,
+				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +602,7 @@
 				5D8F57C41F5E75330098B13B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D8F57C51F5E75330098B13B /* Build configuration list for PBXNativeTarget "MstrataspotTests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +611,7 @@
 				5D8F57C71F5E75330098B13B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
