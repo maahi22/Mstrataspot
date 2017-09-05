@@ -1,4 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Areas" representedClassName="Areas" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="areasReport" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AreasReport" inverseName="area" inverseEntity="AreasReport" syncable="YES"/>
+        <relationship name="sections" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sections" inverseName="areas" inverseEntity="Sections" syncable="YES"/>
+    </entity>
+    <entity name="AreasReport" representedClassName="AreasReport" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="geoLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isOk" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="reportDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="area" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Areas" inverseName="areasReport" inverseEntity="Areas" syncable="YES"/>
+    </entity>
+    <entity name="CompanyInfo" representedClassName="CompanyInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="employeeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="license" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qualifications" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signetureFileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webSite" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Issues" representedClassName="Issues" syncable="YES" codeGenerationType="class">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hasImage" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imageCurves" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issue_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Projects" inverseName="issues" inverseEntity="Projects" syncable="YES"/>
+    </entity>
+    <entity name="PINSetting" representedClassName="PINSetting" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secretAnswer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="secretQuestion" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Projects" representedClassName="Projects" syncable="YES" codeGenerationType="class">
+        <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="address2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientAddress1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientAddress2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientsSignatureFileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientState" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="clientZip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="employeeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organizationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="project_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectReference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="issues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Issues" inverseName="project" inverseEntity="Issues" syncable="YES"/>
+    </entity>
+    <entity name="RoutineInspectionReceivers" representedClassName="RoutineInspectionReceivers" syncable="YES" codeGenerationType="class">
+        <attribute name="emailAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RoutineInspections" representedClassName="RoutineInspections" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAnyDay" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isFriday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isMonday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublished" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isSaturday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isSunday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isThusday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isTuesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isWednesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isWeekly" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="sections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sections" inverseName="routineInspection" inverseEntity="Sections" syncable="YES"/>
+    </entity>
+    <entity name="Sections" representedClassName="Sections" syncable="YES" codeGenerationType="class">
+        <attribute name="gpsLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qrCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="areas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Areas" inverseName="sections" inverseEntity="Areas" syncable="YES"/>
+        <relationship name="routineInspection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoutineInspections" inverseName="sections" inverseEntity="RoutineInspections" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Areas" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="AreasReport" positionX="-54" positionY="0" width="128" height="135"/>
+        <element name="CompanyInfo" positionX="-45" positionY="63" width="128" height="270"/>
+        <element name="Issues" positionX="-36" positionY="162" width="128" height="180"/>
+        <element name="PINSetting" positionX="-18" positionY="171" width="128" height="105"/>
+        <element name="Projects" positionX="0" positionY="180" width="128" height="375"/>
+        <element name="RoutineInspectionReceivers" positionX="18" positionY="189" width="128" height="75"/>
+        <element name="RoutineInspections" positionX="-27" positionY="135" width="128" height="240"/>
+        <element name="Sections" positionX="-18" positionY="144" width="128" height="120"/>
+    </elements>
 </model>
