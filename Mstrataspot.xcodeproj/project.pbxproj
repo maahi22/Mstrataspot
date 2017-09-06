@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
+		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
+		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
+		5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */; };
 		5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57A51F5E752F0098B13B /* AppDelegate.swift */; };
 		5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57A71F5E752F0098B13B /* ViewController.swift */; };
 		5D8F57AB1F5E75300098B13B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8F57A91F5E75300098B13B /* Main.storyboard */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
+		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
+		5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
 		5D8F57A21F5E752F0098B13B /* Mstrataspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mstrataspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8F57A51F5E752F0098B13B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D8F57A71F5E752F0098B13B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +167,9 @@
 				5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */,
 				5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */,
 				5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */,
+				5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */,
+				5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */,
+				5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -403,12 +412,15 @@
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
 				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
+				5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */,
 				5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,
 				5D8F57AE1F5E75310098B13B /* Mstrataspot.xcdatamodeld in Sources */,
 				5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */,
 				5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
+				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
+				5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,34 +1,15 @@
 //
-//  MailSettingVC.swift
+//  RouteenInspectionSettingsVC.swift
 //  Mstrataspot
 //
-//  Created by Rajeev kumar singh on 9/5/17.
+//  Created by Rajeev kumar singh on 9/6/17.
 //  Copyright © 2017 KTechnology. All rights reserved.
 //
 
 import UIKit
 
-class MailSettingVC: UIViewController {
+class RouteenInspectionSettingsVC: UIViewController {
 
-    
-    @IBOutlet weak var viewMailSetting: UIView!
-    @IBOutlet weak var txtTomail: UITextField!
-    @IBOutlet weak var txtCC: UITextField!
-    @IBOutlet weak var txtBCC: UITextField!
-    
-    
-    @IBOutlet weak var viewBackUpRestore: UIView!
-    
-    
-    
-     @IBOutlet weak var viewPinOption: UIView!
-    
-    @IBOutlet weak var viewImageSavingOption: UIView!
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
