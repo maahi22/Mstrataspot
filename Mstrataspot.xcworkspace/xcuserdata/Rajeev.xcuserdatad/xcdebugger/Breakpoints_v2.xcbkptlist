@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mstrataspot/ProjectsVC.swift"
+            timestampString = "526475156.072698"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mstrataspot.ProjectsVC.viewDidLoad () -&gt; ()"
+                  moduleName = "Mstrataspot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Gandhi1/Documents/WorkingArea/Mstrataspot/Mstrataspot/ProjectsVC.swift"
+                  timestampString = "526475178.145627"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mstrataspot.ProjectsVC.(viewDidLoad () -&gt; ()).(closure #1)"
+                  moduleName = "Mstrataspot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Gandhi1/Documents/WorkingArea/Mstrataspot/Mstrataspot/ProjectsVC.swift"
+                  timestampString = "526475178.148281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

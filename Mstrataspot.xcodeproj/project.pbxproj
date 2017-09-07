@@ -28,6 +28,18 @@
 		5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */; };
 		5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */; };
 		5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */; };
+		5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4611F6115E2000D987C /* NewProjectVC.swift */; };
+		5DDCE4641F611969000D987C /* IssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4631F611969000D987C /* IssueVC.swift */; };
+		5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */; };
+		5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46A1F61206C000D987C /* IssueListCell.swift */; };
+		5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */; };
+		5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46E1F612A3F000D987C /* ProjectListCell.swift */; };
+		5DDCE4721F613601000D987C /* ReportsDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4711F613601000D987C /* ReportsDetailsVC.swift */; };
+		5DDCE4741F614229000D987C /* ReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4731F614229000D987C /* ReportCell.swift */; };
+		5DDCE4761F6149C9000D987C /* LevelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4751F6149C9000D987C /* LevelVC.swift */; };
+		5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4771F614A46000D987C /* BuildingList.swift */; };
+		5DDCE47A1F614C20000D987C /* BuildingDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4791F614C20000D987C /* BuildingDetails.swift */; };
+		5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE47B1F614D9D000D987C /* AddArea.swift */; };
 		D0ECB9B23DFC008B84D1750D /* Pods_Mstrataspot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +79,18 @@
 		5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCompanyInfoVC.swift; sourceTree = "<group>"; };
 		5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSettingVC.swift; sourceTree = "<group>"; };
+		5DDCE4611F6115E2000D987C /* NewProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectVC.swift; sourceTree = "<group>"; };
+		5DDCE4631F611969000D987C /* IssueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueVC.swift; sourceTree = "<group>"; };
+		5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
+		5DDCE46A1F61206C000D987C /* IssueListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListCell.swift; sourceTree = "<group>"; };
+		5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriorityVC.swift; sourceTree = "<group>"; };
+		5DDCE46E1F612A3F000D987C /* ProjectListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListCell.swift; sourceTree = "<group>"; };
+		5DDCE4711F613601000D987C /* ReportsDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsDetailsVC.swift; sourceTree = "<group>"; };
+		5DDCE4731F614229000D987C /* ReportCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportCell.swift; sourceTree = "<group>"; };
+		5DDCE4751F6149C9000D987C /* LevelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelVC.swift; sourceTree = "<group>"; };
+		5DDCE4771F614A46000D987C /* BuildingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingList.swift; sourceTree = "<group>"; };
+		5DDCE4791F614C20000D987C /* BuildingDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingDetails.swift; sourceTree = "<group>"; };
+		5DDCE47B1F614D9D000D987C /* AddArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddArea.swift; sourceTree = "<group>"; };
 		6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.debug.xcconfig"; sourceTree = "<group>"; };
 		A07A624F0250BC9CB65AA8E3 /* Pods-MstrataspotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MstrataspotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MstrataspotTests/Pods-MstrataspotTests.release.xcconfig"; sourceTree = "<group>"; };
 		A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mstrataspot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +150,9 @@
 		5D8F57A41F5E752F0098B13B /* Mstrataspot */ = {
 			isa = PBXGroup;
 			children = (
+				5DDCE4701F6135DE000D987C /* Reports */,
+				5DDCE4681F612039000D987C /* Cell */,
+				5DDCE45E1F61152A000D987C /* Projects */,
 				5D8F57D81F5E9CFF0098B13B /* Other Resources */,
 				5D8F57D21F5E88080098B13B /* Helper */,
 				5D8F57D11F5E87FF0098B13B /* Settings */,
@@ -164,12 +191,17 @@
 		5D8F57D11F5E87FF0098B13B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				5DDCE4671F611FFC000D987C /* BackUp */,
 				5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */,
 				5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */,
 				5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */,
 				5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */,
 				5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */,
 				5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */,
+				5DDCE4751F6149C9000D987C /* LevelVC.swift */,
+				5DDCE4771F614A46000D987C /* BuildingList.swift */,
+				5DDCE4791F614C20000D987C /* BuildingDetails.swift */,
+				5DDCE47B1F614D9D000D987C /* AddArea.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -189,6 +221,50 @@
 				5D8F57D91F5E9D570098B13B /* beep-beep.aiff */,
 			);
 			name = "Other Resources";
+			sourceTree = "<group>";
+		};
+		5DDCE45E1F61152A000D987C /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				5DDCE4611F6115E2000D987C /* NewProjectVC.swift */,
+				5DDCE4631F611969000D987C /* IssueVC.swift */,
+				5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */,
+				5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */,
+			);
+			name = Projects;
+			sourceTree = "<group>";
+		};
+		5DDCE4671F611FFC000D987C /* BackUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BackUp;
+			sourceTree = "<group>";
+		};
+		5DDCE4681F612039000D987C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5DDCE4691F612043000D987C /* TableCell */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		5DDCE4691F612043000D987C /* TableCell */ = {
+			isa = PBXGroup;
+			children = (
+				5DDCE46A1F61206C000D987C /* IssueListCell.swift */,
+				5DDCE46E1F612A3F000D987C /* ProjectListCell.swift */,
+				5DDCE4731F614229000D987C /* ReportCell.swift */,
+			);
+			name = TableCell;
+			sourceTree = "<group>";
+		};
+		5DDCE4701F6135DE000D987C /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				5DDCE4711F613601000D987C /* ReportsDetailsVC.swift */,
+			);
+			name = Reports;
 			sourceTree = "<group>";
 		};
 		916B9C523969D6249E671406 /* Pods */ = {
@@ -407,17 +483,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */,
+				5DDCE4761F6149C9000D987C /* LevelVC.swift in Sources */,
+				5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */,
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
+				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
+				5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
+				5DDCE4721F613601000D987C /* ReportsDetailsVC.swift in Sources */,
+				5DDCE47A1F614C20000D987C /* BuildingDetails.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
 				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
 				5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */,
+				5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */,
+				5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */,
+				5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */,
 				5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,
+				5DDCE4641F611969000D987C /* IssueVC.swift in Sources */,
+				5DDCE4741F614229000D987C /* ReportCell.swift in Sources */,
 				5D8F57AE1F5E75310098B13B /* Mstrataspot.xcdatamodeld in Sources */,
 				5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */,
 				5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */,
+				5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
 				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
 				5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */,
