@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MessageUI
+
+
 
 class SettingsVC: UIViewController {
 
-    var settingsArray = [["icon":"showProfile","segu":"toAboutstrataspot","text":"About strataspot"],["icon":"showProfile","segu":"toEditCompanyInformation","text":"Edit Company Information"],["icon":"showProfile","segu":"toPostFeedback","text":"Post Feedback"], ["icon":"showProfile","segu":"toImageSavingOption","text":"Image Saving Option"],["icon":"showProfile","segu":"toRoutine Inspection Settings","text":"Routine Inspection Settings"],
+    var settingsArray = [["icon":"showProfile","segu":"toAboutstrataspot","text":"About strataspot"],["icon":"EditCompanyInformation","segu":"toEditCompanyInformation","text":"Edit Company Information"],["icon":"showProfile","segu":"toPostFeedback","text":"Post Feedback"], ["icon":"showProfile","segu":"toImageSavingOption","text":"Image Saving Option"],["icon":"showProfile","segu":"toRoutine Inspection Settings","text":"Routine Inspection Settings"],
         ["icon":"showProfile","segu":"toBackupRestore","text":"Backup / Restore"],
         ["icon":"showProfile","segu":"toMailSettings","text":"Mail Settings"],
         ["icon":"showProfile","segu":"toPINSettings","text":"PIN Settings"]]
@@ -46,7 +49,7 @@ class SettingsVC: UIViewController {
 }
 
 
-extension SettingsVC : UITableViewDelegate, UITableViewDataSource{
+extension SettingsVC : UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -94,13 +97,50 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if indexPath.row == 2{//Feedback
+            
+            
+            
+        }else{
+        
+        
         let dic = settingsArray[indexPath.row]
         self.performSegue(withIdentifier: dic["segu"]!, sender: self)
-        
+        }
     }
     
     
+    func sendFeedback(){
+        
+        if MFMailComposeViewController.canSendMail() {
+            
+         //   UINavigationBar.appearance().barTintColor = UIColor.hexStringToUIColor(hex: MyDunia_colorPrimary)
+            
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = self
+            // Configure the fields of the interface.
+            composeVC.setToRecipients([supportmailId])
+            composeVC.setSubject("FeedBack")
+            composeVC.setMessageBody("", isHTML: false)
+            // Present the view controller modally.
+            self.present(composeVC, animated: true, completion: nil)
+            
+        }else{
+            
+            let alert = UIAlertController(title: "Alert", message: "Please configure mail", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            print("Mail services are not available")
+            return
+            
+        }
+
+    }
     
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        // print(error)
+        controller.dismiss(animated: true, completion: nil)
+    }
     
 }

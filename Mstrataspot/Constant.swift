@@ -6,4 +6,7 @@
 //  Copyright © 2017 KTechnology. All rights reserved.
 //
 
-import Foundation
+
+let     stratspotBaseUrl = "http://apps.oenju.com/"//"http://www.mydunia.com/api/V_1/"
+
+let     supportmailId = "info@oenju.com"

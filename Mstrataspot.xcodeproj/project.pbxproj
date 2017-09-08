@@ -11,6 +11,8 @@
 		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
 		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
 		5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */; };
+		5D7E2CBD1F626E1E00CC851A /* RestoreFromServerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E2CBC1F626E1E00CC851A /* RestoreFromServerVC.swift */; };
+		5D7E2CBF1F626E3A00CC851A /* BackUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E2CBE1F626E3A00CC851A /* BackUpVC.swift */; };
 		5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57A51F5E752F0098B13B /* AppDelegate.swift */; };
 		5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57A71F5E752F0098B13B /* ViewController.swift */; };
 		5D8F57AB1F5E75300098B13B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8F57A91F5E75300098B13B /* Main.storyboard */; };
@@ -58,6 +60,8 @@
 		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
 		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
 		5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
+		5D7E2CBC1F626E1E00CC851A /* RestoreFromServerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreFromServerVC.swift; sourceTree = "<group>"; };
+		5D7E2CBE1F626E3A00CC851A /* BackUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackUpVC.swift; sourceTree = "<group>"; };
 		5D8F57A21F5E752F0098B13B /* Mstrataspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mstrataspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8F57A51F5E752F0098B13B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D8F57A71F5E752F0098B13B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 		5DDCE4671F611FFC000D987C /* BackUp */ = {
 			isa = PBXGroup;
 			children = (
+				5D7E2CBC1F626E1E00CC851A /* RestoreFromServerVC.swift */,
+				5D7E2CBE1F626E3A00CC851A /* BackUpVC.swift */,
 			);
 			name = BackUp;
 			sourceTree = "<group>";
@@ -494,7 +500,9 @@
 				5DDCE47A1F614C20000D987C /* BuildingDetails.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
 				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
+				5D7E2CBD1F626E1E00CC851A /* RestoreFromServerVC.swift in Sources */,
 				5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */,
+				5D7E2CBF1F626E3A00CC851A /* BackUpVC.swift in Sources */,
 				5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */,
 				5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */,
 				5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */,
