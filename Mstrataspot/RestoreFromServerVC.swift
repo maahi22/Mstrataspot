@@ -10,11 +10,33 @@ import UIKit
 
 class RestoreFromServerVC: UIViewController {
 
+    
+    
+    @IBOutlet weak var txtPhoneNumber: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func ResoreClicked(_ sender: Any) {
+        
+        
+        
+        
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,4 +54,10 @@ class RestoreFromServerVC: UIViewController {
     }
     */
 
+}
+
+extension RestoreFromServerVC:UITextFieldDelegate{
+    
+    
+    
 }

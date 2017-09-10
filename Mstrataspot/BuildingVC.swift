@@ -7,14 +7,30 @@
 //
 
 import UIKit
+import CoreData
+
 
 class BuildingVC: UIViewController {
 
-    
+    var inspectionManageobj : NSManagedObject!
     
     
     @IBOutlet weak var anyDayheightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var txtName: UITextField!
+    @IBOutlet weak var txtCategory: UITextField!
     
+    
+    @IBOutlet weak var cbIsWeekly: MICheckBox!
+    @IBOutlet weak var cbIsDaily: MICheckBox!
+    
+     @IBOutlet weak var cbIsSunday: MICheckBox!
+     @IBOutlet weak var cbIsMonday: MICheckBox!
+     @IBOutlet weak var cbIsTuesday: MICheckBox!
+     @IBOutlet weak var cbIsWednesday: MICheckBox!
+     @IBOutlet weak var cbIsThusday: MICheckBox!
+     @IBOutlet weak var cbIsFriday: MICheckBox!
+     @IBOutlet weak var cbIsSaturday: MICheckBox!
+     @IBOutlet weak var cbIsAnyDay: MICheckBox!
     
     
     
@@ -23,9 +39,29 @@ class BuildingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        
+        if inspectionManageobj != nil{
+            
+            self.loadInspection()
+        }
+        
+        
+        
+        
+        
     }
 
+    
+    
+    
+    func loadInspection() {
+        
+        //inspectionManageobj
+        txtName.text = inspectionManageobj.value(forKey: "name") as! String
+        txtCategory.text = inspectionManageobj.value(forKey: "category") as! String
+        
+    }
     
     
     
@@ -65,6 +101,58 @@ class BuildingVC: UIViewController {
     
     @IBAction func saveBuilding(_ sender: Any) {
         
+        guard
+            let name = txtName.text, !name.isEmpty,
+            let category = txtCategory.text, !category.isEmpty
+        
+            
+            else {
+                
+                
+                let alert = UIAlertController(title: "Alert", message: "Please enter mendatory fields credential", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+                return
+        }
+        
+        
+        
+        //Save inside
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityRoutineInspections, in: context)
+        
+        
+        
+        
+        let RoutineInspection = NSManagedObject(entity: entityDescription!, insertInto: context)
+        // building.setValue(BMName, forKey: "title")
+        RoutineInspection.setValue(name, forKey: "name")
+        RoutineInspection.setValue(category, forKey: "category")
+        RoutineInspection.setValue(cbIsWeekly.isChecked, forKey: "isWeekly")
+        RoutineInspection.setValue(cbIsAnyDay.isChecked, forKey: "isAnyDay")
+        RoutineInspection.setValue(cbIsSunday.isChecked, forKey: "isSunday")
+        RoutineInspection.setValue(cbIsSaturday.isChecked, forKey: "isSaturday")
+        RoutineInspection.setValue(cbIsFriday.isChecked, forKey: "isFriday")
+        RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isThusday")
+        RoutineInspection.setValue(cbIsWednesday.isChecked, forKey: "isWednesday")
+        RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isTuesday")
+        RoutineInspection.setValue(cbIsMonday.isChecked, forKey: "isMonday")
+        RoutineInspection.setValue(false, forKey: "isPublished")
+        
+        
+        do {
+            try RoutineInspection.managedObjectContext?.save()
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        } catch {
+            print("Error occured during save entity")
+        }
         
         
         

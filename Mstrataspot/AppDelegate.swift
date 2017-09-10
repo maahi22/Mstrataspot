@@ -9,14 +9,46 @@
 import UIKit
 import CoreData
 
+
+let kEntityAreas = "Areas"
+let kEntityAreasReport = "AreasReport"
+let kEntityCompanyInfo = "CompanyInfo"
+let kEntityIssues = "Issues"
+let kEntityPINSetting = "PINSetting"
+let kEntityProjects = "Projects"
+let kEntityRoutineInspectionReceivers = "RoutineInspectionReceivers"
+let kEntityRoutineInspections = "RoutineInspections"
+let kEntitySections = "Sections"
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+    
+    
+    class func getAppDelegate() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        let documentDirectoryURL =  try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        print(documentDirectoryURL)
+                
+        
+        
         return true
     }
 
@@ -87,6 +119,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    
+    private func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
+        // Helpers
+        var result: NSManagedObject?
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: entity, in: managedObjectContext)
+        
+        if let entityDescription = entityDescription {
+            // Create Managed Object
+            result = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+        }
+        
+        return result
     }
 
 }

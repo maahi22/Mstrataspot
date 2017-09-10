@@ -54,6 +54,51 @@ class ReportsDetailsVC: UIViewController {
     }
     
     
+    @IBAction func SortBy(_ sender: Any) {
+        
+        let uiAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.present(uiAlert, animated: true, completion: nil)
+        
+        let btnSeverityAscending:UIAlertAction  = (UIAlertAction(title: "Severity Ascending", style: .default, handler: { action in
+            
+            
+            
+            
+            
+        }))
+        
+        let btnSeverity:UIAlertAction  = (UIAlertAction(title: "Severity Descending", style: .default, handler: { action in
+            
+            
+        
+        }))
+        
+        let btnDateAscending:UIAlertAction  = (UIAlertAction(title: "Date Ascending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        let btnDateDescending:UIAlertAction  = (UIAlertAction(title: "Date Descending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        
+        uiAlert.addAction(btnSeverityAscending)
+        uiAlert.addAction(btnSeverity)
+        uiAlert.addAction(btnDateAscending)
+        uiAlert.addAction(btnDateDescending)
+        
+        
+        uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            uiAlert .dismiss(animated: true, completion: nil)
+        }))
+        
+
+        
+    }
     
     
     

@@ -43,6 +43,74 @@ class Reports: UIViewController {
     
     
     
+    
+    
+    @IBAction func SortBy(_ sender: Any) {
+        
+        let uiAlert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.present(uiAlert, animated: true, completion: nil)
+        
+        let btnSeverityAscending:UIAlertAction  = (UIAlertAction(title: "Project Name Ascending", style: .destructive, handler: { action in
+            
+            
+            
+            
+            
+        }))
+        
+        let btnSeverity:UIAlertAction  = (UIAlertAction(title: "Project Name Descending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        let btnDateAscending:UIAlertAction  = (UIAlertAction(title: "Date Ascending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        let btnDateDescending:UIAlertAction  = (UIAlertAction(title: "Date Descending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        let btnClientAscending:UIAlertAction  = (UIAlertAction(title: "Client Ascending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        let btnClientDescending:UIAlertAction  = (UIAlertAction(title: "Client Descending", style: .default, handler: { action in
+            
+            
+            
+        }))
+        
+        
+        uiAlert.addAction(btnSeverityAscending)
+        uiAlert.addAction(btnSeverity)
+        uiAlert.addAction(btnDateAscending)
+        uiAlert.addAction(btnDateDescending)
+        uiAlert.addAction(btnClientAscending)
+        uiAlert.addAction(btnClientDescending)
+        
+        
+        uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            uiAlert .dismiss(animated: true, completion: nil)
+        }))
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -101,6 +169,13 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        self.performSegue(withIdentifier: "toReportsDetails", sender: self)
+        
+        
+    }
     
     
     

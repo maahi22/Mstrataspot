@@ -4,15 +4,21 @@ PODS:
   - Fabric (1.6.0):
     - Fabric/Base (= 1.6.0)
   - Fabric/Base (1.6.0)
+  - ReachabilitySwift (3)
+  - SwiftSignatureView (2.0.0)
 
 DEPENDENCIES:
   - Crashlytics
   - Fabric
+  - ReachabilitySwift
+  - SwiftSignatureView
 
 SPEC CHECKSUMS:
   Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
   Fabric: d737eda3a26ac940a5430230eedb35f16b226131
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  SwiftSignatureView: aacf6b4fb9108d79b76af1d3f23a50ff50a0a98f
 
-PODFILE CHECKSUM: ff4b1390abe6d1328f852f0452fcb089083caac5
+PODFILE CHECKSUM: be0c32cb5e5ea1b5d4b47cdcb66b2cc279f24648
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.1.beta.1

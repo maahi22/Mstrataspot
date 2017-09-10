@@ -28,6 +28,10 @@ class ProjectsVC: UIViewController {
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
        
         
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
         // Create Fetch Request
         let fetchRequest: NSFetchRequest<Projects> = Projects.fetchRequest()
         
@@ -35,7 +39,7 @@ class ProjectsVC: UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         
         // Create Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
@@ -179,7 +183,7 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
         // Configure Cell
         cell.lblTitle.text = Projects.title
         cell.lblDescription.text = Projects.description
-        
+        print(Projects.title)
         // Configure Cell
       //  cell.authorLabel.text = quote.author
       //  cell.contentsLabel.text = quote.contents

@@ -9,8 +9,13 @@ target 'Mstrataspot' do
 
 	pod 'Fabric'
 	pod 'Crashlytics'
-    #pod 'ReachabilitySwift'
-
+    pod 'ReachabilitySwift'
+    pod 'SwiftSignatureView'
+    
+    
+    pod 'AEXML'
+    
+    
   target 'MstrataspotTests' do
     inherit! :search_paths
     # Pods for testing

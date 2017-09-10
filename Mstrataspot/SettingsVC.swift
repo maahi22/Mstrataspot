@@ -13,13 +13,13 @@ import MessageUI
 
 class SettingsVC: UIViewController {
 
-    var settingsArray = [["icon":"showProfile","segu":"toAboutstrataspot","text":"About strataspot"],["icon":"EditCompanyInformation","segu":"toEditCompanyInformation","text":"Edit Company Information"],["icon":"showProfile","segu":"toPostFeedback","text":"Post Feedback"], ["icon":"showProfile","segu":"toImageSavingOption","text":"Image Saving Option"],["icon":"showProfile","segu":"toRoutine Inspection Settings","text":"Routine Inspection Settings"],
+    var settingsArray = [["icon":"showProfile","segu":"toAboutstrataspot","text":"About strataspot"],["icon":"EditCompanyInformation","segu":"toEditCompanyInformation","text":"Edit Company Information"],["icon":"showProfile","segu":"toPostFeedback","text":"Post Feedback"], ["icon":"showProfile","segu":"toMailSettings","text":"Image Saving Option"],["icon":"showProfile","segu":"toRouteenInspectonSettings","text":"Routine Inspection Settings"],
         ["icon":"showProfile","segu":"toBackupRestore","text":"Backup / Restore"],
         ["icon":"showProfile","segu":"toMailSettings","text":"Mail Settings"],
-        ["icon":"showProfile","segu":"toPINSettings","text":"PIN Settings"]]
+        ["icon":"showProfile","segu":"toMailSettings","text":"PIN Settings"]]
     @IBOutlet weak var settingsTblView: UITableView!
     
-    
+    var Status = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,19 @@ class SettingsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if segue.identifier == "toMailSettings" {
+            let nextScene =  segue.destination as! MailSettingVC
+            // Pass the selected object to the new view controller.
+            nextScene.status = self.Status
+        
+        }
+        
+        
+        
+        
+        
     }
     
 
@@ -97,14 +110,28 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource,MFMailComposeV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
+        
+        let dic = settingsArray[indexPath.row]
+        
         if indexPath.row == 2{//Feedback
             
+            self.sendFeedback()
+            
+        }else if indexPath.row == 7 {//pin
+            self.Status = 1
+            self.performSegue(withIdentifier: dic["segu"]!, sender: self)
+       
+        
+        }else if indexPath.row == 3 {//save image
+            self.Status = 3
+            self.performSegue(withIdentifier: dic["segu"]!, sender: self)
             
             
         }else{
         
         
-        let dic = settingsArray[indexPath.row]
+        
         self.performSegue(withIdentifier: dic["segu"]!, sender: self)
         }
     }

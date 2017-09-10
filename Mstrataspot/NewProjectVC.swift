@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreData
+
+
 
 class NewProjectVC: UIViewController {
 
@@ -44,7 +47,22 @@ class NewProjectVC: UIViewController {
     
     @IBAction func saveProjects(_ sender: Any) {
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
         
+        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityProjects, in: context)
+       
+        
+        let Projects = NSManagedObject(entity: entityDescription!, insertInto: context)
+        Projects.setValue("ABC", forKey: "title")
+        Projects.setValue("XYZ", forKey: "reference")
+        
+        do {
+            try Projects.managedObjectContext?.save()
+        } catch {
+            print("Error occured during save entity")
+        }
+
         
     }
     

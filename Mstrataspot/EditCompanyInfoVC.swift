@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class EditCompanyInfoVC: UIViewController {
 
@@ -60,10 +62,68 @@ class EditCompanyInfoVC: UIViewController {
     
     @IBAction func saveCompnyInfo(_ sender: Any) {
         
+        guard
+        let BMName = txtBMName.text, !BMName.isEmpty,
+        let compName = txtCompanyName.text, !compName.isEmpty,
+        let add1 = txtAddress.text, !add1.isEmpty,
+        let add2 = txtAddress2.text, !add2.isEmpty,
+        let email = txtEmail.text, !email.isEmpty,
+        let phone = txtPhone.text, !phone.isEmpty,
+        let fax = txtFax.text, !fax.isEmpty,
+        let empName = txtEmployeeName.text, !empName.isEmpty,
+        let licence = txtLicence.text, !licence.isEmpty,
+        let qualification = txtViewQualification.text, !qualification.isEmpty,
+        let city = txtCity.text, !city.isEmpty,
+        let state = txtState.text, !state.isEmpty,
+        let zip = txtZip.text, !zip.isEmpty
+        
+        else {
+            
+            
+                let alert = UIAlertController(title: "Alert", message: "Please enter the login credential", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                txtBMName.resignFirstResponder()
+                txtCompanyName.resignFirstResponder()
+                return
+        }
         
         
         
+        //Save inside
         
+
+        
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityCompanyInfo, in: context)
+        
+        
+        let building = NSManagedObject(entity: entityDescription!, insertInto: context)
+       // building.setValue(BMName, forKey: "title")
+        building.setValue(compName, forKey: "companyName")
+        building.setValue(add1, forKey: "address1")
+        building.setValue(add2, forKey: "address2")
+        building.setValue(email, forKey: "email")
+        building.setValue(phone, forKey: "phone")
+        building.setValue(fax, forKey: "fax")
+        building.setValue(empName, forKey: "employeeName")
+        building.setValue(licence, forKey: "license")
+        building.setValue(qualification, forKey: "qualifications")
+        building.setValue(city, forKey: "city")
+        building.setValue(state, forKey: "state")
+        building.setValue(zip, forKey: "zip")
+        
+        
+        do {
+            try building.managedObjectContext?.save()
+        } catch {
+            print("Error occured during save entity")
+        }
         
     }
     
@@ -185,4 +245,27 @@ extension EditCompanyInfoVC :UINavigationControllerDelegate, UIImagePickerContro
     }
     
     
+}
+
+
+extension EditCompanyInfoVC :UITextFieldDelegate,UITextViewDelegate {
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+       /* if textField.returnKeyType == .next {
+            txtPassword.becomeFirstResponder()
+        }else  if textField.returnKeyType == .go {
+            self.userLogin(self)
+            
+        }*/
+        textField.resignFirstResponder()
+        //self.view.endEditing(true)
+        return false
+    }
+    
+    
+    
+    
+
 }
