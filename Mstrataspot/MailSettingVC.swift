@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreData
+
+
 
 class MailSettingVC: UIViewController {
 
@@ -21,11 +24,56 @@ class MailSettingVC: UIViewController {
     @IBOutlet weak var existingPINView: UIView!
     @IBOutlet weak var viewPinOption: UIView!
     
-   
+   var list: NSManagedObject? = nil
     @IBOutlet weak var mailSaveBarButton: UIBarButtonItem!
     
     var status = 0 //0 - mail setting 1- pin setting  2- backup restore 3- imagesaving
     var editPinSts : Bool = false
+    
+    
+    
+    
+   private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
+    
+    
+   private func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
+        // Helpers
+        var result: NSManagedObject?
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: entity, in: managedObjectContext)
+        
+        if let entityDescription = entityDescription {
+            // Create Managed Object
+            result = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+        }
+        
+        return result
+    }
+
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -45,8 +93,31 @@ class MailSettingVC: UIViewController {
             viewPinOption.isHidden = false
             
        //     check
-            createPinView.isHidden = true
-            existingPINView.isHidden = false
+            
+            
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.getContext()
+            let lists = self.fetchRecordsForEntity("PINSetting", inManagedObjectContext: context)
+            
+            if let listRecord = lists.first {
+                list = listRecord
+            } /*else if let listRecord = self.createRecordForEntity("PINSetting", inManagedObjectContext: context) {
+                list = listRecord
+            }*/
+            
+            if list != nil {
+                createPinView.isHidden = true
+                existingPINView.isHidden = false
+                
+            }else{
+                createPinView.isHidden = false
+                existingPINView.isHidden = true
+                
+            }
+            
+            
+            
             
             self.navigationItem.rightBarButtonItem = nil
             
@@ -100,16 +171,18 @@ class MailSettingVC: UIViewController {
     
     
     @IBAction func EditPinClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: "toEditPin", sender: self)
         editPinSts = true
+        self.performSegue(withIdentifier: "toEditPin", sender: self)
+        
         
     }
     
     
     
     @IBAction func forgetPinClicked(_ sender: Any) {
+         editPinSts = false
         self.performSegue(withIdentifier: "toEditPin", sender: self)
-        editPinSts = false
+       
     }
     
 
@@ -128,7 +201,7 @@ class MailSettingVC: UIViewController {
         if segue.identifier == "toEditPin" {
             let nextScene =  segue.destination as! PinSettingVC
             nextScene.editStatus = self.editPinSts
-            
+            nextScene.PinManageobj = list
         }
         
         

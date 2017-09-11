@@ -15,13 +15,13 @@ class EditCompanyInfoVC: UIViewController {
     
     
     
-    @IBOutlet weak var txtBMName: UITextField!
+    @IBOutlet weak var txtEmployeeName: UITextField!
     @IBOutlet weak var txtCompanyName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtFax: UITextField!
-    @IBOutlet weak var txtEmployeeName: UITextField!
+    @IBOutlet weak var txtWebsiteName: UITextField!
     @IBOutlet weak var txtLicence: UITextField!
     @IBOutlet weak var txtQualification: UITextField!
     
@@ -42,19 +42,88 @@ class EditCompanyInfoVC: UIViewController {
     let imagePicker = UIImagePickerController()
     
     
-    
+    var list : NSManagedObject!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var list: NSManagedObject? = nil
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        let lists = fetchRecordsForEntity("CompanyInfo", inManagedObjectContext: context)
+        
+        if let listRecord = lists.first {
+            list = listRecord
+        } /*else if let listRecord = createRecordForEntity("CompanyInfo", inManagedObjectContext: context) {
+            list = listRecord
+        }*/
+        
+        
+        if list != nil {
+            
+            txtEmployeeName.text = list?.value(forKey: "employeeName") as? String
+            txtCompanyName.text = list?.value(forKey: "companyName") as? String
+            txtAddress.text = list?.value(forKey: "address1") as? String
+            txtAddress2.text = list?.value(forKey: "address2") as? String
+            txtEmail.text = list?.value(forKey: "email") as? String
+            txtPhone.text = list?.value(forKey: "phone") as? String
+            txtFax.text = list?.value(forKey: "fax") as? String
+            txtWebsiteName.text = list?.value(forKey: "webSite") as? String
+            txtLicence.text = list?.value(forKey: "license") as? String
+            txtViewQualification.text = list?.value(forKey: "qualifications") as? String
+            txtCity.text = list?.value(forKey: "city") as? String
+            txtState.text = list?.value(forKey: "state") as? String
+            txtZip.text = list?.value(forKey: "zip") as? String
+            
+            
+            
+            
+            
+        }
+        
     }
 
     
     
+    private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
     
-    
+
+    private func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
+        // Helpers
+        var result: NSManagedObject?
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: entity, in: managedObjectContext)
+        
+        if let entityDescription = entityDescription {
+            // Create Managed Object
+            result = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+        }
+        
+        return result
+    }
     
     
     
@@ -63,14 +132,14 @@ class EditCompanyInfoVC: UIViewController {
     @IBAction func saveCompnyInfo(_ sender: Any) {
         
         guard
-        let BMName = txtBMName.text, !BMName.isEmpty,
+        let BMName = txtEmployeeName.text, !BMName.isEmpty,
         let compName = txtCompanyName.text, !compName.isEmpty,
         let add1 = txtAddress.text, !add1.isEmpty,
         let add2 = txtAddress2.text, !add2.isEmpty,
         let email = txtEmail.text, !email.isEmpty,
         let phone = txtPhone.text, !phone.isEmpty,
         let fax = txtFax.text, !fax.isEmpty,
-        let empName = txtEmployeeName.text, !empName.isEmpty,
+        let website = txtWebsiteName.text, !website.isEmpty,
         let licence = txtLicence.text, !licence.isEmpty,
         let qualification = txtViewQualification.text, !qualification.isEmpty,
         let city = txtCity.text, !city.isEmpty,
@@ -80,11 +149,11 @@ class EditCompanyInfoVC: UIViewController {
         else {
             
             
-                let alert = UIAlertController(title: "Alert", message: "Please enter the login credential", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Alert", message: "Please fill all mendatory fields", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
-                txtBMName.resignFirstResponder()
+                txtEmployeeName.resignFirstResponder()
                 txtCompanyName.resignFirstResponder()
                 return
         }
@@ -100,31 +169,75 @@ class EditCompanyInfoVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
         
-        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityCompanyInfo, in: context)
-        
-        
-        let building = NSManagedObject(entity: entityDescription!, insertInto: context)
-       // building.setValue(BMName, forKey: "title")
-        building.setValue(compName, forKey: "companyName")
-        building.setValue(add1, forKey: "address1")
-        building.setValue(add2, forKey: "address2")
-        building.setValue(email, forKey: "email")
-        building.setValue(phone, forKey: "phone")
-        building.setValue(fax, forKey: "fax")
-        building.setValue(empName, forKey: "employeeName")
-        building.setValue(licence, forKey: "license")
-        building.setValue(qualification, forKey: "qualifications")
-        building.setValue(city, forKey: "city")
-        building.setValue(state, forKey: "state")
-        building.setValue(zip, forKey: "zip")
-        
-        
-        do {
-            try building.managedObjectContext?.save()
-        } catch {
-            print("Error occured during save entity")
+        if list != nil {
+            
+            list.setValue(BMName, forKey: "employeeName")
+            list.setValue(compName, forKey: "companyName")
+            list.setValue(add1, forKey: "address1")
+            list.setValue(add2, forKey: "address2")
+            list.setValue(email, forKey: "email")
+            list.setValue(phone, forKey: "phone")
+            list.setValue(fax, forKey: "fax")
+            list.setValue(website, forKey: "webSite")
+            list.setValue(licence, forKey: "license")
+            list.setValue(qualification, forKey: "qualifications")
+            list.setValue(city, forKey: "city")
+            list.setValue(state, forKey: "state")
+            list.setValue(zip, forKey: "zip")
+            
+            
+            do {
+                try list.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Company info update succesfully", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+
+            
         }
-        
+        else{
+            
+            
+            let entityDescription = NSEntityDescription.entity(forEntityName: kEntityCompanyInfo, in: context)
+            
+            
+            let building = NSManagedObject(entity: entityDescription!, insertInto: context)
+            building.setValue(BMName, forKey: "employeeName")
+            building.setValue(compName, forKey: "companyName")
+            building.setValue(add1, forKey: "address1")
+            building.setValue(add2, forKey: "address2")
+            building.setValue(email, forKey: "email")
+            building.setValue(phone, forKey: "phone")
+            building.setValue(fax, forKey: "fax")
+            building.setValue(website, forKey: "webSite")
+            building.setValue(licence, forKey: "license")
+            building.setValue(qualification, forKey: "qualifications")
+            building.setValue(city, forKey: "city")
+            building.setValue(state, forKey: "state")
+            building.setValue(zip, forKey: "zip")
+            
+            
+            do {
+                try building.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Company info save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+        }
     }
     
     

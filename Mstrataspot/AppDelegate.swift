@@ -136,6 +136,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return result
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+       
+
+    
+    
+    
 
 }
 

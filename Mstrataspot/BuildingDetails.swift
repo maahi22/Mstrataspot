@@ -97,18 +97,21 @@ class BuildingDetails: UIViewController {//Area list
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         if segue.identifier == "toAddArea" {
             let nextScene =  segue.destination as! AddArea
             nextScene.sectionManageobj = self.sectionManageobj
             if objStatus {
                 nextScene.areaManageobj  = self.areaObj
             }
-            
-            
-            
+        }
+        else if segue.identifier == "toEditSection"{
+        
+            let nextScene =  segue.destination as! LevelVC
+            nextScene.sectionManageobj = self.sectionManageobj
             
         }
-        
         
         
         
