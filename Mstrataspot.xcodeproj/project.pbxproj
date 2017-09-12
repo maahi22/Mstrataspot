@@ -14,8 +14,9 @@
 		0F95C6711F64653A009E3651 /* MICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6701F64653A009E3651 /* MICheckBox.swift */; };
 		0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6731F67167C009E3651 /* CreatePinVC.swift */; };
 		0F95C6761F6719DD009E3651 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6751F6719DD009E3651 /* Validations.swift */; };
+		0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6771F68434D009E3651 /* SignatureVC.swift */; };
+		0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6791F684EA4009E3651 /* FilesMethods.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
-		5D1B1F651F67A0A1005FE69F /* base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F641F67A0A1005FE69F /* base64.swift */; };
 		5D1B1F671F67A5FA005FE69F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */; };
 		5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F681F67A603005FE69F /* QRCodeReader.framework */; };
 		5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6A1F67A773005FE69F /* LocationManager.swift */; };
@@ -75,8 +76,9 @@
 		0F95C6701F64653A009E3651 /* MICheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MICheckBox.swift; sourceTree = "<group>"; };
 		0F95C6731F67167C009E3651 /* CreatePinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePinVC.swift; sourceTree = "<group>"; };
 		0F95C6751F6719DD009E3651 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		0F95C6771F68434D009E3651 /* SignatureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureVC.swift; sourceTree = "<group>"; };
+		0F95C6791F684EA4009E3651 /* FilesMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesMethods.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D1B1F641F67A0A1005FE69F /* base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = base64.swift; path = ../../../../Dropbox/base64.swift; sourceTree = "<group>"; };
 		5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5D1B1F681F67A603005FE69F /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mstrataspot-azbkgkkqybhjlqglvjhxqecwlupd/Build/Products/Debug-iphonesimulator/QRCodeReader.swift/QRCodeReader.framework"; sourceTree = "<group>"; };
 		5D1B1F6A1F67A773005FE69F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		5D8F57D01F5E87F50098B13B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0F95C6771F68434D009E3651 /* SignatureVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -243,7 +246,6 @@
 				5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */,
 				0F95C6731F67167C009E3651 /* CreatePinVC.swift */,
 				5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */,
-				5D1B1F641F67A0A1005FE69F /* base64.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -251,6 +253,7 @@
 		5D8F57D21F5E88080098B13B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0F95C6791F684EA4009E3651 /* FilesMethods.swift */,
 				5D1B1F6A1F67A773005FE69F /* LocationManager.swift */,
 				5D8F57D31F5E88230098B13B /* Constant.swift */,
 				5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */,
@@ -386,7 +389,7 @@
 				TargetAttributes = {
 					5D8F57A11F5E752E0098B13B = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VAWH7R9NX3;
+						DevelopmentTeam = 6RYRJW337K;
 						ProvisioningStyle = Automatic;
 					};
 					5D8F57B81F5E75320098B13B = {
@@ -554,12 +557,12 @@
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
 				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */,
-				5D1B1F651F67A0A1005FE69F /* base64.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
 				5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5DDCE4721F613601000D987C /* ReportsDetailsVC.swift in Sources */,
 				5DDCE47A1F614C20000D987C /* BuildingDetails.swift in Sources */,
+				0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
 				5D8F57D41F5E88230098B13B /* Constant.swift in Sources */,
 				5D7E2CBD1F626E1E00CC851A /* RestoreFromServerVC.swift in Sources */,
@@ -583,6 +586,7 @@
 				5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */,
 				5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
+				0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */,
 				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
 				5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */,
 				5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */,
@@ -727,7 +731,7 @@
 			baseConfigurationReference = 6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VAWH7R9NX3;
+				DEVELOPMENT_TEAM = 6RYRJW337K;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -743,7 +747,7 @@
 			baseConfigurationReference = A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VAWH7R9NX3;
+				DEVELOPMENT_TEAM = 6RYRJW337K;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

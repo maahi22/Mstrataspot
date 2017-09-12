@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class IssueVC: UIViewController,PeriorityDelegate {
 
@@ -21,10 +22,12 @@ class IssueVC: UIViewController,PeriorityDelegate {
     @IBOutlet weak var issueScrollView: UIScrollView!
     
     
+    var projectManageobj : NSManagedObject!
+    
     let imagePicker = UIImagePickerController()
-    
-    
-    
+    var hasImage = false
+    var CurvesData = ""
+    var priorityColor = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,76 @@ class IssueVC: UIViewController,PeriorityDelegate {
     }
     
     
+    @IBAction func saveIssue(_ sender: Any) {
+        
+        var imageName = ""
+        if imgViewPhoto.image != nil{
+            hasImage = true
+            imageName = FilesMethods.saveImage(imgViewPhoto.image!)
+            
+        }
+        
+        
+        guard
+        let title = txtTitle.text, !title.isEmpty,
+        let desc = txtViewDescription.text, !desc.isEmpty
+            else {
+                
+                if txtTitle.text == "" {
+                    let alert = UIAlertController(title: "Error!", message: "Please enter a title.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else if txtViewDescription.text == "" {
+                    let alert = UIAlertController(title: "Error!", message: "Please add a description here.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+                txtTitle.resignFirstResponder()
+                txtTitle.resignFirstResponder()
+                return
+        }
+        
+        
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityIssues, in: context)
+        
+        
+        let now = DefaultDataManager.AppCurrentTime()
+        
+        
+        let Issues = NSManagedObject(entity: entityDescription!, insertInto: context)
+        Issues.setValue(title, forKey: "title")
+        Issues.setValue(desc, forKey: "issue_description")
+        Issues.setValue(hasImage, forKey: "hasImage")
+        Issues.setValue(now, forKey: "creationDate")
+        Issues.setValue(priorityColor, forKey: "priority")
+        Issues.setValue(imageName, forKey: "imageName")
+        Issues.setValue(CurvesData, forKey: "imageCurves")
+        Issues.setValue(txtViewComments.text, forKey: "comment")
+        //saverelationship
+        Issues.setValue(projectManageobj, forKey: "project")
+        
+        
+        do {
+            try Issues.managedObjectContext?.save()
+            
+            let alert = UIAlertController(title: "Alert", message: "Issue  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            
+        } catch {
+            print("Error occured during save entity")
+        }
+        
+        
+    }
     
     
     

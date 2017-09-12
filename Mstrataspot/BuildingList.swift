@@ -35,9 +35,9 @@ class BuildingList: UIViewController {//Section List
         
         try! fetchedResultsController.performFetch()
         fetchedResultsController.delegate = self
-        if let quotes = fetchedResultsController.fetchedObjects {
-            if quotes.count > 0 {
-                print(quotes.count)
+        if let Sections = fetchedResultsController.fetchedObjects {
+            if Sections.count > 0 {
+                print(Sections.count)
             }
         }
         return fetchedResultsController

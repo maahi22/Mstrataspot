@@ -15,6 +15,37 @@ class NewProjectVC: UIViewController {
 
     
     
+    @IBOutlet weak var txtTitle: UITextField!
+    @IBOutlet weak var txtViewDescription: UITextView!
+    @IBOutlet weak var txtProjectReference: UITextField!
+    
+    @IBOutlet weak var txtReference: UITextField!
+    @IBOutlet weak var txtOrganizationName: UITextField!
+    @IBOutlet weak var txtAddress: UITextField!
+    @IBOutlet weak var txtAddress2: UITextField!
+    @IBOutlet weak var txtCity: UITextField!
+    @IBOutlet weak var txtState: UITextField!
+    @IBOutlet weak var txtZip: UITextField!
+    @IBOutlet weak var txtEmployeeName: UITextField!
+    @IBOutlet weak var txtCompanyName: UITextField!
+    
+    @IBOutlet weak var txtClientName: UITextField!
+    @IBOutlet weak var txtClientAddress1: UITextField!
+    @IBOutlet weak var txtClientAddress2: UITextField!
+    @IBOutlet weak var txtClientCity: UITextField!
+    @IBOutlet weak var txtClientState: UITextField!
+    @IBOutlet weak var txtClientZip: UITextField!
+    
+    
+    
+    
+    @IBOutlet weak var signatureImageView: UIImageView!
+    
+    
+    
+    
+    
+    var editProjectManageobj : NSManagedObject!
     
     
     
@@ -27,7 +58,25 @@ class NewProjectVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        
+        if editProjectManageobj != nil {
+            
+            if let title = editProjectManageobj.value(forKey: "title"){
+                txtTitle.text = title as! String
+            }
+            if let desc = editProjectManageobj.value(forKey: "project_description"){
+                txtViewDescription.text = desc as! String
+            }
+            
+            
+           
+            
+            
+        }
+        
+        
+        
     }
 
     
@@ -42,27 +91,103 @@ class NewProjectVC: UIViewController {
     
     
     
+    @IBAction func openSignature(_ sender: Any) {
+        self.performSegue(withIdentifier: "showSignatureView", sender: self)
+    }
     
     
+    @IBAction func getAddressBook(_ sender: Any) {
+        
+        
+        
+        
+    }
     
     @IBAction func saveProjects(_ sender: Any) {
+        
+        
+        
+        guard
+            let title = txtTitle.text, !title.isEmpty,
+            let desc = txtViewDescription.text, !desc.isEmpty
+            else {
+                
+                if txtTitle.text == "" {
+                    let alert = UIAlertController(title: "Error!", message: "Please enter a title.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else if txtViewDescription.text == "" {
+                    let alert = UIAlertController(title: "Error!", message: "Please add a description here.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+                
+                txtTitle.resignFirstResponder()
+                txtViewDescription.resignFirstResponder()
+                return
+        }
+
+        
+        
+        
+        
+        
+        
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
         
-        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityProjects, in: context)
-       
-        
-        let Projects = NSManagedObject(entity: entityDescription!, insertInto: context)
-        Projects.setValue("ABC", forKey: "title")
-        Projects.setValue("XYZ", forKey: "reference")
-        
-        do {
-            try Projects.managedObjectContext?.save()
-        } catch {
-            print("Error occured during save entity")
-        }
+        if editProjectManageobj != nil {
+            
+            
+            
+        }else{
+            
+            let entityDescription = NSEntityDescription.entity(forEntityName: kEntityProjects, in: context)
+            let now = DefaultDataManager.AppCurrentTime()
+            let Projects = NSManagedObject(entity: entityDescription!, insertInto: context)
+            Projects.setValue(title, forKey: "title")
+            Projects.setValue(desc, forKey: "project_description")
+            Projects.setValue(txtAddress.text, forKey: "address1")
+            Projects.setValue(txtAddress2.text, forKey: "address2")
+            Projects.setValue(txtCity.text, forKey: "city")
+            Projects.setValue(txtCompanyName.text, forKey: "companyName")
+            Projects.setValue(now, forKey: "creationDate")
+            Projects.setValue(txtEmployeeName.text, forKey: "employeeName")
+            Projects.setValue(txtClientAddress1.text, forKey: "clientAddress1")
+            Projects.setValue(txtClientAddress2.text, forKey: "clientAddress2")
+            Projects.setValue(txtClientCity.text, forKey: "clientCity")
+            Projects.setValue(txtClientName.text, forKey: "clientName")
+           // Projects.setValue(title, forKey: "clientsSignatureFileName")
+            Projects.setValue(txtClientState.text, forKey: "clientState")
+            Projects.setValue(txtClientZip.text, forKey: "clientZip")
+            Projects.setValue(txtOrganizationName.text, forKey: "organizationName")
+           // Projects.setValue(title, forKey: "projectImage")
+            Projects.setValue(txtProjectReference.text, forKey: "projectReference")
+            Projects.setValue(txtReference.text, forKey: "reference")
+            Projects.setValue(txtState.text, forKey: "state")
+            Projects.setValue(txtZip.text, forKey: "zip")
+            do {
+                try Projects.managedObjectContext?.save()
+                let alert = UIAlertController(title: "Alert", message: "Project  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+            } catch {
+                print("Error occured during save entity")
+            }
 
+            
+        }
+        
+        
+        
+        
+        
+        
         
     }
     

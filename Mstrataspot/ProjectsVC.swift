@@ -17,15 +17,15 @@ class ProjectsVC: UIViewController {
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var lblNoRecords: UILabel!
     
-    private var persistentContainer = NSPersistentContainer(name: "Projects")
-   
-
+     var selectedObj = NSManagedObject()
     
-   // private let persistentContainer = NSPersistentContainer(name: "Projects")
+    
+    private let persistentContainer = NSPersistentContainer(name: "Projects")
+   
     
     // MARK: -
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
+   /* fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
        
         
         
@@ -33,20 +33,46 @@ class ProjectsVC: UIViewController {
         let context = appDelegate.getContext()
         
         // Create Fetch Request
-        let fetchRequest: NSFetchRequest<Projects> = Projects.fetchRequest()
-        
+        //let fetchRequest: NSFetchRequest<Projects> = Projects.fetchRequest()
+        let fetchRequest = NSFetchRequest<Sections>(entityName: "Projects")
         // Configure Fetch Request
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         
-        // Create Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
         
-        // Configure Fetched Results Controller
+        try! fetchedResultsController.performFetch()
         fetchedResultsController.delegate = self
+        if let Sections = fetchedResultsController.fetchedObjects {
+            if Sections.count > 0 {
+                print(Sections.count)
+            }
+        }
         
         return fetchedResultsController
-    }()
+    }()*/
     
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        
+        let fetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        try! fetchedResultsController.performFetch()
+        fetchedResultsController.delegate = self
+        if let Projects = fetchedResultsController.fetchedObjects {
+            if Projects.count > 0 {
+                print(Projects.count)
+            }
+        }
+        return fetchedResultsController
+    }()
     // MARK: - View Life Cycle
     
     
@@ -144,15 +170,18 @@ class ProjectsVC: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toProjectdetails" {
+            let nextScene =  segue.destination as! ProjectDetailsVC
+            // Pass the selected object to the new view controller.
+            nextScene.projectManageobj = self.selectedObj
+        }
     }
-    */
+    
 
 }
 
@@ -182,7 +211,7 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
         
         // Configure Cell
         cell.lblTitle.text = Projects.title
-        cell.lblDescription.text = Projects.description
+        cell.lblDescription.text = Projects.project_description
         print(Projects.title)
         // Configure Cell
       //  cell.authorLabel.text = quote.author
@@ -195,6 +224,19 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
     }
 
    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedObj = fetchedResultsController.object(at: indexPath)
+        
+        self.performSegue(withIdentifier: "toProjectdetails", sender: self)
+        
+        
+    }
+
+    
+    
+    
+    
     
      func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

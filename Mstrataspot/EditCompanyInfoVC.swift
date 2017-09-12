@@ -78,13 +78,24 @@ class EditCompanyInfoVC: UIViewController {
             txtZip.text = list?.value(forKey: "zip") as? String
             
             
-            
-            
-            
         }
         
     }
 
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        FilesMethods.getImageFromDocDir("signature") { (img, sts) in
+            
+            if sts {
+                self.imgSigneture.image = img
+            }
+            
+        }
+        
+    }
     
     
     private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
@@ -266,7 +277,7 @@ class EditCompanyInfoVC: UIViewController {
     
     @IBAction func AddSignature(_ sender: Any) {
         
-        
+        self.performSegue(withIdentifier: "showSignatureView", sender: self)
         
         
     }
