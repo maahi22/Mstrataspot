@@ -44,6 +44,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        //Start
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        formatter.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+        let date = DefaultDataManager.AppCurrentTime()
+        let dateStr = formatter.string(from: date as Date)
+        DefaultDataManager.SaveLastTotalReportSendDate(dateStr)
+        
+        DefaultDataManager.Host("203.23.250.192")
+        DefaultDataManager.UseLogin(true)
+        DefaultDataManager.LoginUserName("noreply@cybercommunity.com.au")
+        DefaultDataManager.LoginPassword("gotsuz50")
+        DefaultDataManager.UseSSL(false)
+
+        //END
+        
+        
+        
+        
         let documentDirectoryURL =  try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         print(documentDirectoryURL)
                 
@@ -64,6 +84,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+    /* let   gregorian = NSCalendar (calendarIdentifier:.gregorian)
+        gregorian.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+        let date = DefaultDataManager.AppCurrentTime()
+        let   comps = gregorian?.component(.weekday, from: date)
+        
+        
+        
+        
+        let weekday = comps.day
+        
+        if weekday == 2 {
+            
+            let   components = NSDateComponents ()
+            components.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+            components.day = -1
+            let reportDate =
+            
+            
+        }
+        
+        
+        */
+        
+        
+        
+        
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -121,7 +169,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
     private func createRecordForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> NSManagedObject? {
         // Helpers
         var result: NSManagedObject?
@@ -137,6 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return result
     }
     
+    //Core Data ENDED
     
     
     
@@ -144,8 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    
-    
+   //Mathods
     
     
     

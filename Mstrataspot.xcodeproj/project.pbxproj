@@ -19,6 +19,7 @@
 		5D1B1F671F67A5FA005FE69F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */; };
 		5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F681F67A603005FE69F /* QRCodeReader.framework */; };
 		5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6A1F67A773005FE69F /* LocationManager.swift */; };
+		5D1B1F6E1F67BA5E005FE69F /* DefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */; };
 		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
 		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
 		5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */; };
@@ -79,6 +80,7 @@
 		5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5D1B1F681F67A603005FE69F /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mstrataspot-azbkgkkqybhjlqglvjhxqecwlupd/Build/Products/Debug-iphonesimulator/QRCodeReader.swift/QRCodeReader.framework"; sourceTree = "<group>"; };
 		5D1B1F6A1F67A773005FE69F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDataManager.swift; sourceTree = "<group>"; };
 		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
 		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
 		5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				0F95C6681F631C5F009E3651 /* UIColor+MColor.swift */,
 				0F95C6701F64653A009E3651 /* MICheckBox.swift */,
 				0F95C6751F6719DD009E3651 /* Validations.swift */,
+				5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				5D7E2CBF1F626E3A00CC851A /* BackUpVC.swift in Sources */,
 				5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */,
 				0F95C66B1F632A7D009E3651 /* BackupRestoreVC.swift in Sources */,
+				5D1B1F6E1F67BA5E005FE69F /* DefaultDataManager.swift in Sources */,
 				5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */,
 				0F95C66D1F632B01009E3651 /* CreateBackupVC.swift in Sources */,
 				0F95C6761F6719DD009E3651 /* Validations.swift in Sources */,
