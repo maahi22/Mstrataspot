@@ -131,7 +131,7 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource,MFMailComposeV
         }else{
         
         
-        
+        self.Status = 0
         self.performSegue(withIdentifier: dic["segu"]!, sender: self)
         }
     }

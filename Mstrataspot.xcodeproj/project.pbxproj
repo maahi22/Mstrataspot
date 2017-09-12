@@ -12,6 +12,8 @@
 		0F95C66D1F632B01009E3651 /* CreateBackupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C66C1F632B01009E3651 /* CreateBackupVC.swift */; };
 		0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C66E1F632B21009E3651 /* RestoreFromXML.swift */; };
 		0F95C6711F64653A009E3651 /* MICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6701F64653A009E3651 /* MICheckBox.swift */; };
+		0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6731F67167C009E3651 /* CreatePinVC.swift */; };
+		0F95C6761F6719DD009E3651 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6751F6719DD009E3651 /* Validations.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
 		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
 		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
@@ -66,6 +68,8 @@
 		0F95C66C1F632B01009E3651 /* CreateBackupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateBackupVC.swift; sourceTree = "<group>"; };
 		0F95C66E1F632B21009E3651 /* RestoreFromXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreFromXML.swift; sourceTree = "<group>"; };
 		0F95C6701F64653A009E3651 /* MICheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MICheckBox.swift; sourceTree = "<group>"; };
+		0F95C6731F67167C009E3651 /* CreatePinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePinVC.swift; sourceTree = "<group>"; };
+		0F95C6751F6719DD009E3651 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
 		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */,
 				5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */,
 				5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */,
+				0F95C6731F67167C009E3651 /* CreatePinVC.swift */,
 				5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */,
 			);
 			name = Settings;
@@ -235,6 +240,7 @@
 				5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */,
 				0F95C6681F631C5F009E3651 /* UIColor+MColor.swift */,
 				0F95C6701F64653A009E3651 /* MICheckBox.swift */,
+				0F95C6751F6719DD009E3651 /* Validations.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */,
 				5DDCE4761F6149C9000D987C /* LevelVC.swift in Sources */,
 				5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */,
+				0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */,
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
 				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */,
@@ -532,6 +539,7 @@
 				0F95C66B1F632A7D009E3651 /* BackupRestoreVC.swift in Sources */,
 				5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */,
 				0F95C66D1F632B01009E3651 /* CreateBackupVC.swift in Sources */,
+				0F95C6761F6719DD009E3651 /* Validations.swift in Sources */,
 				5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */,
 				5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,

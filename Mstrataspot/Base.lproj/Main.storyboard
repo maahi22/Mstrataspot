@@ -1983,22 +1983,22 @@
                         <outlet property="imgSigneture" destination="iRU-Zp-Amu" id="sNz-Mn-2Fq"/>
                         <outlet property="txtAddress" destination="SPN-CT-bR3" id="KdP-v7-O65"/>
                         <outlet property="txtAddress2" destination="t7P-uR-EFl" id="6g2-Fa-WBF"/>
-                        <outlet property="txtBMName" destination="GWp-mi-U9v" id="OIP-sP-uiW"/>
                         <outlet property="txtCity" destination="8tV-Wv-2Ck" id="aph-FZ-klO"/>
                         <outlet property="txtCompanyName" destination="b2D-y0-5va" id="Ej1-QO-OvX"/>
                         <outlet property="txtEmail" destination="5pt-hZ-tjj" id="ZlA-FC-aBF"/>
-                        <outlet property="txtEmployeeName" destination="9eD-hi-1cH" id="5dK-Ux-kii"/>
+                        <outlet property="txtEmployeeName" destination="GWp-mi-U9v" id="Gl0-0u-AzG"/>
                         <outlet property="txtFax" destination="nLj-cT-Ofs" id="RAz-BF-4BG"/>
                         <outlet property="txtLicence" destination="wmZ-RS-Lsp" id="xed-zj-ADv"/>
                         <outlet property="txtPhone" destination="N0I-kb-Yfg" id="BfB-JR-LbW"/>
                         <outlet property="txtState" destination="ymO-Vm-gk3" id="2YT-9n-0vF"/>
                         <outlet property="txtViewQualification" destination="KAa-V6-tbk" id="xjS-PS-RdL"/>
+                        <outlet property="txtWebsiteName" destination="9eD-hi-1cH" id="rSz-76-CIH"/>
                         <outlet property="txtZip" destination="P1Z-qa-aMS" id="3qF-6w-yaa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joa-Yx-RP1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2778" y="265"/>
+            <point key="canvasLocation" x="2660" y="331"/>
         </scene>
         <!--Mail Settings-->
         <scene sceneID="JUw-8e-HGD">
@@ -3193,7 +3193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vX-MA-GTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3224.8000000000002" y="2600.1499250374814"/>
+            <point key="canvasLocation" x="3332" y="2578"/>
         </scene>
         <!--Backup/Restore-->
         <scene sceneID="fag-0g-J3C">
@@ -3489,6 +3489,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="fki-lG-K2i" id="v19-o9-4LX"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.5568627451" green="0.74509803919999995" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3576,12 +3579,18 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="fki-lG-K2i" id="xed-XX-Hxc"/>
+                                                                </connections>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add pin here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBM-fh-0pI">
                                                                 <rect key="frame" x="106" y="46" width="244" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="fki-lG-K2i" id="0Rx-UN-lhd"/>
+                                                                </connections>
                                                             </textField>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reenter pin here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rmb-ci-5f4">
                                                                 <rect key="frame" x="106" y="87" width="244" height="30"/>
@@ -3591,6 +3600,9 @@
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="fki-lG-K2i" id="PpU-XX-A9f"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.5568627451" green="0.74509803919999995" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -3668,13 +3680,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="EnT-l3-bVR">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="uly-HM-WDT"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="uly-HM-WDT">
+                            <connections>
+                                <action selector="savePinData:" destination="fki-lG-K2i" id="sOp-Gt-Xa8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="lblPinQuestion" destination="wYe-WX-JDh" id="hZd-Xq-saB"/>
                         <outlet property="rightBarButton" destination="uly-HM-WDT" id="eTk-JT-Yj0"/>
                         <outlet property="txtCurrentPin" destination="iVA-fX-1ow" id="Ygz-k0-YjY"/>
                         <outlet property="txtPIN" destination="UBM-fh-0pI" id="w5l-MG-JDz"/>
+                        <outlet property="txtPinAnswer" destination="NA6-zS-mpX" id="fu1-hL-sxX"/>
                         <outlet property="txtReenterPIN" destination="rmb-ci-5f4" id="MyQ-uo-fZR"/>
                         <outlet property="viewEditPin" destination="01C-cG-MJJ" id="wXJ-81-kgq"/>
                         <outlet property="viewForgetPin" destination="KnP-uu-HnN" id="fpc-L1-2NK"/>
@@ -3687,7 +3704,7 @@
         <!--Create Pin-->
         <scene sceneID="HBJ-s6-2t7">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xU7-tY-kL0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePinVC" automaticallyAdjustsScrollViewInsets="NO" id="xU7-tY-kL0" customClass="CreatePinVC" customModule="Mstrataspot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fON-7w-x5k"/>
                         <viewControllerLayoutGuide type="bottom" id="4RC-kG-djf"/>
@@ -3864,8 +3881,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Pin" id="X1V-Ot-8nm">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="clL-Zi-jWC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="clL-Zi-jWC">
+                            <connections>
+                                <action selector="savePin:" destination="xU7-tY-kL0" id="ZAi-NV-JcI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="txtAnswer" destination="Lze-Tu-bWw" id="fWe-pR-KUd"/>
+                        <outlet property="txtConfirmPin" destination="zMV-ww-ARF" id="A7m-WZ-7s0"/>
+                        <outlet property="txtEmail" destination="2Lg-Qt-O96" id="04D-Ye-ugi"/>
+                        <outlet property="txtPin" destination="eqt-Vz-GW5" id="STT-W3-PIE"/>
+                        <outlet property="txtQuestion" destination="eAR-QA-M1l" id="BPg-CT-wbb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1v-sS-Abc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

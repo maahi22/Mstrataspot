@@ -19,11 +19,42 @@ class LevelVC: UIViewController {
     
     
    var inspectionManageobj : NSManagedObject!
+   var sectionManageobj : NSManagedObject!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        
+        if sectionManageobj != nil {
+            
+            if let name = sectionManageobj.value(forKey: "name"){
+                
+                self.txtName.text = name as? String
+            }
+            
+            if let gps = sectionManageobj.value(forKey: "gpsLocation"){
+                
+                self.lblGPSLocation.text = gps as? String
+            }
+            
+            
+            if let qrCode = sectionManageobj.value(forKey: "qrCode"){
+                
+                self.lblQACode.text = qrCode as? String
+            }
+            
+            
+            /*self.txtName.text = sectionManageobj.value(forKey: "name") as! String
+            self.lblGPSLocation.text = sectionManageobj.value(forKey: "gpsLocation") as! String
+            self.lblQACode.text = sectionManageobj.value(forKey: "qrCode") as! String*/
+            
+        }
+        
+        
+        
     }
     
     
@@ -97,25 +128,54 @@ class LevelVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
         
-        let entityDescription = NSEntityDescription.entity(forEntityName: kEntitySections, in: context)
-        
-        
-        let sections = NSManagedObject(entity: entityDescription!, insertInto: context)
-        // building.setValue(BMName, forKey: "title")
-        sections.setValue(name, forKey: "name")
-      //  sections.setValue(qrCode, forKey: "qrCode")
-      //  sections.setValue(gpsloc, forKey: "gpsLocation")
-        sections.setValue(inspectionManageobj, forKey: "routineInspection")//set Reelationship
-        
-        
-        
-        do {
-            try sections.managedObjectContext?.save()
+        if sectionManageobj != nil {
             
-            self.navigationController?.popViewController(animated: true)
-        } catch {
-            print("Error occured during save entity")
+           
+            // building.setValue(BMName, forKey: "title")
+            sectionManageobj.setValue(name, forKey: "name")
+            //  sectionManageobj.setValue(qrCode, forKey: "qrCode")
+            //  sectionManageobj.setValue(gpsloc, forKey: "gpsLocation")
+            //sectionManageobj.setValue(inspectionManageobj, forKey: "routineInspection")//set Reelationship
+            
+            do {
+                try sectionManageobj.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Information update succesfully", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } catch {
+                print("Error occured during save entity")
+            }
+            
+            
+            
+        }else{
+            let entityDescription = NSEntityDescription.entity(forEntityName: kEntitySections, in: context)
+            let sections = NSManagedObject(entity: entityDescription!, insertInto: context)
+            // building.setValue(BMName, forKey: "title")
+            sections.setValue(name, forKey: "name")
+            //  sections.setValue(qrCode, forKey: "qrCode")
+            //  sections.setValue(gpsloc, forKey: "gpsLocation")
+            sections.setValue(inspectionManageobj, forKey: "routineInspection")//set Reelationship
+            
+            do {
+                try sections.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Information save succesfully", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } catch {
+                print("Error occured during save entity")
+            }
         }
+        
+        
+        
+       
         
         
         

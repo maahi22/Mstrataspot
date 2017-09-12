@@ -109,7 +109,7 @@ class BuildingVC: UIViewController {
             else {
                 
                 
-                let alert = UIAlertController(title: "Alert", message: "Please enter mendatory fields credential", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Alert", message: "Please enter mendatory fields", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -124,37 +124,79 @@ class BuildingVC: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
         
-        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityRoutineInspections, in: context)
         
-        
-        
-        
-        let RoutineInspection = NSManagedObject(entity: entityDescription!, insertInto: context)
-        // building.setValue(BMName, forKey: "title")
-        RoutineInspection.setValue(name, forKey: "name")
-        RoutineInspection.setValue(category, forKey: "category")
-        RoutineInspection.setValue(cbIsWeekly.isChecked, forKey: "isWeekly")
-        RoutineInspection.setValue(cbIsAnyDay.isChecked, forKey: "isAnyDay")
-        RoutineInspection.setValue(cbIsSunday.isChecked, forKey: "isSunday")
-        RoutineInspection.setValue(cbIsSaturday.isChecked, forKey: "isSaturday")
-        RoutineInspection.setValue(cbIsFriday.isChecked, forKey: "isFriday")
-        RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isThusday")
-        RoutineInspection.setValue(cbIsWednesday.isChecked, forKey: "isWednesday")
-        RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isTuesday")
-        RoutineInspection.setValue(cbIsMonday.isChecked, forKey: "isMonday")
-        RoutineInspection.setValue(false, forKey: "isPublished")
-        
-        
-        do {
-            try RoutineInspection.managedObjectContext?.save()
+        if inspectionManageobj != nil {
             
-            self.navigationController?.popViewController(animated: true)
+            // building.setValue(BMName, forKey: "title")
+            inspectionManageobj.setValue(name, forKey: "name")
+            inspectionManageobj.setValue(category, forKey: "category")
+            inspectionManageobj.setValue(cbIsWeekly.isChecked, forKey: "isWeekly")
+            inspectionManageobj.setValue(cbIsAnyDay.isChecked, forKey: "isAnyDay")
+            inspectionManageobj.setValue(cbIsSunday.isChecked, forKey: "isSunday")
+            inspectionManageobj.setValue(cbIsSaturday.isChecked, forKey: "isSaturday")
+            inspectionManageobj.setValue(cbIsFriday.isChecked, forKey: "isFriday")
+            inspectionManageobj.setValue(cbIsThusday.isChecked, forKey: "isThusday")
+            inspectionManageobj.setValue(cbIsWednesday.isChecked, forKey: "isWednesday")
+            inspectionManageobj.setValue(cbIsThusday.isChecked, forKey: "isTuesday")
+            inspectionManageobj.setValue(cbIsMonday.isChecked, forKey: "isMonday")
+            inspectionManageobj.setValue(false, forKey: "isPublished")
             
-        } catch {
-            print("Error occured during save entity")
+            
+            do {
+                try inspectionManageobj.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Information update succesfully", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+            
+
+            
+            
+        }else{
+            
+            
+            let entityDescription = NSEntityDescription.entity(forEntityName: kEntityRoutineInspections, in: context)
+            
+            let RoutineInspection = NSManagedObject(entity: entityDescription!, insertInto: context)
+            // building.setValue(BMName, forKey: "title")
+            RoutineInspection.setValue(name, forKey: "name")
+            RoutineInspection.setValue(category, forKey: "category")
+            RoutineInspection.setValue(cbIsWeekly.isChecked, forKey: "isWeekly")
+            RoutineInspection.setValue(cbIsAnyDay.isChecked, forKey: "isAnyDay")
+            RoutineInspection.setValue(cbIsSunday.isChecked, forKey: "isSunday")
+            RoutineInspection.setValue(cbIsSaturday.isChecked, forKey: "isSaturday")
+            RoutineInspection.setValue(cbIsFriday.isChecked, forKey: "isFriday")
+            RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isThusday")
+            RoutineInspection.setValue(cbIsWednesday.isChecked, forKey: "isWednesday")
+            RoutineInspection.setValue(cbIsThusday.isChecked, forKey: "isTuesday")
+            RoutineInspection.setValue(cbIsMonday.isChecked, forKey: "isMonday")
+            RoutineInspection.setValue(false, forKey: "isPublished")
+            
+            
+            do {
+                try RoutineInspection.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Information save succesfully", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+            
+            
+            
         }
-        
-        
         
     }
     
