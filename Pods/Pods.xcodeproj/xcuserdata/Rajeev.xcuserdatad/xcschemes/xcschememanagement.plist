@@ -8,40 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>Pods-MstrataspotTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>QRCodeReader.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftSignatureView.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C370BEC160DCD79DD6887F56262C7BD</key>
+		<key>0A14C306ADF783FC47D46789B3E651FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8D19644810D5F7910D281B8BA347F885</key>
+		<key>37A0DC649FA2EB94B285C199EC8F755B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E9F9532950F8FD3ECB83581AA15154C</key>
+		<key>41B93718F16991D5DE0C29DE5F891C04</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -51,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B7AF5216C5129F58CAD8E8CEFFCA18A</key>
+		<key>A277A82FE12F432EE9F71A3F5F8A08C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>

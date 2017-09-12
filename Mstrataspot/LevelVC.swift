@@ -8,10 +8,12 @@
 
 import UIKit
 import CoreData
+import QRCodeReader
+import AVFoundation
 
 
 
-class LevelVC: UIViewController {
+class LevelVC: UIViewController,QRCodeReaderViewControllerDelegate {
 
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var lblGPSLocation: UILabel!
@@ -21,11 +23,62 @@ class LevelVC: UIViewController {
    var inspectionManageobj : NSManagedObject!
    var sectionManageobj : NSManagedObject!
     
+    lazy var readerVC: QRCodeReaderViewController = {
+        let builder = QRCodeReaderViewControllerBuilder {
+            $0.reader = QRCodeReader(metadataObjectTypes: [AVMetadataObjectTypeQRCode], captureDevicePosition: .back)
+        }
+        
+        return QRCodeReaderViewController(builder: builder)
+    }()
+    
+    
+   var locationManager = LocationManager.sharedInstance
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //get GPS location
+        locationManager.autoUpdate = true
+        locationManager.startUpdatingLocationWithCompletionHandler { (lat, lang, Status, verboseMsg, error)  in
+            
+            DispatchQueue.main.async(execute: { [weak self] () -> Void  in
+                guard let strongSelf = self else { return }
+                strongSelf.lblGPSLocation.text = "\(lat),\(lang)"
+            })
+
+            
+            
+            
+            if Status != "Allowed access" {
+                
+                let alertController = UIAlertController(title: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("Please put ON your location service for accurate results", comment: ""), preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+                let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
+                    
+                    if #available(iOS 10.0, *) {
+                         UIApplication.shared.open(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+                        
+                    } else {
+                        UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+                    }
+                }
+                alertController.addAction(settingsAction)
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
+//ENDED
         
         
         if sectionManageobj != nil {
@@ -40,16 +93,12 @@ class LevelVC: UIViewController {
                 self.lblGPSLocation.text = gps as? String
             }
             
-            
             if let qrCode = sectionManageobj.value(forKey: "qrCode"){
                 
                 self.lblQACode.text = qrCode as? String
             }
             
             
-            /*self.txtName.text = sectionManageobj.value(forKey: "name") as! String
-            self.lblGPSLocation.text = sectionManageobj.value(forKey: "gpsLocation") as! String
-            self.lblQACode.text = sectionManageobj.value(forKey: "qrCode") as! String*/
             
         }
         
@@ -63,9 +112,47 @@ class LevelVC: UIViewController {
     
     @IBAction func scaneCode(_ sender: Any) {
         
+        readerVC.delegate = self
         
+        // Or by using the closure pattern
+        readerVC.completionBlock = { (result: QRCodeReaderResult?) in
+            print(result?.value)
+            
+            self.lblQACode.text = result?.value
+           // self.readerVC.dismiss(animated: true, completion: nil)
+        }
+        
+        // Presents the readerVC as modal form sheet
+        readerVC.modalPresentationStyle = .formSheet
+        present(readerVC, animated: true, completion: nil)
         
     }
+    
+    // MARK: - QRCodeReaderViewController Delegate Methods
+    
+    func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
+        reader.stopScanning()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //This is an optional delegate method, that allows you to be notified when the user switches the cameraName
+    //By pressing on the switch camera button
+    func reader(_ reader: QRCodeReaderViewController, didSwitchCamera newCaptureDevice: AVCaptureDeviceInput) {
+        if let cameraName = newCaptureDevice.device.localizedName {
+            print("Switching capturing to: \(cameraName)")
+        }
+    }
+    
+    func readerDidCancel(_ reader: QRCodeReaderViewController) {
+        reader.stopScanning()
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //QR CODE ENDED
+    
+    
     
     
     
@@ -98,7 +185,7 @@ class LevelVC: UIViewController {
                 return
         }
         
-       /* guard
+        guard
             let gpsloc = lblGPSLocation.text, !gpsloc.isEmpty
             else {
                 let alert = UIAlertController(title: "Error", message: "Please enter a GPS location.", preferredStyle: UIAlertControllerStyle.alert)
@@ -120,7 +207,7 @@ class LevelVC: UIViewController {
                 
                 return
         }
-        */
+        
         
         
         
@@ -133,8 +220,8 @@ class LevelVC: UIViewController {
            
             // building.setValue(BMName, forKey: "title")
             sectionManageobj.setValue(name, forKey: "name")
-            //  sectionManageobj.setValue(qrCode, forKey: "qrCode")
-            //  sectionManageobj.setValue(gpsloc, forKey: "gpsLocation")
+            sectionManageobj.setValue(qrCode, forKey: "qrCode")
+            sectionManageobj.setValue(gpsloc, forKey: "gpsLocation")
             //sectionManageobj.setValue(inspectionManageobj, forKey: "routineInspection")//set Reelationship
             
             do {
@@ -156,8 +243,8 @@ class LevelVC: UIViewController {
             let sections = NSManagedObject(entity: entityDescription!, insertInto: context)
             // building.setValue(BMName, forKey: "title")
             sections.setValue(name, forKey: "name")
-            //  sections.setValue(qrCode, forKey: "qrCode")
-            //  sections.setValue(gpsloc, forKey: "gpsLocation")
+            sections.setValue(qrCode, forKey: "qrCode")
+            sections.setValue(gpsloc, forKey: "gpsLocation")
             sections.setValue(inspectionManageobj, forKey: "routineInspection")//set Reelationship
             
             do {

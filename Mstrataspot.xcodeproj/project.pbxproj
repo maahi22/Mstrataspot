@@ -15,6 +15,10 @@
 		0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6731F67167C009E3651 /* CreatePinVC.swift */; };
 		0F95C6761F6719DD009E3651 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6751F6719DD009E3651 /* Validations.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
+		5D1B1F651F67A0A1005FE69F /* base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F641F67A0A1005FE69F /* base64.swift */; };
+		5D1B1F671F67A5FA005FE69F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */; };
+		5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F681F67A603005FE69F /* QRCodeReader.framework */; };
+		5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6A1F67A773005FE69F /* LocationManager.swift */; };
 		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
 		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
 		5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */; };
@@ -71,6 +75,10 @@
 		0F95C6731F67167C009E3651 /* CreatePinVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePinVC.swift; sourceTree = "<group>"; };
 		0F95C6751F6719DD009E3651 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1B1F641F67A0A1005FE69F /* base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = base64.swift; path = ../../../../Dropbox/base64.swift; sourceTree = "<group>"; };
+		5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5D1B1F681F67A603005FE69F /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mstrataspot-azbkgkkqybhjlqglvjhxqecwlupd/Build/Products/Debug-iphonesimulator/QRCodeReader.swift/QRCodeReader.framework"; sourceTree = "<group>"; };
+		5D1B1F6A1F67A773005FE69F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
 		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
 		5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
@@ -121,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */,
+				5D1B1F671F67A5FA005FE69F /* AVFoundation.framework in Frameworks */,
 				D0ECB9B23DFC008B84D1750D /* Pods_Mstrataspot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +161,8 @@
 		1E9FBEA17EFA42E40BC8DFA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D1B1F681F67A603005FE69F /* QRCodeReader.framework */,
+				5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */,
 				5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */,
 				EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */,
 			);
@@ -229,6 +241,7 @@
 				5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */,
 				0F95C6731F67167C009E3651 /* CreatePinVC.swift */,
 				5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */,
+				5D1B1F641F67A0A1005FE69F /* base64.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -236,6 +249,7 @@
 		5D8F57D21F5E88080098B13B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				5D1B1F6A1F67A773005FE69F /* LocationManager.swift */,
 				5D8F57D31F5E88230098B13B /* Constant.swift */,
 				5D8F57D51F5E883F0098B13B /* ConnectionHelper.swift */,
 				0F95C6681F631C5F009E3651 /* UIColor+MColor.swift */,
@@ -471,13 +485,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MstrataspotTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EAD6BCD536ECDD3CF0282AAD /* [CP] Embed Pods Frameworks */ = {
@@ -486,9 +503,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSignatureView/SwiftSignatureView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSignatureView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -501,13 +525,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mstrataspot-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -524,6 +551,7 @@
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
 				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */,
+				5D1B1F651F67A0A1005FE69F /* base64.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
 				5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
@@ -552,6 +580,7 @@
 				5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
 				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
+				5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */,
 				5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
