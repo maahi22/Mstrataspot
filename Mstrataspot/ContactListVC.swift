@@ -18,12 +18,12 @@ protocol ContactListDelegate {
 
 class ContactListVC: UIViewController {
 
-    let store = CNContactStore()
+   
     
+    @IBOutlet weak var contactTableView: UITableView!
     var contactNameArray = NSMutableArray()
-    
     var delegate:ContactListDelegate?
-    
+    let store = CNContactStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,16 @@ class ContactListVC: UIViewController {
                         self.contactNameArray.add(name)
                     }
                 }
+                
+                
+                DispatchQueue.main.async(execute: { [weak self] () -> Void  in
+                    guard let strongSelf = self else { return }
+                    strongSelf.contactTableView.reloadData()
+                })
+                
+
+                
+                
             } catch let fetchError {
                 print(fetchError)
             }
@@ -111,8 +121,6 @@ extension ContactListVC : UITableViewDelegate, UITableViewDataSource{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath )
-        
-        // Configure Cell
         cell.textLabel?.text = self.contactNameArray[indexPath.row] as! String
         
        
@@ -125,9 +133,8 @@ extension ContactListVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        
         delegate?.ConatctName(self.contactNameArray[indexPath.row] as! String)
-        
+        self.navigationController?.popViewController(animated: true)
         
     }
     

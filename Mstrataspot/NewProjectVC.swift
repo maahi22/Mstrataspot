@@ -46,7 +46,7 @@ class NewProjectVC: UIViewController,ContactListDelegate {
     
     
     var editProjectManageobj : NSManagedObject!
-    
+    var clientNameSts  = 0
     
     
     @IBOutlet weak var projectImageView: UIImageView!
@@ -81,6 +81,11 @@ class NewProjectVC: UIViewController,ContactListDelegate {
 
     
     
+    @IBAction func selectClientName(_ sender: Any) {
+        self.clientNameSts = 1
+        self.performSegue(withIdentifier: "toContactList", sender: self)
+        
+    }
     
     
     
@@ -212,8 +217,11 @@ class NewProjectVC: UIViewController,ContactListDelegate {
     }
     //Contact Delegate method
     func ConatctName(_ contactname : String){
-        
-        txtClientName.text = contactname
+        if self.clientNameSts == 1{
+            txtClientName.text = contactname
+        }else {
+            txtEmployeeName.text   = contactname
+        }
     }
     
     

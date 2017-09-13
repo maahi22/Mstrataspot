@@ -216,6 +216,14 @@ class FilesMethods: NSObject {
     
     
     //Image methods
+    class func loadImage (_ imageName :String)-> UIImage{
+        
+        let fullPath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
+        
+        return UIImage.init(contentsOfFile: fullPath)!
+    }
+    
+    
     class func saveImage(_ image: UIImage) -> String{
         let now  = DefaultDataManager.AppCurrentTime()
         let name = "Local_\(self.GetUUID)_\(now).png"

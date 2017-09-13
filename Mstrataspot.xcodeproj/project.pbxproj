@@ -16,6 +16,8 @@
 		0F95C6761F6719DD009E3651 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6751F6719DD009E3651 /* Validations.swift */; };
 		0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6771F68434D009E3651 /* SignatureVC.swift */; };
 		0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6791F684EA4009E3651 /* FilesMethods.swift */; };
+		0FFC219F1F69971000B65D6B /* Sample PDF in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC219E1F69971000B65D6B /* Sample PDF */; };
+		0FFC21A11F6998CA00B65D6B /* PDFBuilderManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
 		5D1B1F671F67A5FA005FE69F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */; };
 		5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F681F67A603005FE69F /* QRCodeReader.framework */; };
@@ -79,6 +81,8 @@
 		0F95C6751F6719DD009E3651 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		0F95C6771F68434D009E3651 /* SignatureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureVC.swift; sourceTree = "<group>"; };
 		0F95C6791F684EA4009E3651 /* FilesMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesMethods.swift; sourceTree = "<group>"; };
+		0FFC219E1F69971000B65D6B /* Sample PDF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample PDF"; sourceTree = "<group>"; };
+		0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFBuilderManage.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1B1F661F67A5FA005FE69F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5D1B1F681F67A603005FE69F /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mstrataspot-azbkgkkqybhjlqglvjhxqecwlupd/Build/Products/Debug-iphonesimulator/QRCodeReader.swift/QRCodeReader.framework"; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				5DDCE4701F6135DE000D987C /* Reports */,
 				5DDCE4681F612039000D987C /* Cell */,
 				5DDCE45E1F61152A000D987C /* Projects */,
+				0FFC219E1F69971000B65D6B /* Sample PDF */,
 				5D8F57D81F5E9CFF0098B13B /* Other Resources */,
 				5D8F57D21F5E88080098B13B /* Helper */,
 				5D8F57D11F5E87FF0098B13B /* Settings */,
@@ -264,6 +269,7 @@
 				0F95C6701F64653A009E3651 /* MICheckBox.swift */,
 				0F95C6751F6719DD009E3651 /* Validations.swift */,
 				5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */,
+				0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -392,7 +398,7 @@
 				TargetAttributes = {
 					5D8F57A11F5E752E0098B13B = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VAWH7R9NX3;
+						DevelopmentTeam = 6RYRJW337K;
 						ProvisioningStyle = Automatic;
 					};
 					5D8F57B81F5E75320098B13B = {
@@ -429,6 +435,7 @@
 				5D8F57B31F5E75310098B13B /* LaunchScreen.storyboard in Resources */,
 				5D8F57B01F5E75310098B13B /* Assets.xcassets in Resources */,
 				5D8F57AB1F5E75300098B13B /* Main.storyboard in Resources */,
+				0FFC219F1F69971000B65D6B /* Sample PDF in Resources */,
 				5D8F57DA1F5E9D570098B13B /* beep-beep.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +565,7 @@
 				5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */,
 				0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */,
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
+				0FFC21A11F6998CA00B65D6B /* PDFBuilderManage.swift in Sources */,
 				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
@@ -735,7 +743,7 @@
 			baseConfigurationReference = 6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VAWH7R9NX3;
+				DEVELOPMENT_TEAM = 6RYRJW337K;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -751,7 +759,7 @@
 			baseConfigurationReference = A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VAWH7R9NX3;
+				DEVELOPMENT_TEAM = 6RYRJW337K;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
