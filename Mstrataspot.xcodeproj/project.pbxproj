@@ -43,6 +43,7 @@
 		5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */; };
 		5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */; };
 		5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */; };
+		5DA23DBA1F69667900EBD388 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA23DB91F69667900EBD388 /* ContactListVC.swift */; };
 		5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4611F6115E2000D987C /* NewProjectVC.swift */; };
 		5DDCE4641F611969000D987C /* IssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4631F611969000D987C /* IssueVC.swift */; };
 		5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */; };
@@ -109,6 +110,7 @@
 		5D8F57DB1F5EA6370098B13B /* AboutUsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCompanyInfoVC.swift; sourceTree = "<group>"; };
 		5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSettingVC.swift; sourceTree = "<group>"; };
+		5DA23DB91F69667900EBD388 /* ContactListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
 		5DDCE4611F6115E2000D987C /* NewProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectVC.swift; sourceTree = "<group>"; };
 		5DDCE4631F611969000D987C /* IssueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueVC.swift; sourceTree = "<group>"; };
 		5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				0F95C6771F68434D009E3651 /* SignatureVC.swift */,
+				5DA23DB91F69667900EBD388 /* ContactListVC.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -389,7 +392,7 @@
 				TargetAttributes = {
 					5D8F57A11F5E752E0098B13B = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 6RYRJW337K;
+						DevelopmentTeam = VAWH7R9NX3;
 						ProvisioningStyle = Automatic;
 					};
 					5D8F57B81F5E75320098B13B = {
@@ -561,6 +564,7 @@
 				5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5DDCE4721F613601000D987C /* ReportsDetailsVC.swift in Sources */,
+				5DA23DBA1F69667900EBD388 /* ContactListVC.swift in Sources */,
 				5DDCE47A1F614C20000D987C /* BuildingDetails.swift in Sources */,
 				0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */,
 				5D8F57A61F5E752F0098B13B /* AppDelegate.swift in Sources */,
@@ -731,7 +735,7 @@
 			baseConfigurationReference = 6B8DB6E7872C2F11642BAA5F /* Pods-Mstrataspot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6RYRJW337K;
+				DEVELOPMENT_TEAM = VAWH7R9NX3;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -747,7 +751,7 @@
 			baseConfigurationReference = A26B629C19DEE196C9428D70 /* Pods-Mstrataspot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6RYRJW337K;
+				DEVELOPMENT_TEAM = VAWH7R9NX3;
 				INFOPLIST_FILE = Mstrataspot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

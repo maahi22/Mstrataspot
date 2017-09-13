@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to use camera to capture the image</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app require contact</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs Location</string>
 	<key>NSMicrophoneUsageDescription</key>
