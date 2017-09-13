@@ -11,7 +11,7 @@ import CoreData
 
 
 
-class NewProjectVC: UIViewController,ContactListDelegate {
+class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
 
     
     
@@ -39,14 +39,17 @@ class NewProjectVC: UIViewController,ContactListDelegate {
     
     
     
-    @IBOutlet weak var signatureImageView: UIImageView!
+  
     
     
+    @IBOutlet weak var clientSignImgView: UIImageView!
+    @IBOutlet weak var comSignImgView: UIImageView!
     
     
     
     var editProjectManageobj : NSManagedObject!
     var clientNameSts  = 0
+    var signtureCompnySts  = 0
     
     
     @IBOutlet weak var projectImageView: UIImageView!
@@ -87,22 +90,8 @@ class NewProjectVC: UIViewController,ContactListDelegate {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func openSignature(_ sender: Any) {
-        self.performSegue(withIdentifier: "showSignatureView", sender: self)
-    }
-    
-    
     @IBAction func getAddressBook(_ sender: Any) {
-        
+        self.clientNameSts = 0
         self.performSegue(withIdentifier: "toContactList", sender: self)
         
         
@@ -197,6 +186,54 @@ class NewProjectVC: UIViewController,ContactListDelegate {
     }
     
     
+    
+    @IBAction func selectProjectImage(_ sender: Any) {
+        
+        let uiAlert = UIAlertController(title: "Project Image", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.present(uiAlert, animated: true, completion: nil)
+        
+        uiAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            self.shootPhoto()
+        }))
+        
+        uiAlert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            self.photoFromLibrary()
+        }))
+        
+        uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            uiAlert .dismiss(animated: true, completion: nil)
+        }))
+    
+    }
+    
+    
+    @IBAction func clientSignature(_ sender: Any) {
+        signtureCompnySts = 0
+         self.performSegue(withIdentifier: "showSignatureView", sender: self)
+    }
+    
+    @IBAction func openSignature(_ sender: Any) {
+        signtureCompnySts = 1
+        self.performSegue(withIdentifier: "showSignatureView", sender: self)
+    }
+    
+    
+    //Signature delegate
+    func returnSignatureImage(_ image : UIImage){
+        if signtureCompnySts == 1 {
+            comSignImgView.image = image
+        }else{
+            clientSignImgView.image = image
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -212,6 +249,10 @@ class NewProjectVC: UIViewController,ContactListDelegate {
             let nextScene =  segue.destination as! ContactListVC
             nextScene.delegate = self
            
+        }else if segue.identifier == "showSignatureView" {
+            let nextScene =  segue.destination as! SignatureVC
+            nextScene.delegate = self
+            
         }
 
     }

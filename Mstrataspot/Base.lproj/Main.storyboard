@@ -271,6 +271,9 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="selectProjectImage:" destination="5wc-VN-ddl" eventType="touchUpInside" id="dDw-yf-znV"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUT-Kd-Edy">
                                                         <rect key="frame" x="10" y="105" width="90" height="30"/>
@@ -478,6 +481,9 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="iU4-cq-miu"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <action selector="clientSignature:" destination="5wc-VN-ddl" eventType="touchUpInside" id="J9G-cP-GiC"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.5568627451" green="0.74509803919999995" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -834,8 +840,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clientSignImgView" destination="Tc1-gf-UlI" id="l7b-bV-1dK"/>
+                        <outlet property="comSignImgView" destination="YOh-NE-Rf9" id="oX9-CP-qaO"/>
                         <outlet property="projectImageView" destination="joR-Zg-tAO" id="AvL-eV-NfE"/>
-                        <outlet property="signatureImageView" destination="YOh-NE-Rf9" id="nEv-kJ-35b"/>
                         <outlet property="txtAddress" destination="U2W-Av-8e7" id="rsV-eh-J3E"/>
                         <outlet property="txtAddress2" destination="Uxb-SR-ksH" id="NJA-RQ-4dd"/>
                         <outlet property="txtCity" destination="H9d-ER-4sU" id="eRw-CD-XT5"/>

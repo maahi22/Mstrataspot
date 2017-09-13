@@ -9,13 +9,21 @@
 import UIKit
 import SwiftSignatureView
 
+
+protocol SignatureDelegate {
+    func returnSignatureImage(_ image : UIImage)
+}
+
+
+
+
 class SignatureVC: UIViewController {
    
     
     
     
    
-
+    var delegate:SignatureDelegate?
 
     @IBOutlet weak var signatureView: SwiftSignatureView!
     
@@ -85,6 +93,10 @@ class SignatureVC: UIViewController {
         
         
         FilesMethods.saveImageDocumentDirectory("signature", imageData: (UIImagePNGRepresentation(image!) as NSData?)!)
+        
+        
+        
+        delegate?.returnSignatureImage(image!)
         
         self.navigationController?.popViewController(animated: true)
     }
