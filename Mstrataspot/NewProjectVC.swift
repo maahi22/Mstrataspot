@@ -44,7 +44,7 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
     
     @IBOutlet weak var clientSignImgView: UIImageView!
     @IBOutlet weak var comSignImgView: UIImageView!
-    
+    @IBOutlet weak var projectImageView: UIImageView!
     
     
     var editProjectManageobj : NSManagedObject!
@@ -52,7 +52,7 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
     var signtureCompnySts  = 0
     
     
-    @IBOutlet weak var projectImageView: UIImageView!
+   
     
     var chosenImage : UIImage = UIImage()
     let imagePicker = UIImagePickerController()
@@ -136,6 +136,59 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
             
             
             
+            editProjectManageobj.setValue(title, forKey: "title")
+            editProjectManageobj.setValue(desc, forKey: "project_description")
+            editProjectManageobj.setValue(txtAddress.text, forKey: "address1")
+            editProjectManageobj.setValue(txtAddress2.text, forKey: "address2")
+            editProjectManageobj.setValue(txtCity.text, forKey: "city")
+            editProjectManageobj.setValue(txtCompanyName.text, forKey: "companyName")
+         
+            editProjectManageobj.setValue(txtEmployeeName.text, forKey: "employeeName")
+            editProjectManageobj.setValue(txtClientAddress1.text, forKey: "clientAddress1")
+            editProjectManageobj.setValue(txtClientAddress2.text, forKey: "clientAddress2")
+            editProjectManageobj.setValue(txtClientCity.text, forKey: "clientCity")
+            editProjectManageobj.setValue(txtClientName.text, forKey: "clientName")
+            // Projects.setValue(title, forKey: "clientsSignatureFileName")
+            editProjectManageobj.setValue(txtClientState.text, forKey: "clientState")
+            editProjectManageobj.setValue(txtClientZip.text, forKey: "clientZip")
+            editProjectManageobj.setValue(txtOrganizationName.text, forKey: "organizationName")
+            // Projects.setValue(title, forKey: "projectImage")
+            editProjectManageobj.setValue(txtProjectReference.text, forKey: "projectReference")
+            editProjectManageobj.setValue(txtReference.text, forKey: "reference")
+            editProjectManageobj.setValue(txtState.text, forKey: "state")
+            editProjectManageobj.setValue(txtZip.text, forKey: "zip")
+            
+            
+            if let img = self.clientSignImgView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                editProjectManageobj.setValue(imgData, forKey: "clientSignatureImage")
+            }
+            
+            if let img = self.comSignImgView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                editProjectManageobj.setValue(imgData, forKey: "companySignatureImage")
+            }
+            
+            if let img = self.projectImageView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                editProjectManageobj.setValue(imgData, forKey: "projectLogoImage")
+            }
+            
+            do {
+                try editProjectManageobj.managedObjectContext?.save()
+                let alert = UIAlertController(title: "Alert", message: "Project  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+
+            
+            
+            
         }else{
             
             let entityDescription = NSEntityDescription.entity(forEntityName: kEntityProjects, in: context)
@@ -162,6 +215,24 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
             Projects.setValue(txtReference.text, forKey: "reference")
             Projects.setValue(txtState.text, forKey: "state")
             Projects.setValue(txtZip.text, forKey: "zip")
+            
+            if let img = self.clientSignImgView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                Projects.setValue(imgData, forKey: "clientSignatureImage")
+            }
+            
+            if let img = self.comSignImgView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                Projects.setValue(imgData, forKey: "companySignatureImage")
+            }
+            
+            if let img = self.projectImageView.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                Projects.setValue(imgData, forKey: "projectLogoImage")
+            }
+            
+            
+            
             do {
                 try Projects.managedObjectContext?.save()
                 let alert = UIAlertController(title: "Alert", message: "Project  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)

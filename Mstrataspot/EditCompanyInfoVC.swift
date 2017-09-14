@@ -77,6 +77,13 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
             txtState.text = list?.value(forKey: "state") as? String
             txtZip.text = list?.value(forKey: "zip") as? String
             
+            if  list?.value(forKey: "companyLogoImage") != nil{
+                imgCompanyLogo.image = UIImage(data:list?.value(forKey: "companyLogoImage") as! Data,scale:1.0)
+            }
+            
+            if  list?.value(forKey: "signatureImage") != nil{
+                imgSigneture.image = UIImage(data:list?.value(forKey: "signatureImage") as! Data,scale:1.0)
+            }
             
         }
         
@@ -196,6 +203,16 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
             list.setValue(state, forKey: "state")
             list.setValue(zip, forKey: "zip")
             
+            if let img = self.imgCompanyLogo.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                list.setValue(imgData, forKey: "companyLogoImage")
+            }
+            
+            if let img = self.imgSigneture.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                list.setValue(imgData, forKey: "signatureImage")
+            }
+            
             
             do {
                 try list.managedObjectContext?.save()
@@ -233,6 +250,16 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
             building.setValue(city, forKey: "city")
             building.setValue(state, forKey: "state")
             building.setValue(zip, forKey: "zip")
+            
+            if let img = self.imgCompanyLogo.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                building.setValue(imgData, forKey: "companyLogoImage")
+            }
+            
+            if let img = self.imgSigneture.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                building.setValue(imgData, forKey: "signatureImage")
+            }
             
             
             do {

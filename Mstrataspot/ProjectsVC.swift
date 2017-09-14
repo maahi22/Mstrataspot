@@ -212,10 +212,16 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
         // Configure Cell
         cell.lblTitle.text = Projects.title
         cell.lblDescription.text = Projects.project_description
-        print(Projects.title)
-        // Configure Cell
-      //  cell.authorLabel.text = quote.author
-      //  cell.contentsLabel.text = quote.contents
+        
+        if  Projects.value(forKey: "projectLogoImage") != nil{
+            cell.imgView.image =  UIImage(data:Projects.value(forKey: "projectLogoImage") as! Data,scale:1.0)
+        }
+        
+        
+        
+        
+        
+        
         
         return cell
 

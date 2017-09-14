@@ -1274,9 +1274,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RXr-hr-Blz">
-                                <rect key="frame" x="31" y="79" width="313" height="31"/>
+                                <rect key="frame" x="25" y="79" width="325" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Bt0-2u-zgA"/>
+                                    <constraint firstAttribute="height" constant="30" id="5ss-Ai-d1D"/>
                                 </constraints>
                                 <segments>
                                     <segment title="BM's Reports"/>
@@ -1287,7 +1287,7 @@
                                     <action selector="segmentValueChange:" destination="gfl-fd-6pk" eventType="valueChanged" id="JUG-S1-0Ak"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTW-MD-tnp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JTW-MD-tnp">
                                 <rect key="frame" x="5" y="119" width="365" height="499"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1349,11 +1349,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JTW-MD-tnp" firstAttribute="leading" secondItem="z6b-sc-j8V" secondAttribute="leading" constant="5" id="6V9-o0-g6M"/>
-                            <constraint firstItem="RXr-hr-Blz" firstAttribute="top" secondItem="V8Q-v6-nJV" secondAttribute="bottom" constant="15" id="LHT-0w-Kxf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RXr-hr-Blz" secondAttribute="trailing" constant="15" id="V5y-8a-Ju4"/>
-                            <constraint firstItem="JTW-MD-tnp" firstAttribute="top" secondItem="RXr-hr-Blz" secondAttribute="bottom" constant="10" id="hqc-M8-6hU"/>
+                            <constraint firstItem="RXr-hr-Blz" firstAttribute="leading" secondItem="z6b-sc-j8V" secondAttribute="leading" constant="25" id="OfY-k0-rQq"/>
+                            <constraint firstAttribute="trailing" secondItem="RXr-hr-Blz" secondAttribute="trailing" constant="25" id="hPZ-RA-4oz"/>
                             <constraint firstItem="RlZ-EN-IaN" firstAttribute="top" secondItem="JTW-MD-tnp" secondAttribute="bottom" id="ici-l2-rWX"/>
-                            <constraint firstItem="RXr-hr-Blz" firstAttribute="leading" secondItem="z6b-sc-j8V" secondAttribute="leadingMargin" constant="15" id="rZe-qz-CG7"/>
+                            <constraint firstItem="RXr-hr-Blz" firstAttribute="top" secondItem="V8Q-v6-nJV" secondAttribute="bottom" constant="15" id="oLP-X2-C6G"/>
+                            <constraint firstItem="JTW-MD-tnp" firstAttribute="top" secondItem="RXr-hr-Blz" secondAttribute="bottom" constant="10" id="srC-pA-9BM"/>
                             <constraint firstAttribute="trailing" secondItem="JTW-MD-tnp" secondAttribute="trailing" constant="5" id="wV4-ET-7QB"/>
                         </constraints>
                     </view>
@@ -4326,9 +4326,9 @@
         <image name="radio_unchecked" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WTW-0f-LBU"/>
-        <segue reference="Waq-NS-AaA"/>
-        <segue reference="RqG-rr-ySt"/>
         <segue reference="aEU-zh-4gA"/>
+        <segue reference="WTW-0f-LBU"/>
+        <segue reference="bdg-oZ-sA3"/>
+        <segue reference="RqG-rr-ySt"/>
     </inferredMetricsTieBreakers>
 </document>

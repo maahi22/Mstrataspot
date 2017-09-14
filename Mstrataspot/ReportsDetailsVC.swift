@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class ReportsDetailsVC: UIViewController {
+
+class ReportsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
 
     
     var detailProjectManageobj : NSManagedObject!
@@ -43,7 +45,11 @@ class ReportsDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if let title = detailProjectManageobj.value(forKey: "title"){
+             self.title = title as? String 
+        }
+    
+    
     }
 
     
@@ -78,16 +84,16 @@ class ReportsDetailsVC: UIViewController {
         
         let btnPdf:UIAlertAction  = (UIAlertAction(title: "Pdf", style: .destructive, handler: { action in
            
-            var companyInfo : NSManagedObject!
+            var companyInfo : CompanyInfo!
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.getContext()
             let lists = self.fetchRecordsForEntity("CompanyInfo", inManagedObjectContext: context)
             if let listRecord = lists.first {
-                companyInfo = listRecord
+                companyInfo = listRecord as! CompanyInfo
             }
 
-            let PDF_fileName = PDFBuilderManage.generatePdf(self.detailProjectManageobj as! Projects, companyInfo: companyInfo as! CompanyInfo)
+         //   let PDF_fileName = PDFBuilderManage.generatePdf(self.detailProjectManageobj , companyInfo: companyInfo )
             
             
         }))
@@ -103,7 +109,61 @@ class ReportsDetailsVC: UIViewController {
                 companyInfo = listRecord
             }
             
-         let docfileName =   PDFBuilderManage.generate_DocFromProject(self.detailProjectManageobj as! Projects, companyInfo: companyInfo as! CompanyInfo)
+         let docfileName =   PDFBuilderManage.generate_DocFromProject(self.detailProjectManageobj as! Projects,  companyInfo: companyInfo as! CompanyInfo )
+            
+        print(docfileName)
+            
+            if MFMailComposeViewController.canSendMail() {
+                
+                
+                
+                let composeVC = MFMailComposeViewController()
+                composeVC.mailComposeDelegate = self
+                // Configure the fields of the interface.
+                composeVC.setToRecipients([supportmailId])
+                composeVC.setSubject("")
+                composeVC.setMessageBody("", isHTML: false)
+                // Present the view controller modally.
+               
+                let dateformater = DateFormatter()
+                dateformater.dateFormat = "dd-MM-YYYY hh:mm"
+                dateformater.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+                var now = DefaultDataManager.AppCurrentTime()
+                var   attachFileName = ""
+                if let title = (self.detailProjectManageobj as! Projects).title , let ref = (self.detailProjectManageobj as! Projects).reference {
+                    attachFileName = "\(title) \(ref) \(dateformater.string(from: now as Date)).doc"
+                }
+                
+            
+                
+                if let data = NSData(contentsOfFile: docfileName) {
+                    //Does not print. Nil?
+                    composeVC.addAttachmentData(data as Data, mimeType: "application/msword", fileName: "\(attachFileName)")
+                }
+                
+                //************* Attached projectImage
+                
+                
+                
+                
+                
+                
+                
+                self.present(composeVC, animated: true, completion: nil)
+                
+            }else{
+                
+                let alert = UIAlertController(title: "Alert", message: "Please configure mail", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                print("Mail services are not available")
+                return
+                
+            }
+            
+
+            
             
             
             
@@ -121,6 +181,13 @@ class ReportsDetailsVC: UIViewController {
         
         
     }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        // print(error)
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     
     @IBAction func SortBy(_ sender: Any) {

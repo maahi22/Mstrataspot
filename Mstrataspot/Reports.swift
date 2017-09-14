@@ -196,7 +196,7 @@ class Reports: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toProjectdetails" {
+        if segue.identifier == "toReportsDetails" {
             let nextScene =  segue.destination as! ReportsDetailsVC
             // Pass the selected object to the new view controller.
             nextScene.detailProjectManageobj = self.selectedObj
@@ -236,7 +236,9 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
         // Configure Cell
         cell.lblTitle.text = Projects.title
         cell.lblDescription.text = Projects.project_description
-        
+        if  Projects.value(forKey: "projectLogoImage") != nil{
+            cell.imgView.image =  UIImage(data:Projects.value(forKey: "projectLogoImage") as! Data,scale:1.0)
+        }
         
         return cell
         

@@ -89,8 +89,8 @@ class PDFBuilderManage: NSObject {
         var now = DefaultDataManager.AppCurrentTime()
         
         var   fileName = ""
-        if let title = project.title {
-            fileName = "\(title) \(String(describing: project.reference)) \(dateformater.string(from: now as Date)).pdf"
+        if let title = project.title, let ref = project.reference {
+            fileName = "\(title) \(ref) \(dateformater.string(from: now as Date)).pdf"
         }
         
         
@@ -178,16 +178,23 @@ class PDFBuilderManage: NSObject {
         var now = DefaultDataManager.AppCurrentTime()
         
         var   fileName = ""
-        if let title = project.title {
-            fileName = "\(title) \(String(describing: project.reference)) \(dateformater.string(from: now as Date)).doc"
+        
+        
+        if let title = project.title , let ref = project.reference {
+            fileName = "\(title) \(ref) \(dateformater.string(from: now as Date)).doc"
         }
         
         
         let docFileName = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(fileName)
         
-      var  docTextLength = 0
+        var  docTextLength = 0
         
-        let strTitle = "\(String(describing: project.title?.uppercased()))\n\n"
+        
+        var strTitle = ""
+        if let title = project.title {
+            strTitle = "\(title.uppercased())\n\n"
+        }
+        
         
         let strContactNameBS = "Contact Name:"
         var strContactName = ""
@@ -197,11 +204,22 @@ class PDFBuilderManage: NSObject {
         
         
         let strOrganizationBS = "Organization Name:"
-        let strOrganization = " \(String(describing: project.organizationName))\n\n"
+        var strOrganization = ""
+        if let org = project.organizationName {
+            strOrganization = " \(org)\n\n"
+        }
+        
+        
         
         let strAddress1BS = "Address:"
-        let strAddress1 = " \(String(describing: project.clientAddress1))"
-        let strAddress2 = ",\(String(describing: project.clientAddress2))"
+        var strAddress1 = ""
+        if let add1 = project.clientAddress1 {
+            strAddress1 = " \(add1)"
+        }
+        var strAddress2 = ""
+        if let add2 = project.clientAddress2 {
+            strAddress2 = ",\(add2)"
+        }
         let strAddress3 = ", Australia\n\n\n\n\n"
         
         let strPreparedBS = "Prepared By:"
@@ -218,8 +236,14 @@ class PDFBuilderManage: NSObject {
 
         
         let strCmpAddressBS = "Address:"
-        let strCmpAddress = " \(String(describing: project.address1))"
-        let strCmpAddress2 = ",\(String(describing: project.address2))"
+        var strCmpAddress = ""
+        if let add1 = project.address1 {
+            strCmpAddress = " \(add1)"
+        }
+        var strCmpAddress2 = ""
+        if let add2 =  project.address2{
+            strCmpAddress2 = ",\(add2)"
+        }
         let strCmpAddress3 = ", Australia\n\n"
         
         
@@ -247,7 +271,10 @@ class PDFBuilderManage: NSObject {
         
         
         let strDescription = "Project Description\n"
-        let strDescriptionValue = "\(String(describing: project.project_description))\n\n\n"
+        var strDescriptionValue = ""
+        if let desc = project.project_description {
+            strDescriptionValue = "\(desc)\n\n\n"
+        }
         
         
         dateformater.dateFormat = "MMMM dd, YYYY"
@@ -257,7 +284,10 @@ class PDFBuilderManage: NSObject {
         let strSignature = "Signature Approved by\n"
         let strSignatureDate = "Date Approved: \(dateformater.string(from: now as Date))\n\n\n\n"
         
-        
+        var cmpName = ""
+        if let cmp = companyInfo.companyName {
+            cmpName = cmp
+        }
         
         let strInspect = "The Inspection\n\n"
         let strInspectStr = "The basis of this report is an inspection of the common property areas of the scheme. This report is not an all encompassing report dealing with the scheme common areas from every aspect. It is a reasonable attempt to identify any obvious and significant defects upon common property areas of the scheme. This report is not a certificate of compliance with respect to any Act, Regulation, Ordinance or By-law. The report is not a structural report and should you require any advice of a structural nature we recommend our structural engineer be engaged.\n\nThe inspection of the common property of the scheme is a visual inspection only limited to those areas of the common property that are fully accessible and visible to the inspector at the time of inspection. The inspection did not include breaking apart, dismantling, removing or moving any element of the building and items located on the common property.\n\nThe report does not and cannot make comment upon: defects that may have been concealed; the assessment of which may rely on certain weather conditions; the presence or absence of timber pests; gas fittings; heritage concerns; site drainage; security concerns; detection and identification of illegal building work; durability of exposed finishes; the roof space and under floor space.\n\nThe inspector will identify and assess hazards relating to the static condition of the common property and then recommend remedial action or the introduction of a suitable control measure. This report is not an Asbestos Audit and no assessment of potential asbestos materials is made.\n\n"
@@ -266,7 +296,7 @@ class PDFBuilderManage: NSObject {
         let  strPurposeSTR = "The purpose of this report is to increase awareness of risk and potential exposures to the property from OHS&E defects. The report is primarily intended solely for use by Building Manager and the Management Committee. Recommendations are listed where specific improvements are required to meet relevant standards.\n\n"
         
         let strDisclaimer = "Disclaimer\n\n"
-        let  strDisclaimerStr = "This report has been prepared by \(companyInfo.companyName) and is based on site inspections and information provided by site contact. In the circumstances, \(companyInfo.companyName) nor any of its directors or employees give any warranty in relation to the accuracy or reliability of any information contained in this report. \(companyInfo.companyName) disclaims all liability to any party (including any indirect or consequential loss or damage or loss of profits) in respect of or in consequence of anything done or omitted to be done by any party in reliance, whether in whole or partial, upon any information contained in this report. Any party who chooses to rely in any way upon the contents of this report does so at its own risk.\n\n"
+        let  strDisclaimerStr = "This report has been prepared by \(cmpName) and is based on site inspections and information provided by site contact. In the circumstances, \(cmpName) nor any of its directors or employees give any warranty in relation to the accuracy or reliability of any information contained in this report. \(cmpName) disclaims all liability to any party (including any indirect or consequential loss or damage or loss of profits) in respect of or in consequence of anything done or omitted to be done by any party in reliance, whether in whole or partial, upon any information contained in this report. Any party who chooses to rely in any way upon the contents of this report does so at its own risk.\n\n"
         
         
         let strPriority = "Priority Key\n"
@@ -362,6 +392,7 @@ class PDFBuilderManage: NSObject {
         let ComStr = "\n\nComment:\n"
         let prioStr = "\n\nPriority:\n"
         
+        if issueArray.count > 0 {
         
          for i in 0...(issueArray.count-1){
             
@@ -391,6 +422,8 @@ class PDFBuilderManage: NSObject {
                 priority = pri
             }
             mutableIssueStr.append(self.return_priority(priority))
+            
+        }
             
         }
        //****************** issues END
