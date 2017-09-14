@@ -7,9 +7,39 @@
 //
 
 import UIKit
+import CoreData
 
 class ReportsDetailsVC: UIViewController {
 
+    
+    var detailProjectManageobj : NSManagedObject!
+    
+    
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        
+        let fetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        try! fetchedResultsController.performFetch()
+        fetchedResultsController.delegate = self
+        if let Projects = fetchedResultsController.fetchedObjects {
+            if Projects.count > 0 {
+                print(Projects.count)
+            }
+        }
+        return fetchedResultsController
+    }()
+    // MARK: - View Life Cycle
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,31 +47,70 @@ class ReportsDetailsVC: UIViewController {
     }
 
     
+ 
     
+    private func fetchRecordsForEntity(_ entity: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> [NSManagedObject] {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        
+        // Helpers
+        var result = [NSManagedObject]()
+        
+        do {
+            // Execute Fetch Request
+            let records = try managedObjectContext.fetch(fetchRequest)
+            
+            if let records = records as? [NSManagedObject] {
+                result = records
+            }
+            
+        } catch {
+            print("Unable to fetch managed objects for entity \(entity).")
+        }
+        
+        return result
+    }
     
     @IBAction func mailReportClicked(_ sender: Any) {
         
         let uiAlert = UIAlertController(title: "Mail report", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
         self.present(uiAlert, animated: true, completion: nil)
         
-        let btnPrice:UIAlertAction  = (UIAlertAction(title: "Pdf", style: .destructive, handler: { action in
+        let btnPdf:UIAlertAction  = (UIAlertAction(title: "Pdf", style: .destructive, handler: { action in
            
+            var companyInfo : NSManagedObject!
             
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.getContext()
+            let lists = self.fetchRecordsForEntity("CompanyInfo", inManagedObjectContext: context)
+            if let listRecord = lists.first {
+                companyInfo = listRecord
+            }
+
+            let PDF_fileName = PDFBuilderManage.generatePdf(self.detailProjectManageobj as! Projects, companyInfo: companyInfo as! CompanyInfo)
+            
+            
+        }))
+        
+        let btndoc:UIAlertAction  = (UIAlertAction(title: "Doc", style: .destructive, handler: { action in
+           
+            var companyInfo : NSManagedObject!
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.getContext()
+            let lists = self.fetchRecordsForEntity("CompanyInfo", inManagedObjectContext: context)
+            if let listRecord = lists.first {
+                companyInfo = listRecord
+            }
+            
+         let docfileName =   PDFBuilderManage.generate_DocFromProject(self.detailProjectManageobj as! Projects, companyInfo: companyInfo as! CompanyInfo)
             
             
             
         }))
         
-        let btnDistance:UIAlertAction  = (UIAlertAction(title: "Doc", style: .destructive, handler: { action in
-            
-            
-            
-            
-            
-        }))
-        
-        uiAlert.addAction(btnPrice)
-        uiAlert.addAction(btnDistance)
+        uiAlert.addAction(btnPdf)
+        uiAlert.addAction(btndoc)
         
         uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
             uiAlert .dismiss(animated: true, completion: nil)
@@ -138,4 +207,46 @@ class ReportsDetailsVC: UIViewController {
     }
     */
 
+}
+
+extension ReportsDetailsVC: NSFetchedResultsControllerDelegate {
+    
+}
+
+
+extension ReportsDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        guard let Projects = fetchedResultsController.fetchedObjects else { return 0 }
+        return Projects.count
+    }
+    
+    
+    
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReportCell", for: indexPath) as? ReportCell else {
+            fatalError("Unexpected Index Path")
+        }
+        
+        // Fetch Quote
+        let Projects = fetchedResultsController.object(at: indexPath)
+        
+        // Configure Cell
+        cell.lblTitle.text = Projects.title
+        cell.lblDescription.text = Projects.project_description
+        
+        
+        return cell
+        
+        
+        
+    }
+    
+    
+    
+    
 }

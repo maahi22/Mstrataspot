@@ -218,7 +218,7 @@ class PDFBuilderManage: NSObject {
 
         
         let strCmpAddressBS = "Address:"
-        let strCmpAddress1 = " \(String(describing: project.address1))"
+        let strCmpAddress = " \(String(describing: project.address1))"
         let strCmpAddress2 = ",\(String(describing: project.address2))"
         let strCmpAddress3 = ", Australia\n\n"
         
@@ -268,18 +268,166 @@ class PDFBuilderManage: NSObject {
         let strDisclaimer = "Disclaimer\n\n"
         let  strDisclaimerStr = "This report has been prepared by \(companyInfo.companyName) and is based on site inspections and information provided by site contact. In the circumstances, \(companyInfo.companyName) nor any of its directors or employees give any warranty in relation to the accuracy or reliability of any information contained in this report. \(companyInfo.companyName) disclaims all liability to any party (including any indirect or consequential loss or damage or loss of profits) in respect of or in consequence of anything done or omitted to be done by any party in reliance, whether in whole or partial, upon any information contained in this report. Any party who chooses to rely in any way upon the contents of this report does so at its own risk.\n\n"
         
-        // NSLog(@"strDisclaimerStr  %@",strDisclaimerStr);
         
         let strPriority = "Priority Key\n"
         let strPrioritySTR = "Urgency for rectifying the items listed below have been classified in this table from very low to extreme.\n"
         
         
         
+        var mutableStr = String()
         
+        if strContactName.characters.count > 0 {
+            mutableStr.append(strContactNameBS)
+            mutableStr.append(strContactName)
+        }
+        
+        if strOrganization.characters.count > 0 {
+            mutableStr.append(strOrganizationBS)
+            mutableStr.append(strOrganization)
+        }
+        if strAddress1.characters.count > 0 {
+            mutableStr.append(strAddress1BS)
+            mutableStr.append(strAddress1)
+        }
+        if strAddress2.characters.count > 0 {
+            mutableStr.append(strAddress2)
+        }
+        if strAddress3.characters.count > 0 {
+            mutableStr.append(strAddress3)
+        }
+        if strPrepared.characters.count > 0 {
+            mutableStr.append(strPreparedBS)
+            mutableStr.append(strPrepared)
+        }
+        if strCompanyName.characters.count > 0 {
+            mutableStr.append(strCompanyNameBS)
+            mutableStr.append(strCompanyName)
+        }
+        
+        if strCmpAddress.characters.count > 0 {
+            mutableStr.append(strCmpAddressBS)
+            mutableStr.append(strCmpAddress)
+        }
+        
+        if strCmpAddress2.characters.count > 0 {
+            mutableStr.append(strCmpAddress2)
+        }
+        
+        if strCmpAddress3.characters.count > 0 {
+            mutableStr.append(strCmpAddress3)
+        }
+        
+        if strPhon.characters.count > 0 {
+            mutableStr.append(strPhonBS)
+            mutableStr.append(strPhon)
+        }
 
+        if strFax.characters.count > 0 {
+            mutableStr.append(strFaxBS)
+            mutableStr.append(strFax)
+        }
+        
+        if strPhon.characters.count > 0 {
+            mutableStr.append(strPhonBS)
+            mutableStr.append(strPhon)
+        }
+        
+        if strEmail.characters.count > 0 {
+            mutableStr.append(strEmailBS)
+            mutableStr.append(strEmail)
+        }
+        
+        //3 rd leval
+        //**************** issues list Start
+        
+        
+        var mutableIssueStr = ""
+        
+        
+        let sectionSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)//[NSSortDescriptor(key: "creationDate", ascending: true)]
+        let sortDescriptors = [sectionSortDescriptor]
+        
+        
+        let issueArray = (project.issues?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
+            
+            
+        
+        let font14 = UIFont.init(name: "Helvetica", size: 14)
+        let font17 = UIFont.init(name: "Helvetica", size: 17)
+        let font14Bold =  UIFont.init(name: "Helvetica-Bold", size: 14)
+        let font17Bold = UIFont.init(name: "Helvetica-Bold", size: 17)
+        
+        let titlStr = "\n\n\n\nTitle:\n"
+        let DesStr = "\n\nDescription:\n"
+        let ComStr = "\n\nComment:\n"
+        let prioStr = "\n\nPriority:\n"
+        
+        
+         for i in 0...(issueArray.count-1){
+            
+            let issue = issueArray[i] as! Issues
+            
+            mutableIssueStr.append(titlStr)
+            var title = ""
+            if let title1 = issue.title{
+                title = title1
+            }
+            mutableIssueStr.append(title)
+            mutableIssueStr.append(DesStr)
+            var description = ""
+            if let des = issue.issue_description{
+                description = des
+            }
+            mutableIssueStr.append(description)
+            mutableIssueStr.append(ComStr)
+            var comment = ""
+            if let com = issue.comment{
+                comment = com
+            }
+            mutableIssueStr.append(comment)
+           
+            var priority = ""
+            if let pri = issue.priority{
+                priority = pri
+            }
+            mutableIssueStr.append(self.return_priority(priority))
+            
+        }
+       //****************** issues END
+        
+       var tempStr = "\(strTitle)\(mutableStr)"
+        
+        tempStr.append("\(strDescription)\(strDescriptionValue)\(strSignature)\(strSignatureDate)\(strInspect)\(strInspectStr)\(strPurpose)\(strPurposeSTR)\(strDisclaimer)\(strDisclaimerStr)\(strPriority)\(strPrioritySTR)\(mutableIssueStr)")
+        
+        var paragraphStyle :NSParagraphStyle = NSParagraphStyle.default
+       // paragraphStyle.lineBreakMode =  .byTruncatingTail
+       // paragraphStyle.alignment = .center
+        
+        let attributes = [ NSFontAttributeName: font17Bold! , NSParagraphStyleAttributeName:paragraphStyle ] as [String : Any]
+        
+        
+        var docString :NSAttributedString = NSAttributedString(string: tempStr)
+        //docString.
+        
+       // let data = docString data(ra)
         
         
         
+        
+        let range = NSMakeRange(0, docString.length)
+        
+       
+        
+        do {
+            let textTSave = try docString.fileWrapper(from: range, documentAttributes: [NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType])
+           
+            let url = NSURL.fileURL(withPath: docFileName)
+            
+           try textTSave.write(to: url, options: FileWrapper.WritingOptions.atomic, originalContentsURL: nil)
+            
+        } catch {
+            print(error)
+        }
         
         
         
@@ -287,4 +435,30 @@ class PDFBuilderManage: NSObject {
         
       return docFileName
     }
+    
+    
+    
+    class func return_priority (_ priority:String)->String{
+        var returnPeriority = ""
+        
+        if priority == "1.000000,0.000000,0.000000"{
+            
+            returnPeriority="High"
+        }else if priority == "1.000000,1.000000,0.000000"{
+            
+            returnPeriority="Medium"
+        }else if priority == "0.000000,1.000000,0.000000"{
+            
+            returnPeriority="Low"
+        }else{
+            returnPeriority="None"
+        }
+        
+        
+        return returnPeriority
+        
+    }
+    
+    
+    
 }

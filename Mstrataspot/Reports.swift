@@ -16,18 +16,92 @@ class Reports: UIViewController {
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var reportTableView: UITableView!
     
+    var selectedObj = NSManagedObject()
+    
+    
+    private let persistentContainer = NSPersistentContainer(name: "Projects")
+    
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        
+        let fetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        try! fetchedResultsController.performFetch()
+        fetchedResultsController.delegate = self
+        if let Projects = fetchedResultsController.fetchedObjects {
+            if Projects.count > 0 {
+                print(Projects.count)
+            }
+        }
+        return fetchedResultsController
+    }()
+    // MARK: - View Life Cycle
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            if let error = error {
+                print("Unable to Load Persistent Store")
+                print("\(error), \(error.localizedDescription)")
+                
+            } else {
+                self.setupView()
+                
+                do {
+                    try self.fetchedResultsController.performFetch()
+                } catch {
+                    let fetchError = error as NSError
+                    print("Unable to Perform Fetch Request")
+                    print("\(fetchError), \(fetchError.localizedDescription)")
+                }
+                
+                self.updateView()
+            }
+        }
     }
 
     
     
+    // MARK: - View Methods
     
+    private func setupView() {
+        setupMessageLabel()
+        
+        updateView()
+    }
+    
+    private func updateView() {
+        var hasQuotes = false
+        
+        if let projects1 = fetchedResultsController.fetchedObjects {
+            hasQuotes = projects1.count > 0
+        }
+        
+        reportTableView.isHidden = !hasQuotes
+        //projectSegmentControl.isHidden = !hasQuotes
+       // lblNoRecords.isHidden = hasQuotes
+        
+       // activityIndicatorView.stopAnimating()
+    }
+    
+    // MARK: -
+    private func setupMessageLabel() {
+        //lblNoRecords.text = "You don't have any projects."
+    }
+    
+    
+
     
     
     
@@ -117,15 +191,18 @@ class Reports: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toProjectdetails" {
+            let nextScene =  segue.destination as! ReportsDetailsVC
+            // Pass the selected object to the new view controller.
+            nextScene.detailProjectManageobj = self.selectedObj
+        }
     }
-    */
+    
 
 }
 
@@ -140,7 +217,8 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
        // guard let Projects = fetchedResultsController.fetchedObjects else { return 0 }
         //return Projects.count
         
-        return 5
+        guard let Projects = fetchedResultsController.fetchedObjects else { return 0 }
+        return Projects.count
     }
     
     
@@ -153,15 +231,12 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
         }
         
         // Fetch Quote
-      //  let Projects = fetchedResultsController.object(at: indexPath)
+        let Projects = fetchedResultsController.object(at: indexPath)
         
         // Configure Cell
-     //   cell.lblTitle.text = Projects.title
-     //   cell.lblDescription.text = Projects.description
+        cell.lblTitle.text = Projects.title
+        cell.lblDescription.text = Projects.project_description
         
-        // Configure Cell
-        //  cell.authorLabel.text = quote.author
-        //  cell.contentsLabel.text = quote.contents
         
         return cell
         
@@ -171,7 +246,7 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+       selectedObj = fetchedResultsController.object(at: indexPath)
         self.performSegue(withIdentifier: "toReportsDetails", sender: self)
         
         

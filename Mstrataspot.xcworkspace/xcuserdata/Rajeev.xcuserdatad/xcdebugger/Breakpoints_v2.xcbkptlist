@@ -15,40 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mstrataspot.ProjectsVC.viewDidLoad () -&gt; ()"
-                  moduleName = "Mstrataspot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gandhi1/Documents/WorkingArea/Mstrataspot/Mstrataspot/ProjectsVC.swift"
-                  timestampString = "526888973.827415"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Mstrataspot.ProjectsVC.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "Mstrataspot"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gandhi1/Documents/WorkingArea/Mstrataspot/Mstrataspot/ProjectsVC.swift"
-                  timestampString = "526888973.879401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
+            landmarkName = "fetchedResultsController"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -96,6 +64,38 @@
             startingLineNumber = "150"
             endingLineNumber = "150"
             landmarkName = "readerDidCancel(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mstrataspot/PDFBuilderManage.swift"
+            timestampString = "527065868.618427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "generate_DocFromProject(_:companyInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mstrataspot/ReportsDetailsVC.swift"
+            timestampString = "527067245.850969"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "mailReportClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
