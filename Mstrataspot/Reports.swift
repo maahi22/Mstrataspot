@@ -17,6 +17,8 @@ class Reports: UIViewController {
     @IBOutlet weak var reportTableView: UITableView!
     
     var selectedObj = NSManagedObject()
+    var sortbyAttribute = "creationDate"
+    var assending = true
     
     
     private let persistentContainer = NSPersistentContainer(name: "Projects")
@@ -30,7 +32,7 @@ class Reports: UIViewController {
         
         let fetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: true)]
+            NSSortDescriptor(key: self.sortbyAttribute, ascending: self.assending)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -50,25 +52,7 @@ class Reports: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if let error = error {
-                print("Unable to Load Persistent Store")
-                print("\(error), \(error.localizedDescription)")
-                
-            } else {
-                self.setupView()
-                
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    let fetchError = error as NSError
-                    print("Unable to Perform Fetch Request")
-                    print("\(fetchError), \(fetchError.localizedDescription)")
-                }
-                
-                self.updateView()
-            }
-        }
+       
     }
 
     
@@ -102,7 +86,28 @@ class Reports: UIViewController {
     
     
 
-    
+    func loadData(){
+        
+        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+            if let error = error {
+                print("Unable to Load Persistent Store")
+                print("\(error), \(error.localizedDescription)")
+                
+            } else {
+                self.setupView()
+                
+                do {
+                    try self.fetchedResultsController.performFetch()
+                } catch {
+                    let fetchError = error as NSError
+                    print("Unable to Perform Fetch Request")
+                    print("\(fetchError), \(fetchError.localizedDescription)")
+                }
+                
+                self.updateView()
+            }
+        }
+    }
     
     
     
@@ -126,40 +131,46 @@ class Reports: UIViewController {
         
         let btnSeverityAscending:UIAlertAction  = (UIAlertAction(title: "Project Name Ascending", style: .destructive, handler: { action in
             
+            self.sortbyAttribute = "title"
+            self.assending = true
             
-            
-            
+            self.loadData()
             
         }))
         
         let btnSeverity:UIAlertAction  = (UIAlertAction(title: "Project Name Descending", style: .default, handler: { action in
             
-            
-            
+            self.sortbyAttribute = "title"
+            self.assending = false
+             self.loadData()
         }))
         
         let btnDateAscending:UIAlertAction  = (UIAlertAction(title: "Date Ascending", style: .default, handler: { action in
             
-            
-            
+            self.sortbyAttribute = "creationDate"
+            self.assending = true
+             self.loadData()
         }))
         
         let btnDateDescending:UIAlertAction  = (UIAlertAction(title: "Date Descending", style: .default, handler: { action in
             
-            
-            
+            self.sortbyAttribute = "creationDate"
+            self.assending = false
+             self.loadData()
         }))
         
         let btnClientAscending:UIAlertAction  = (UIAlertAction(title: "Client Ascending", style: .default, handler: { action in
             
-            
-            
+            self.sortbyAttribute = "clientName"
+            self.assending = true
+            self.loadData()
         }))
         
         let btnClientDescending:UIAlertAction  = (UIAlertAction(title: "Client Descending", style: .default, handler: { action in
             
-            
-            
+            self.sortbyAttribute = "clientName"
+            self.assending = false
+             self.loadData()
         }))
         
         

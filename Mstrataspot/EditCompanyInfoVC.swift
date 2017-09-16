@@ -12,9 +12,6 @@ import CoreData
 
 class EditCompanyInfoVC: UIViewController,SignatureDelegate {
 
-    
-    
-    
     @IBOutlet weak var txtEmployeeName: UITextField!
     @IBOutlet weak var txtCompanyName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -24,16 +21,13 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
     @IBOutlet weak var txtWebsiteName: UITextField!
     @IBOutlet weak var txtLicence: UITextField!
     @IBOutlet weak var txtQualification: UITextField!
-    
     @IBOutlet weak var txtAddress2: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtState: UITextField!
     @IBOutlet weak var txtZip: UITextField!
-    
     @IBOutlet weak var imgSigneture:UIImageView!
     @IBOutlet weak var imgCompanyLogo: UIImageView!
     @IBOutlet weak var companyScrollView: UIScrollView!
-    
     @IBOutlet weak var txtViewQualification: UITextView!
     @IBOutlet weak var btnSigneture: UIButton!
     @IBOutlet weak var btnCompanyImage: UIButton!
@@ -94,13 +88,13 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FilesMethods.getImageFromDocDir("signature") { (img, sts) in
+       /* FilesMethods.getImageFromDocDir("signature") { (img, sts) in
             
             if sts {
                 self.imgSigneture.image = img
             }
             
-        }
+        }*/
         
     }
     
@@ -149,7 +143,7 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
     
     @IBAction func saveCompnyInfo(_ sender: Any) {
         
-        guard
+        /*guard
         let BMName = txtEmployeeName.text, !BMName.isEmpty,
         let compName = txtCompanyName.text, !compName.isEmpty,
         let add1 = txtAddress.text, !add1.isEmpty,
@@ -174,9 +168,81 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
                 txtEmployeeName.resignFirstResponder()
                 txtCompanyName.resignFirstResponder()
                 return
+        }*/
+        
+        
+        
+        var BMName = ""
+        if let name = txtEmployeeName.text{
+            BMName = name
+        }
+        var compName = ""
+        if let name = txtCompanyName.text{
+            compName = name
+        }
+        var add1 = ""
+        if let name = txtAddress.text{
+            add1 = name
+        }
+        var add2 = ""
+        if let name = txtAddress2.text{
+            add2 = name
+        }
+        var email = ""
+        if let name = txtEmail.text{
+            email = name
+        }
+        var phone = ""
+        if let name = txtPhone.text{
+            phone = name
+        }
+        var fax = ""
+        if let f = txtFax.text{
+            fax = f
+        }
+        var website = ""
+        if let web = txtWebsiteName.text{
+            website = web
+        }
+        var licence = ""
+        if let name = txtLicence.text{
+            licence = name
+        }
+        var qualification = ""
+        if let name = txtViewQualification.text{
+            qualification = name
+        }
+        var city = ""
+        if let name = txtCity.text{
+            city = name
+        }
+        var state = ""
+        if let S = txtState.text{
+            state = S
+        }
+        var zip = ""
+        if let z = txtZip.text {
+            zip = z
         }
         
         
+        if zip == ""{
+            let alert = UIAlertController(title: "Error", message: "Please enter zip/postal code.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+            
+        }
+        
+        
+        if !Validations.isValidEmail(email){
+            
+            let alert = UIAlertController(title: "Error", message: "Please enter a valid email.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+            
+        }
         
         //Save inside
         
@@ -314,7 +380,7 @@ class EditCompanyInfoVC: UIViewController,SignatureDelegate {
     //Signature delegate methods
     func returnSignatureImage(_ image : UIImage){
         
-        
+        imgSigneture.image = image
     }
     
     
@@ -426,7 +492,27 @@ extension EditCompanyInfoVC :UITextFieldDelegate,UITextViewDelegate {
     }
     
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == txtZip {
+            let charsLimit = 4
+            let startingLength = textField.text?.characters.count ?? 0
+            let lengthToAdd = string.characters.count
+            let lengthToReplace =  range.length
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            
+            return newLength <= charsLimit
+        }else{
+            return true
+        }
+    }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
 
 }

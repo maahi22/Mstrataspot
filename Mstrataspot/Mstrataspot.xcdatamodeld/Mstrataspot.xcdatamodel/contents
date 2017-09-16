@@ -39,6 +39,7 @@
         <attribute name="imageCurves" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="issue_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issueImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Projects" inverseName="issues" inverseEntity="Projects" syncable="YES"/>
@@ -106,7 +107,7 @@
         <element name="Areas" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="AreasReport" positionX="-54" positionY="0" width="128" height="135"/>
         <element name="CompanyInfo" positionX="-45" positionY="63" width="128" height="300"/>
-        <element name="Issues" positionX="-36" positionY="162" width="128" height="180"/>
+        <element name="Issues" positionX="-36" positionY="162" width="128" height="195"/>
         <element name="PINSetting" positionX="-18" positionY="171" width="128" height="105"/>
         <element name="Projects" positionX="0" positionY="180" width="128" height="420"/>
         <element name="RoutineInspectionReceivers" positionX="18" positionY="189" width="128" height="75"/>

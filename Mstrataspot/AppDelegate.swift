@@ -25,7 +25,7 @@ let kEntitySections = "Sections"
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var newProjectStatus: Bool = false
     
     func getContext () -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

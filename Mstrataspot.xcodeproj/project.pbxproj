@@ -16,6 +16,7 @@
 		0F95C6761F6719DD009E3651 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6751F6719DD009E3651 /* Validations.swift */; };
 		0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6771F68434D009E3651 /* SignatureVC.swift */; };
 		0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6791F684EA4009E3651 /* FilesMethods.swift */; };
+		0FAE9B131F6D382500279F1F /* IssueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9B121F6D382500279F1F /* IssueListVC.swift */; };
 		0FFC219F1F69971000B65D6B /* Sample PDF in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC219E1F69971000B65D6B /* Sample PDF */; };
 		0FFC21A11F6998CA00B65D6B /* PDFBuilderManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
@@ -48,7 +49,6 @@
 		5DA23DBA1F69667900EBD388 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA23DB91F69667900EBD388 /* ContactListVC.swift */; };
 		5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4611F6115E2000D987C /* NewProjectVC.swift */; };
 		5DDCE4641F611969000D987C /* IssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4631F611969000D987C /* IssueVC.swift */; };
-		5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */; };
 		5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46A1F61206C000D987C /* IssueListCell.swift */; };
 		5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */; };
 		5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46E1F612A3F000D987C /* ProjectListCell.swift */; };
@@ -81,6 +81,7 @@
 		0F95C6751F6719DD009E3651 /* Validations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		0F95C6771F68434D009E3651 /* SignatureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureVC.swift; sourceTree = "<group>"; };
 		0F95C6791F684EA4009E3651 /* FilesMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesMethods.swift; sourceTree = "<group>"; };
+		0FAE9B121F6D382500279F1F /* IssueListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListVC.swift; sourceTree = "<group>"; };
 		0FFC219E1F69971000B65D6B /* Sample PDF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample PDF"; sourceTree = "<group>"; };
 		0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFBuilderManage.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +118,6 @@
 		5DA23DB91F69667900EBD388 /* ContactListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
 		5DDCE4611F6115E2000D987C /* NewProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectVC.swift; sourceTree = "<group>"; };
 		5DDCE4631F611969000D987C /* IssueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueVC.swift; sourceTree = "<group>"; };
-		5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsVC.swift; sourceTree = "<group>"; };
 		5DDCE46A1F61206C000D987C /* IssueListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListCell.swift; sourceTree = "<group>"; };
 		5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriorityVC.swift; sourceTree = "<group>"; };
 		5DDCE46E1F612A3F000D987C /* ProjectListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectListCell.swift; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 			children = (
 				5DDCE4611F6115E2000D987C /* NewProjectVC.swift */,
 				5DDCE4631F611969000D987C /* IssueVC.swift */,
-				5DDCE4651F61198C000D987C /* ProjectDetailsVC.swift */,
 				5DDCE46C1F6120D6000D987C /* PeriorityVC.swift */,
+				0FAE9B121F6D382500279F1F /* IssueListVC.swift */,
 			);
 			name = Projects;
 			sourceTree = "<group>";
@@ -581,7 +581,6 @@
 				0F95C6711F64653A009E3651 /* MICheckBox.swift in Sources */,
 				5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */,
 				5D7E2CBF1F626E3A00CC851A /* BackUpVC.swift in Sources */,
-				5DDCE4661F61198C000D987C /* ProjectDetailsVC.swift in Sources */,
 				0F95C66B1F632A7D009E3651 /* BackupRestoreVC.swift in Sources */,
 				5D1B1F6E1F67BA5E005FE69F /* DefaultDataManager.swift in Sources */,
 				5DDCE46D1F6120D6000D987C /* PeriorityVC.swift in Sources */,
@@ -599,6 +598,7 @@
 				5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
 				0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */,
+				0FAE9B131F6D382500279F1F /* IssueListVC.swift in Sources */,
 				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
 				5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */,
 				5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */,

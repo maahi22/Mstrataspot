@@ -11,12 +11,52 @@ import UIKit
 
 protocol PeriorityDelegate {
     
-    func PeriorityClick(_ periority : String)
+    func PeriorityClick(_ periority : UIColor)
 }
 
 class PeriorityVC: UIViewController {
 
     var delegate:PeriorityDelegate?
+    var periorityColor  =  UIColor()
+    
+    
+    
+    
+    
+    @IBAction func periorityBtnClick(_ sender: UIButton) {
+        
+        switch sender.tag {
+        case 1:
+            periorityColor = .red
+        case 2:
+            periorityColor = .yellow
+        case 3:
+            periorityColor = .green
+        case 4:
+            periorityColor = .blue
+        default:
+            break
+        }
+        
+        delegate?.PeriorityClick(periorityColor)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

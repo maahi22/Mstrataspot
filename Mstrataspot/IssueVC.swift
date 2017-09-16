@@ -23,25 +23,43 @@ class IssueVC: UIViewController,PeriorityDelegate {
     
     
     var projectManageobj : NSManagedObject!
+    var issueManageobj : NSManagedObject!
+    
     
     let imagePicker = UIImagePickerController()
     var hasImage = false
     var CurvesData = ""
-    var priorityColor = ""
+    var priorityHexString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+         if issueManageobj != nil {
+        
+            txtTitle.text = issueManageobj.value(forKey: "title") as! String
+            txtViewDescription.text = issueManageobj.value(forKey: "issue_description") as! String
+            txtViewComments.text = issueManageobj.value(forKey: "comment") as! String
+            
+            if  issueManageobj.value(forKey: "issueImage") != nil{
+                imgViewPhoto.image =  UIImage(data:issueManageobj.value(forKey: "issueImage") as! Data,scale:1.0)
+            }
+            
+            
+        
+        
+        }
+        
     }
 
     
     
     
-    
-    func PeriorityClick(_ periority : String){
+    //delegate method
+    func PeriorityClick(_ periority : UIColor){
         
-        
+        btnPriority.backgroundColor = periority
+        let col = UIColor()
+        priorityHexString = col.toHexString
     }
     
     
@@ -80,45 +98,120 @@ class IssueVC: UIViewController,PeriorityDelegate {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.getContext()
-        let entityDescription = NSEntityDescription.entity(forEntityName: kEntityIssues, in: context)
-        
+       
+        if issueManageobj != nil {
         
         let now = DefaultDataManager.AppCurrentTime()
-        
-        
-        let Issues = NSManagedObject(entity: entityDescription!, insertInto: context)
-        Issues.setValue(title, forKey: "title")
-        Issues.setValue(desc, forKey: "issue_description")
-        Issues.setValue(hasImage, forKey: "hasImage")
-        Issues.setValue(now, forKey: "creationDate")
-        Issues.setValue(priorityColor, forKey: "priority")
-        Issues.setValue(imageName, forKey: "imageName")
-        Issues.setValue(CurvesData, forKey: "imageCurves")
-        Issues.setValue(txtViewComments.text, forKey: "comment")
-        //saverelationship
-        Issues.setValue(projectManageobj, forKey: "project")
-        
-        
-        do {
-            try Issues.managedObjectContext?.save()
+            issueManageobj.setValue(title, forKey: "title")
+            issueManageobj.setValue(desc, forKey: "issue_description")
+            issueManageobj.setValue(hasImage, forKey: "hasImage")
+            issueManageobj.setValue(now, forKey: "creationDate")
+            issueManageobj.setValue(priorityHexString, forKey: "priority")
+            issueManageobj.setValue(imageName, forKey: "imageName")
+            issueManageobj.setValue(CurvesData, forKey: "imageCurves")
+            issueManageobj.setValue(txtViewComments.text, forKey: "comment")
+            //saverelationship
+            issueManageobj.setValue(projectManageobj, forKey: "project")
             
-            let alert = UIAlertController(title: "Alert", message: "Issue  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            if let img = self.imgViewPhoto.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                issueManageobj.setValue(imgData, forKey: "issueImage")
+            }
             
             
-        } catch {
-            print("Error occured during save entity")
+            
+            
+            do {
+                try issueManageobj.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Issue  updated succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            } catch {
+                print("Error occured during save entity")
+            }
+            
+            
+            
+        }else{
+            let entityDescription = NSEntityDescription.entity(forEntityName: kEntityIssues, in: context)
+            
+            
+            let now = DefaultDataManager.AppCurrentTime()
+            
+            
+            let Issues = NSManagedObject(entity: entityDescription!, insertInto: context)
+            Issues.setValue(title, forKey: "title")
+            Issues.setValue(desc, forKey: "issue_description")
+            Issues.setValue(hasImage, forKey: "hasImage")
+            Issues.setValue(now, forKey: "creationDate")
+            Issues.setValue(priorityHexString, forKey: "priority")
+            Issues.setValue(imageName, forKey: "imageName")
+            Issues.setValue(CurvesData, forKey: "imageCurves")
+            Issues.setValue(txtViewComments.text, forKey: "comment")
+            //saverelationship
+            Issues.setValue(projectManageobj, forKey: "project")
+            
+            if let img = self.imgViewPhoto.image {
+                let imgData = UIImageJPEGRepresentation(img, 1)
+                Issues.setValue(imgData, forKey: "issueImage")
+            }
+            
+            
+            
+            
+            do {
+                try Issues.managedObjectContext?.save()
+                
+                let alert = UIAlertController(title: "Alert", message: "Issue  save succesfully. ", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            } catch {
+                print("Error occured during save entity")
+            }
         }
         
+        
+        
+    
+    }
+    
+    
+    @IBAction func SelectissueImage(_ sender: Any) {
+        
+        let uiAlert = UIAlertController(title: "Project Image", message: "", preferredStyle: UIAlertControllerStyle.actionSheet)
+        self.present(uiAlert, animated: true, completion: nil)
+        
+        uiAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            self.shootPhoto()
+        }))
+        
+        uiAlert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: { action in
+            self.photoFromLibrary()
+        }))
+        
+        uiAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            uiAlert .dismiss(animated: true, completion: nil)
+        }))
+
         
     }
     
     
-    
-    
+    @IBAction func periorityBtnClick(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "showPeriority", sender: self)
+        
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -127,15 +220,22 @@ class IssueVC: UIViewController,PeriorityDelegate {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showPeriority"{
+            let nextScene =  segue.destination as! PeriorityVC
+            nextScene.delegate = self
+            
+            
+        }
+        
+        
     }
-    */
+    
 
 }
 
@@ -146,6 +246,44 @@ extension IssueVC: UITextViewDelegate{
 
 extension IssueVC: UITextFieldDelegate{
     
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == txtZip || textField == txtClientZip {
+            let charsLimit = 4
+            let startingLength = textField.text?.characters.count ?? 0
+            let lengthToAdd = string.characters.count
+            let lengthToReplace =  range.length
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            
+            return newLength <= charsLimit
+        }else{
+            return true
+        }
+    }*/
+    
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        /* if textField.returnKeyType == .next {
+         txtPassword.becomeFirstResponder()
+         }else  if textField.returnKeyType == .go {
+         self.userLogin(self)
+         
+         }*/
+        textField.resignFirstResponder()
+        //self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+
     
 }
 

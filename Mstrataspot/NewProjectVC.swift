@@ -18,7 +18,6 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtViewDescription: UITextView!
     @IBOutlet weak var txtProjectReference: UITextField!
-    
     @IBOutlet weak var txtReference: UITextField!
     @IBOutlet weak var txtOrganizationName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -28,7 +27,6 @@ class NewProjectVC: UIViewController,ContactListDelegate,SignatureDelegate {
     @IBOutlet weak var txtZip: UITextField!
     @IBOutlet weak var txtEmployeeName: UITextField!
     @IBOutlet weak var txtCompanyName: UITextField!
-    
     @IBOutlet weak var txtClientName: UITextField!
     @IBOutlet weak var txtClientAddress1: UITextField!
     @IBOutlet weak var txtClientAddress2: UITextField!
@@ -347,7 +345,43 @@ extension NewProjectVC:UITextViewDelegate {
 
 extension NewProjectVC: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == txtZip || textField == txtClientZip {
+            let charsLimit = 4
+            let startingLength = textField.text?.characters.count ?? 0
+            let lengthToAdd = string.characters.count
+            let lengthToReplace =  range.length
+            let newLength = startingLength + lengthToAdd - lengthToReplace
+            
+            return newLength <= charsLimit
+        }else{
+            return true
+        }
+    }
     
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        /* if textField.returnKeyType == .next {
+         txtPassword.becomeFirstResponder()
+         }else  if textField.returnKeyType == .go {
+         self.userLogin(self)
+         
+         }*/
+        textField.resignFirstResponder()
+        //self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
 }
 
 //Camera picker Extension

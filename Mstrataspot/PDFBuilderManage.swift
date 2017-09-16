@@ -79,11 +79,23 @@ class PDFBuilderManage: NSObject {
     
      class func generatePdf (_ project:Projects ,companyInfo:CompanyInfo)->String{
         
+        let font12 = UIFont.init(name: "Helvetica", size: 14)
         
+        let font14 = UIFont.init(name: "Helvetica", size: 14)
+        let font17 = UIFont.init(name: "Helvetica", size: 17)
+        let font14Bold =  UIFont.init(name: "Helvetica-Bold", size: 14)
+        let font17Bold = UIFont.init(name: "Helvetica-Bold", size: 17)
+        
+        
+        
+        
+        var boxHeight :CGFloat = 235
+        
+        var minBoxHeight:CGFloat = 235
         var currentY:CGFloat = 0.0
         
         
-        let dateformater = DateFormatter()
+        var dateformater = DateFormatter()
         dateformater.dateFormat = "dd-MM-YYYY hh:mm"
         dateformater.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
         var now = DefaultDataManager.AppCurrentTime()
@@ -104,16 +116,18 @@ class PDFBuilderManage: NSObject {
         
         currentPage += 1
         
-        currentY = 45
+        currentY  = 45.0
         
         var currentContext = UIGraphicsGetCurrentContext()
         currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
        
-        if project.projectImage != nil && project.projectImage != "" {
+        //Draw image
+        if project.projectLogoImage != nil  {
             
-            let demoImage = FilesMethods.loadImage(project.projectImage!)
-            var imageHeight = demoImage.size.height
-            var imageWidth = demoImage.size.width
+            let demoImage =  UIImage(data:project.value(forKey: "projectLogoImage") as! Data,scale:1.0)
+            
+            var imageHeight :CGFloat = (demoImage?.size.height)!
+            var imageWidth:CGFloat = (demoImage?.size.width)!
             
             if imageHeight > 156
             {
@@ -129,11 +143,289 @@ class PDFBuilderManage: NSObject {
             }
             
             let rect = CGRect (x: 200.0, y: currentY, width: imageWidth, height: imageHeight)
-            demoImage.draw(in:rect )
+            demoImage?.draw(in:rect )
             currentY = currentY + 156 + 10
             
         }else{
             currentY = currentY + 156 + 10
+        }//Image draw end
+        
+        
+        var textToDraw = ""
+        if let title = project.title {
+            textToDraw = "\(title.uppercased())\n\n"
+        }
+        
+        
+        var maxSize = CGSize(width: pdfPageWidth - 4*kBorderInset-2*kMarginInset , height:  pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+            
+        
+        
+        
+        var stringSize =  (textToDraw as NSString).boundingRect(with: maxSize,
+                                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                            attributes: [NSFontAttributeName:font14 as Any],
+                                                                            context: nil).size
+        
+        var renderingRect = CGRect(x: CGFloat(200.0), y: currentY+10, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset), height: stringSize.height)
+        
+        textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14 as Any])
+        
+        currentY = currentY + 10 + stringSize.height
+       
+        var listTitle = NSMutableArray()
+        var listInfo = NSMutableArray()
+        
+        
+    
+        if let name = project.clientName {
+            listTitle.add("Contact Name:")
+            listInfo.add(name)
+        }
+        
+        if let name = project.organizationName {
+            listTitle.add("Organization Name:")
+            listInfo.add(name)
+        }
+        if let name = project.clientAddress1 {
+            listTitle.add("Address")
+            listInfo.add(name)
+        }
+        if let name = project.clientAddress2 {
+            listTitle.add("")
+            listInfo.add(name)
+        }
+        
+        
+        if  project.clientCity != nil || project.clientCity != nil || project.clientCity != nil || project.clientCity != nil{
+            
+            var tempStr = ""
+            
+            if let city = project.clientCity {
+               tempStr.appending(city)
+            }
+            
+            if let state = project.clientState {
+                if tempStr != ""{
+                    tempStr = "\(tempStr),\(state) "
+                }else{
+                    tempStr = "\(state)"
+                }
+            }
+            
+            if let zip = project.clientZip {
+                if tempStr != ""{
+                    tempStr = "\(tempStr),\(zip) "
+                }else{
+                    tempStr = "\(zip)"
+                }
+            }
+            
+            listTitle.add("")
+            listInfo.add(tempStr)
+            
+            
+        }
+        
+        listTitle.add("")
+        listInfo.add("Australia")
+        
+        
+        
+        let sectionSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        let sortDescriptors = [sectionSortDescriptor]
+        let issueArray = (project.issues?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
+        
+        if listTitle.count > 0 {
+            
+            for i in 0...(listTitle.count-1){
+                
+                textToDraw = listInfo [i] as! String
+                
+               // let maxSize = CGSize(width: 450.0 , height:  pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+                
+                
+              let  mSize = CGSize(width: 450, height: pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+                
+                stringSize =  (textToDraw as NSString).boundingRect(with: mSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font14 as Any],
+                                                                    context: nil).size
+                
+                
+               /* if currentY + stringSize.height >= pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset {
+                    
+                    UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+                    currentPage = currentPage + 1
+                    let currentContext = UIGraphicsGetCurrentContext()
+                    
+                    
+                    currentY = kBorderInset + kMarginInset + 15.0
+                    
+                }*/
+                
+                
+                
+                currentY = currentY  + 20.0
+                
+                renderingRect = CGRect(x: CGFloat(200.0), y: currentY+50, width: 450.0 , height: stringSize.height)
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14 as Any])
+                
+                
+            
+                let textHeight = stringSize.height
+               textToDraw = listTitle[i] as! String
+                
+                
+                let  newSize = CGSize(width: 200, height: pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+                
+                stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font14 as Any],
+                                                                    context: nil).size
+
+                renderingRect = CGRect(x: CGFloat(50.0), y: currentY, width: 150.0 , height: stringSize.height)
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14 as Any])
+                
+                
+                /*let val = i + 1
+                
+                if  val < listTitle.count && (listTitle[val] as! String).characters.count > 0 {
+                    currentY = currentY + textHeight
+                }else{
+                   currentY = currentY + textHeight
+                }*/
+                let value = listTitle[i] as! String
+                if (i) < listTitle.count && value.characters.count > 0 {
+                    currentY += 0 + textHeight
+                    
+                }else{
+                    currentY += textHeight
+                }
+                
+            }
+            
+        }
+        
+        
+        if(currentY < pageSize.height/2 ){
+            currentY = pageSize.height/2
+        }
+        currentY += 10;
+        
+        
+//********************Company Logo
+        
+        
+        if  companyInfo != nil &&  companyInfo.value(forKey: "companyLogoImage")  != nil
+        {
+            let demoImage =  UIImage(data:companyInfo.value(forKey: "companyLogoImage") as! Data,scale:1.0)
+            
+            var imageHeight :CGFloat = (demoImage?.size.height)!
+            var imageWidth:CGFloat = (demoImage?.size.width)!
+            
+            if imageHeight > 156
+            {
+                imageWidth = (imageWidth / imageHeight) * 156.0
+                imageHeight = 156.0
+                
+                
+                if imageWidth > 612 {
+                    imageWidth = 612
+                    
+                }
+                
+            }
+            
+            let val:CGFloat = CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+            
+            if (currentY + 156 >= val) {
+                
+                UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+                currentPage = currentPage + 1
+                let currentContext = UIGraphicsGetCurrentContext()
+                currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                currentY = CGFloat(kBorderInset + kMarginInset + 15)
+  
+            }
+            
+            let rect = CGRect (x: 200.0, y: currentY, width: imageWidth, height: imageHeight)
+            demoImage?.draw(in:rect )
+            currentY = currentY + 156 + 10
+            
+            
+        }else{
+            currentY = currentY + 156 + 10
+        }
+        
+        
+        listTitle.removeAllObjects()
+        listInfo.removeAllObjects()
+        
+        if let name = project.employeeName {
+            listTitle.add("Prepared By:")
+            listInfo.add(name)
+        }
+        
+        if let name = project.companyName {
+            listTitle.add("Company Name")
+            listInfo.add(name)
+        }
+        if let name = project.address1 {
+            listTitle.add("Address")
+            listInfo.add(name)
+        }
+        if let name = project.address2 {
+            listTitle.add("")
+            listInfo.add(name)
+        }
+        
+        if  project.city != nil || project.state != nil || project.zip != nil {
+            
+            var tempStr = ""
+            
+            if let city = project.city {
+                tempStr.appending(city)
+            }
+            
+            if let state = project.state {
+                if tempStr != ""{
+                    tempStr = "\(tempStr),\(state) "
+                }else{
+                    tempStr = "\(state)"
+                }
+            }
+            
+            if let zip = project.zip {
+                if tempStr != ""{
+                    tempStr = "\(tempStr),\(zip) "
+                }else{
+                    tempStr = "\(zip)"
+                }
+            }
+            
+            listTitle.add("")
+            listInfo.add(tempStr)
+        }
+        
+        listTitle.add("")
+        listInfo.add("Australia")
+        
+        if let name = companyInfo.phone {
+            listTitle.add("Phone")
+            listInfo.add(name)
+        }
+        if let name = companyInfo.fax {
+            listTitle.add("Fax")
+            listInfo.add(name)
+        }
+        if let name = companyInfo.email {
+            listTitle.add("Email")
+            listInfo.add(name)
+        }
+        if let name = companyInfo.webSite {
+            listTitle.add("Web")
+            listInfo.add(name)
         }
         
         
@@ -141,9 +433,290 @@ class PDFBuilderManage: NSObject {
         
         
         
+        if listTitle.count > 0 {
+            for i in 0...(listTitle.count-1){
+             
+                textToDraw = listInfo[i] as! String
+                
+                var  mSize = CGSize(width: 450, height: pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+                
+                stringSize =  (textToDraw as NSString).boundingRect(with: mSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font14Bold as Any],
+                                                                    context: nil).size
+                
+                var val:CGFloat = CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)
+                
+                if (currentY + stringSize.height >= val) {
+                    
+                    UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+                    currentPage = currentPage + 1
+                    let currentContext = UIGraphicsGetCurrentContext()
+                    currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                    currentY = CGFloat(kBorderInset + kMarginInset + 15)
+                    
+                }
+                
+                renderingRect = CGRect(x: CGFloat(200.0), y: currentY, width: 150.0 , height: stringSize.height)
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+                
+                
+               
+                
+                
+                
+                
+                
+                let textHeight = stringSize.height
+                textToDraw = listTitle[i] as! String
+                
+                mSize = CGSize(width: CGFloat(150.0), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+                
+                stringSize =  (textToDraw as NSString).boundingRect(with: mSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font14 as Any],
+                                                                    context: nil).size
+                
+                renderingRect = CGRect(x: CGFloat(50.0), y: currentY, width: 150.0 , height: stringSize.height)
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+                
+                
+                
+               let  value = listTitle[i] as! String
+                
+                
+                if (i) < listTitle.count && value.characters.count > 0 {
+                    currentY += 0 + textHeight
+                    
+                }else{
+                    currentY += textHeight
+                }
+                
+                
+            }
+        }
         
         
         
+        // Project Description
+        UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+        currentPage = currentPage + 1
+        currentContext = UIGraphicsGetCurrentContext()
+        currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        currentY = CGFloat(kBorderInset + kMarginInset + 15)
+        
+        
+        textToDraw = "Project Description"
+        
+        var  newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        
+        stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font14Bold as Any],
+                                                            context: nil).size
+        
+
+        let textToDraw1 = project.project_description as! String
+        
+        let stringSize1 = (textToDraw1 as! NSString).boundingRect(with: CGSize(width: pdfPageWidth - 4*kBorderInset-2*kMarginInset, height: pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset),
+                                                                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                attributes: [NSFontAttributeName:font12 as Any],
+                                                                context: nil).size
+        
+        
+        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+        
+        currentY += 10 + stringSize.height
+        
+        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth -  4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        textToDraw1.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        
+        currentY += 10 + stringSize1.height
+        
+        //***************************   Signature
+        
+        if   project.value(forKey: "clientSignatureImage")  != nil
+        {
+            let demoImage =  UIImage(data:project.value(forKey: "clientSignatureImage") as! Data,scale:1.0)
+            
+            var imageHeight :CGFloat = (demoImage?.size.height)!
+            var imageWidth:CGFloat = (demoImage?.size.width)!
+            
+            if imageHeight > 156
+            {
+                imageWidth = (imageWidth / imageHeight) * 156.0
+                imageHeight = 156.0
+                
+                
+                if imageWidth > 612 {
+                    imageWidth = 612
+                    
+                }
+                
+            }
+            
+            var hightNeeded:CGFloat = 100.0
+            
+            textToDraw = "Approved by             "
+            
+              newSize = CGSize(width: CGFloat(((pdfPageWidth - 4*kBorderInset)*10)/10 - 5), height: CGFloat(boxHeight - 5.0))
+            
+
+            
+            
+            let stringSize = (textToDraw as NSString).boundingRect(with:newSize,
+                                                                      options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                      attributes: [NSFontAttributeName:font12 as Any],
+                                                                      context: nil).size
+            hightNeeded += stringSize.height + 15
+            
+            if (currentY + hightNeeded >= CGFloat( pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset)) {
+                
+                UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+                currentPage = currentPage + 1
+                let currentContext = UIGraphicsGetCurrentContext()
+                currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                currentY = CGFloat(kBorderInset + kMarginInset + 15)
+                
+            }
+            
+            let maxY = CGFloat (pdfPageHEIGHT) - CGFloat((CGFloat(2*kBorderInset) - CGFloat(2*kMarginInset)) - CGFloat(hightNeeded))
+            
+            
+            renderingRect = CGRect(x: CGFloat(kBorderInset * 2 ), y: CGFloat(currentY + CGFloat(ApprovADDY) + 10), width: CGFloat(pdfPageWidth/3 - 20) , height: stringSize.height)
+            textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+            
+           
+            
+            
+            let rect = CGRect (x: 0.0, y: currentY + CGFloat(ApprovADDY) + stringSize.height + 15, width: imageWidth, height: imageHeight)
+            demoImage?.draw(in:rect )
+            currentY += hightNeeded
+            
+            
+        }
+        
+        
+        //Current Date
+        
+        dateformater.dateFormat = "MMMM dd, YYYY"
+        dateformater.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+        now = DefaultDataManager.AppCurrentTime()
+        
+        textToDraw = "Date Approved: \(dateformater.string(from: now as Date))"
+        
+          newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        
+        stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font14Bold as Any],
+                                                            context: nil).size
+
+        
+        if (currentY + stringSize.height >= CGFloat(pdfPageHEIGHT - (2*kBorderInset - 2*kMarginInset))) {
+            
+            UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+            currentPage = currentPage + 1
+            let currentContext = UIGraphicsGetCurrentContext()
+            currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+            currentY = CGFloat(kBorderInset + kMarginInset + 15)
+            
+        }
+        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: (currentY + CGFloat(ApprovADDY)), width: CGFloat(pdfPageWidth - (4*kBorderInset - 2*kMarginInset)) , height: stringSize.height)
+        textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        currentY += 20 + stringSize.height
+        //***************************   Signature END
+        
+        currentPage = currentPage + 1
+
+        UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+        currentPage = currentPage + 1
+        currentContext = UIGraphicsGetCurrentContext()
+        currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        currentY = CGFloat(kBorderInset + kMarginInset + 15)
+        
+        
+        var cmpName = ""
+        if let cmp = companyInfo.companyName {
+            cmpName = cmp
+        }
+        let strInspect = "The Inspection"
+        let strInspectStr = "The basis of this report is an inspection of the common property areas of the scheme. This report is not an all encompassing report dealing with the scheme common areas from every aspect. It is a reasonable attempt to identify any obvious and significant defects upon common property areas of the scheme. This report is not a certificate of compliance with respect to any Act, Regulation, Ordinance or By-law. The report is not a structural report and should you require any advice of a structural nature we recommend our structural engineer be engaged.\n\nThe inspection of the common property of the scheme is a visual inspection only limited to those areas of the common property that are fully accessible and visible to the inspector at the time of inspection. The inspection did not include breaking apart, dismantling, removing or moving any element of the building and items located on the common property.\n\nThe report does not and cannot make comment upon: defects that may have been concealed; the assessment of which may rely on certain weather conditions; the presence or absence of timber pests; gas fittings; heritage concerns; site drainage; security concerns; detection and identification of illegal building work; durability of exposed finishes; the roof space and under floor space.\n\nThe inspector will identify and assess hazards relating to the static condition of the common property and then recommend remedial action or the introduction of a suitable control measure. This report is not an Asbestos Audit and no assessment of potential asbestos materials is made."
+        
+        let strPurpose = "Purpose of Report"
+        let  strPurposeSTR = "The purpose of this report is to increase awareness of risk and potential exposures to the property from OHS&E defects. The report is primarily intended solely for use by Building Manager and the Management Committee. Recommendations are listed where specific improvements are required to meet relevant standards."
+        
+        let strDisclaimer = "Disclaimer\n\n"
+        let  strDisclaimerStr = "This report has been prepared by \(cmpName) and is based on site inspections and information provided by site contact. In the circumstances, \(cmpName) nor any of its directors or employees give any warranty in relation to the accuracy or reliability of any information contained in this report. \(cmpName) disclaims all liability to any party (including any indirect or consequential loss or damage or loss of profits) in respect of or in consequence of anything done or omitted to be done by any party in reliance, whether in whole or partial, upon any information contained in this report. Any party who chooses to rely in any way upon the contents of this report does so at its own risk.\n\n"
+        
+        
+        let strPriority = "Priority Key"
+        let strPrioritySTR = "Urgency for rectifying the items listed below have been classified in this table from very low to extreme."
+        
+        //************** strInspect
+        
+        
+        
+        
+        
+        
+        //********** strInspectStr
+        
+        
+        
+        //****************strPurpose
+        
+        
+        
+        
+        //****************strPurposeSTR
+        
+        
+        
+        
+        
+        //****************strDisclaimer
+        
+        
+        
+        //****************strDisclaimerStr
+        
+        
+        
+        
+        //****************strPriority
+        
+        
+        //****************strPrioritySTR
+        
+        
+        
+        
+        //****** Draw image
+        
+        
+        
+        
+        
+        //***** Draw 2nd image
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //******************Issues
         
         
         

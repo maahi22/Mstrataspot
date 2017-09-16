@@ -93,10 +93,69 @@ class ReportsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 companyInfo = listRecord as! CompanyInfo
             }
 
-         //   let PDF_fileName = PDFBuilderManage.generatePdf(self.detailProjectManageobj , companyInfo: companyInfo )
+            var PDF_fileName =  ""
+            if let project = self.detailProjectManageobj , let comp = companyInfo {
+                PDF_fileName = PDFBuilderManage.generatePdf(project as! Projects, companyInfo: comp )
+            }
+            
+            
+            
+            if MFMailComposeViewController.canSendMail() {
+                
+                
+                
+                let composeVC = MFMailComposeViewController()
+                composeVC.mailComposeDelegate = self
+                // Configure the fields of the interface.
+                composeVC.setToRecipients([supportmailId])
+                composeVC.setSubject("")
+                composeVC.setMessageBody("", isHTML: false)
+                // Present the view controller modally.
+                
+                let dateformater = DateFormatter()
+                dateformater.dateFormat = "dd-MM-YYYY hh:mm"
+                dateformater.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
+                let now = DefaultDataManager.AppCurrentTime()
+                var   attachFileName = ""
+                if let title = (self.detailProjectManageobj as! Projects).title , let ref = (self.detailProjectManageobj as! Projects).reference {
+                    attachFileName = "\(title) \(ref) \(dateformater.string(from: now as Date)).pdf"
+                }
+                
+                
+                
+                if let data = NSData(contentsOfFile: PDF_fileName) {
+                    //Does not print. Nil?
+                    composeVC.addAttachmentData(data as Data, mimeType: "application/pdf", fileName: "\(attachFileName)")
+                }
+                
+                //************* Attached projectImage
+                
+                
+                
+                
+                
+                
+                
+                self.present(composeVC, animated: true, completion: nil)
+                
+            }else{
+                
+                let alert = UIAlertController(title: "Alert", message: "Please configure mail", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                print("Mail services are not available")
+                return
+                
+            }
+            
+            
+            
             
             
         }))
+        
+        
         
         let btndoc:UIAlertAction  = (UIAlertAction(title: "Doc", style: .destructive, handler: { action in
            
@@ -109,8 +168,10 @@ class ReportsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 companyInfo = listRecord
             }
             
-         let docfileName =   PDFBuilderManage.generate_DocFromProject(self.detailProjectManageobj as! Projects,  companyInfo: companyInfo as! CompanyInfo )
-            
+             var docfileName =  ""
+            if let project = self.detailProjectManageobj , let comp = companyInfo {
+                 docfileName =   PDFBuilderManage.generate_DocFromProject(project as! Projects,  companyInfo: comp as! CompanyInfo )
+            }
         print(docfileName)
             
             if MFMailComposeViewController.canSendMail() {
@@ -128,7 +189,7 @@ class ReportsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 let dateformater = DateFormatter()
                 dateformater.dateFormat = "dd-MM-YYYY hh:mm"
                 dateformater.timeZone = DefaultDataManager.AppTimeZone() as TimeZone!
-                var now = DefaultDataManager.AppCurrentTime()
+                let now = DefaultDataManager.AppCurrentTime()
                 var   attachFileName = ""
                 if let title = (self.detailProjectManageobj as! Projects).title , let ref = (self.detailProjectManageobj as! Projects).reference {
                     attachFileName = "\(title) \(ref) \(dateformater.string(from: now as Date)).doc"

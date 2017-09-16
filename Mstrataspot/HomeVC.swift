@@ -27,7 +27,8 @@ class HomeVC: UIViewController {
     
     
     @IBAction func CreateBMSProject(_ sender: Any) {
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.newProjectStatus =  true
         self.tabBarController?.selectedIndex = 1
         
         

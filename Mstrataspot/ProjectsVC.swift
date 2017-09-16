@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-class ProjectsVC: UIViewController {
+class ProjectsVC: UIViewController,NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var projectSegmentControl: UISegmentedControl!
     @IBOutlet weak var projectlistTableView: UITableView!
@@ -18,62 +18,61 @@ class ProjectsVC: UIViewController {
     @IBOutlet weak var lblNoRecords: UILabel!
     
      var selectedObj = NSManagedObject()
+    var fetchedResultsController: NSFetchedResultsController<Projects>!
     
-    
-    private let persistentContainer = NSPersistentContainer(name: "Projects")
+    func configureFetchedResultsController() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+        
+        let projectFetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
+        let primarySortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        //let secondarySortDescriptor = NSSortDescriptor(key: "commonName", ascending: true)
+        projectFetchRequest.sortDescriptors = [primarySortDescriptor]
+        projectFetchRequest.returnsObjectsAsFaults = false
+        
+        
+        self.fetchedResultsController = NSFetchedResultsController<Projects>(
+            fetchRequest: projectFetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: "creationDate",
+            cacheName: nil)
+        
+        self.fetchedResultsController.delegate = self
+        
+    }
    
     
-    // MARK: -
+    func controllerWillChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        projectlistTableView.beginUpdates()
+    }
     
-   /* fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
-       
-        
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.getContext()
-        
-        // Create Fetch Request
-        //let fetchRequest: NSFetchRequest<Projects> = Projects.fetchRequest()
-        let fetchRequest = NSFetchRequest<Sections>(entityName: "Projects")
-        // Configure Fetch Request
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        try! fetchedResultsController.performFetch()
-        fetchedResultsController.delegate = self
-        if let Sections = fetchedResultsController.fetchedObjects {
-            if Sections.count > 0 {
-                print(Sections.count)
-            }
+    func controller(controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .insert:
+            projectlistTableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+        case .delete:
+            projectlistTableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+        case .update: break
+        // update cell at indexPath
+        case .move:
+            projectlistTableView.deleteRows(at: [indexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
+            projectlistTableView.insertRows(at: [newIndexPath! as IndexPath], with: UITableViewRowAnimation.automatic)
         }
-        
-        return fetchedResultsController
-    }()*/
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        projectlistTableView.endUpdates()
+    }
     
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Projects> = {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.getContext()
-        
-        
-        let fetchRequest = NSFetchRequest<Projects>(entityName: "Projects")
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "creationDate", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext:context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        try! fetchedResultsController.performFetch()
-        fetchedResultsController.delegate = self
-        if let Projects = fetchedResultsController.fetchedObjects {
-            if Projects.count > 0 {
-                print(Projects.count)
-            }
-        }
-        return fetchedResultsController
-    }()
-    // MARK: - View Life Cycle
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -82,63 +81,47 @@ class ProjectsVC: UIViewController {
         super.viewDidLoad()
 
         
+        self.loadData()
         
         
         
-        
-        persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-            if let error = error {
-                print("Unable to Load Persistent Store")
-                print("\(error), \(error.localizedDescription)")
-                
-            } else {
-                self.setupView()
-                
-                do {
-                    try self.fetchedResultsController.performFetch()
-                } catch {
-                    let fetchError = error as NSError
-                    print("Unable to Perform Fetch Request")
-                    print("\(fetchError), \(fetchError.localizedDescription)")
-                }
-                
-                self.updateView()
-            }
-        }
         
     }
 
     
-    
-    // MARK: - View Methods
-    
-    private func setupView() {
-        setupMessageLabel()
+    func loadData()  {
+        configureFetchedResultsController()
         
-        updateView()
+        do {
+            try fetchedResultsController.performFetch()
+            
+            projectlistTableView.reloadData()
+            
+        } catch {
+            print("An error occurred")
+            
+        }
     }
     
-    private func updateView() {
-        var hasQuotes = false
+    
+    
+    
+    
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        if let projects1 = fetchedResultsController.fetchedObjects {
-            hasQuotes = projects1.count > 0
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if appDelegate.newProjectStatus {
+            self.performSegue(withIdentifier: "toNewProject", sender: self)
+            appDelegate.newProjectStatus = false
         }
         
-        projectlistTableView.isHidden = !hasQuotes
-        //projectSegmentControl.isHidden = !hasQuotes
-        lblNoRecords.isHidden = hasQuotes
         
-        activityIndicatorView.stopAnimating()
     }
-    
-    // MARK: -
-    private func setupMessageLabel() {
-        lblNoRecords.text = "You don't have any projects."
-    }
-    
-    
-    
     
     
     
@@ -164,6 +147,25 @@ class ProjectsVC: UIViewController {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -176,25 +178,41 @@ class ProjectsVC: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProjectdetails" {
-            let nextScene =  segue.destination as! ProjectDetailsVC
+            let nextScene =  segue.destination as! IssueListVC
             // Pass the selected object to the new view controller.
             nextScene.projectManageobj = self.selectedObj
+            
+
         }
     }
     
 
 }
 
-extension ProjectsVC: NSFetchedResultsControllerDelegate {
+/*extension ProjectsVC: NSFetchedResultsControllerDelegate {
     
-}
+}*/
 
 extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
+        return 0
+    }
+    
+    
+    
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let Projects = fetchedResultsController.fetchedObjects else { return 0 }
-        return Projects.count
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
+        }
+        
+        return 0
     }
 
     
