@@ -232,9 +232,9 @@ class PDFBuilderManage: NSObject {
         
         
         
-        let sectionSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
-        let sortDescriptors = [sectionSortDescriptor]
-        let issueArray = (project.issues?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
+        var sectionSortDescriptor = NSSortDescriptor(key: "creationDate", ascending: true)
+        var sortDescriptors = [sectionSortDescriptor]
+        var issueArray = (project.issues?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
         
         if listTitle.count > 0 {
             
@@ -659,64 +659,371 @@ class PDFBuilderManage: NSObject {
         
         //************** strInspect
         
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strInspect as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font14Bold as Any],
+                                                            context: nil).size
         
-        
-        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strInspect.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+        currentY += 10 + stringSize.height
         
         
         //********** strInspectStr
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strInspectStr as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font12 as Any],
+                                                            context: nil).size
         
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strInspectStr.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        currentY += 20 + stringSize.height
         
         
         //****************strPurpose
         
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strPurpose as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font14Bold as Any],
+                                                            context: nil).size
         
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strPurpose.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+        currentY += 10 + stringSize.height
         
         
         //****************strPurposeSTR
         
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strPurposeSTR as NSString).boundingRect(with: newSize,
+                                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                            attributes: [NSFontAttributeName:font12 as Any],
+                                                            context: nil).size
         
-        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strPurposeSTR.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        currentY += 20 + stringSize.height
         
         
         //****************strDisclaimer
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strDisclaimer as NSString).boundingRect(with: newSize,
+                                                               options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                               attributes: [NSFontAttributeName:font14Bold as Any],
+                                                               context: nil).size
         
-        
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strDisclaimer.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+        currentY += 10 + stringSize.height
         
         //****************strDisclaimerStr
         
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strDisclaimerStr as NSString).boundingRect(with: newSize,
+                                                               options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                               attributes: [NSFontAttributeName:font12 as Any],
+                                                               context: nil).size
         
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strDisclaimerStr.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        currentY += 20 + stringSize.height
         
+        let rightImagY = currentY + 10
         
         //****************strPriority
+        newSize = CGSize(width: CGFloat(pdfPageWidth - 4*kBorderInset-2*kMarginInset), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strPriority as NSString).boundingRect(with: newSize,
+                                                                  options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                  attributes: [NSFontAttributeName:font14Bold as Any],
+                                                                  context: nil).size
         
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(pdfPageWidth - 4*kBorderInset - 2*kMarginInset) , height: stringSize.height)
+        strPriority.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font14Bold as Any])
+        currentY += 10 + stringSize.height
         
         //****************strPrioritySTR
+        newSize = CGSize(width: CGFloat(250.0), height: CGFloat(pdfPageHEIGHT - 2*kBorderInset - 2*kMarginInset))
+        stringSize =  (strPrioritySTR as NSString).boundingRect(with: newSize,
+                                                             options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                             attributes: [NSFontAttributeName:font12 as Any],
+                                                             context: nil).size
         
+        renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(250) , height: stringSize.height)
+        strPrioritySTR.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+        currentY +=  stringSize.height
         
         
         
         //****** Draw image
-        
-        
-        
-        
-        
+        var demoImage = UIImage(named: "PriorityImage.jpg")
+        var rect = CGRect (x:CGFloat(kBorderInset * 2 + kMarginInset), y: currentY , width:  CGFloat(200.0), height: CGFloat(120.0))
+        demoImage?.draw(in:rect )
+    
         //***** Draw 2nd image
+         demoImage = UIImage(named: "PriorityGraph.jpg")
+         rect = CGRect (x:CGFloat(kBorderInset * 2 + kMarginInset + 250), y: rightImagY , width:  CGFloat(310.0), height: CGFloat(220.0))
+        demoImage?.draw(in:rect )
         
         
         
         
         
-        
-        
-        
-        
-        
-        
-        
+        UIGraphicsBeginPDFPageWithInfo(CGRect(x: 0, y: 0, width: pageSize.width, height: pageSize.height), nil)
+        currentPage = currentPage + 1
+        currentContext = UIGraphicsGetCurrentContext()
+        currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        currentY = CGFloat(kBorderInset + kMarginInset + 15)
         
         //******************Issues
+        var sectionSortDescriptor1 = NSSortDescriptor(key: "creationDate", ascending: true)
+        var sortDescriptors1 = [sectionSortDescriptor1]
+        var data = (project.issues?.allObjects as! NSArray).sortedArray(using: sortDescriptors1)
+
+        
+        var StartingYAXIS = CGFloat(0.0)
+        var TextHeight = CGFloat(0.0)
+        var imgStatus:Int = 0
+        
+        if data.count > 0 {
+            for i in 0...(data.count-1){
+                
+                let issue = data[i] as! Issues
+                boxHeight = minBoxHeight
+                TextHeight = CGFloat(150.0)
+                imgStatus = 0
+                
+                
+                
+                
+                
+                StartingYAXIS = currentY
+                var totalHightNeeded:CGFloat = 0.0
+                
+                textToDraw = issue.title!
+                
+                
+                
+                newSize = CGSize(width: CGFloat(pdfThird_Width - 60), height: CGFloat(boxHeight - 5))
+                stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                        options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                        attributes: [NSFontAttributeName:font12 as Any],
+                                                                        context: nil).size
+                totalHightNeeded += CGFloat( CGFloat(stringSize.height) + CGFloat(10.0))
+                
+                
+              
+                let currentContext = UIGraphicsGetCurrentContext()
+                currentContext?.setFillColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+                
+                var titleHeight:CGFloat = 0.0
+                
+                
+                
+                
+                renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + kMarginInset), y: currentY, width: CGFloat(250) , height: stringSize.height)
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                currentY +=  stringSize.height
+
+                
+                //*************************  CALCULATE TEXT HEIGHT FOR COLOR
+                var titHeight:CGFloat = 0.0
+                var descHeight:CGFloat = 0.0
+                var comHeight:CGFloat = 0.0
+                var colorHeight:CGFloat = 0.0
+                
+                if let title = issue.title {
+                    
+                    textToDraw = title
+                    newSize = CGSize(width: CGFloat(pdfThird_Width - 60), height: CGFloat(boxHeight - 5))
+                    stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                        options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                        attributes: [NSFontAttributeName:font12 as Any],
+                                                                        context: nil).size
+                
+                
+                    renderingRect = CGRect(x: CGFloat(kBorderInset * 2 + 10), y: titHeight + titleHeight + 5, width: CGFloat(pdfThird_Width-60) , height: stringSize.height)
+                    strPrioritySTR.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                    currentY +=  stringSize.height
+                
+                
+                }
+                
+                var imageY1 : CGFloat = titHeight + stringSize.height + 15;
+                var   priorityY1: CGFloat = 0.0
+            
+               //**********************************  issue image drawing
+                if   issue.value(forKey: "issueImage")  != nil
+                {
+                    
+                    imgStatus=1
+                    let demoImage =  UIImage(data:issue.value(forKey: "issueImage") as! Data,scale:1.0)
+                    var imageHeight :CGFloat = (demoImage?.size.height)!
+                    var imageWidth:CGFloat = (demoImage?.size.width)!
+                    
+                    let wid:CGFloat = CGFloat(((pdfPageWidth - (4*kBorderInset) - 10)*4)) / CGFloat(10)  - CGFloat(10)
+                    
+                    //CGFloat((((pdfPageWidth - 4*kBorderInset - 10)*4) / CGFloat(10.0) ) - CGFloat(10.0))
+                    
+                    if imageWidth > wid
+                    {
+                        
+                        
+                        imageHeight = (imageHeight/imageWidth)*wid
+                        imageWidth = wid
+                    }
+                    
+                    if(imageHeight > boxHeight - 10)
+                    {
+                        imageWidth = (imageWidth/imageHeight)*(boxHeight - 10)
+                        imageHeight = boxHeight - 10
+                    }
+                    
+                    priorityY1=imageY1+15 + imageHeight;
+                    
+                    
+                    
+                    
+                    
+                  
+                    
+                    
+                }else{
+                    imgStatus=0;
+                    priorityY1 = titHeight + titleHeight + 15
+                }
+//**********************************  issue image drawing Ended
+                 if let priority = issue.priority {
+                    
+                    let color = UIColor.hexStringToUIColor(hex: priority)
+                    
+                    textToDraw = "Priority"
+                    newSize = CGSize(width: CGFloat(90), height: CGFloat(boxHeight - titleHeight - 5))
+                    stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                        options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                        attributes: [NSFontAttributeName:font12 as Any],
+                                                                        context: nil).size
+                    renderingRect = CGRect(x: CGFloat((kBorderInset * 2) + 10), y: priorityY1, width: CGFloat(90) , height: stringSize.height)
+                    textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                    
+                    
+                    
+                    //drawPriorityBox
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                currentY = priorityY1 + stringSize.height + 50
+                
+                
+                
+                
+                var   DescriptionYAxis:CGFloat = CGFloat( currentY + titleHeight + 5.0)
+                var   CommentYAxis:CGFloat = CGFloat( currentY + titleHeight + 5.0)
+                
+                
+                
+                
+              //********************** Issues Description
+                textToDraw = "Description"
+                newSize = CGSize(width: CGFloat(pdfThird_Width-30), height: CGFloat(pdfPageHEIGHT))
+                stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font12 as Any],
+                                                                    context: nil).size
+                renderingRect = CGRect(x: CGFloat(CGFloat(pdfThird_Width) + 25.0), y: DescriptionYAxis, width: CGFloat(CGFloat(pdfThird_Width) - 30.0) , height: stringSize.height)
+                var  desHeight: CGFloat = DescriptionYAxis + stringSize.height
+                
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                
+                
+                titleHeight += stringSize.height
+                
+                
+                if let desc = issue.issue_description {
+                    textToDraw = desc
+                    newSize = CGSize(width: CGFloat(pdfThird_Width-30), height: CGFloat(pdfPageHEIGHT))
+                    stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                        options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                        attributes: [NSFontAttributeName:font12 as Any],
+                                                                        context: nil).size
+                    renderingRect = CGRect(x: CGFloat(CGFloat(pdfThird_Width) + 25.0), y: DescriptionYAxis, width: CGFloat(CGFloat(pdfThird_Width) - 30.0) , height: stringSize.height)
+                
+                    textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+               
+                    titleHeight += stringSize.height + 10
+                }
+                
+                if(currentY < CGFloat(desHeight + titleHeight )){
+                    currentY = desHeight + titleHeight
+                }
+                
+                
+                //********************* Issues Comment
+                
+                textToDraw = "Comment"
+                newSize = CGSize(width: CGFloat(pdfThird_Width-30), height: CGFloat(pdfPageHEIGHT))
+                stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font12 as Any],
+                                                                    context: nil).size
+                renderingRect = CGRect(x: CGFloat((CGFloat(pdfThird_Width)*2)+25), y: CommentYAxis, width: CGFloat(CGFloat(pdfThird_Width) - 30.0) , height: stringSize.height)
+                var  commentHeight: CGFloat = CommentYAxis + stringSize.height
+                
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                
+                titleHeight += stringSize.height
+
+                
+               if let comnt = issue.comment {
+                
+                textToDraw = comnt
+                newSize = CGSize(width: CGFloat(pdfThird_Width - 45), height: CGFloat(pdfPageHEIGHT))
+                stringSize =  (textToDraw as NSString).boundingRect(with: newSize,
+                                                                    options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                                                    attributes: [NSFontAttributeName:font12 as Any],
+                                                                    context: nil).size
+                renderingRect = CGRect(x: CGFloat((pdfThird_Width*2)+25), y: commentHeight, width: CGFloat(CGFloat(pdfThird_Width) - CGFloat(45.0)) , height: stringSize.height)
+                
+                textToDraw.draw(in: renderingRect, withAttributes: [NSFontAttributeName:font12 as Any])
+                
+                titleHeight += stringSize.height + 10
+                
+                }
+                
+                
+                if currentY < CGFloat(CGFloat(commentHeight) + CGFloat(titleHeight))
+                {
+                    currentY = CGFloat(commentHeight + titleHeight)
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -732,7 +1039,9 @@ class PDFBuilderManage: NSObject {
     
     
     
-    
+    func drawPriorityBox(_ point :CGFloat , colrHexcode:String) {
+        
+    }
     
     
     

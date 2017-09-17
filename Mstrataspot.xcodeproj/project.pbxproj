@@ -17,6 +17,8 @@
 		0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6771F68434D009E3651 /* SignatureVC.swift */; };
 		0F95C67A1F684EA4009E3651 /* FilesMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95C6791F684EA4009E3651 /* FilesMethods.swift */; };
 		0FAE9B131F6D382500279F1F /* IssueListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAE9B121F6D382500279F1F /* IssueListVC.swift */; };
+		0FAE9B161F6E631100279F1F /* PriorityGraph.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE9B141F6E631100279F1F /* PriorityGraph.jpg */; };
+		0FAE9B171F6E631100279F1F /* PriorityImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0FAE9B151F6E631100279F1F /* PriorityImage.jpg */; };
 		0FFC219F1F69971000B65D6B /* Sample PDF in Resources */ = {isa = PBXBuildFile; fileRef = 0FFC219E1F69971000B65D6B /* Sample PDF */; };
 		0FFC21A11F6998CA00B65D6B /* PDFBuilderManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */; };
 		4D78739BE87F0B03772A1CDC /* Pods_MstrataspotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */; };
@@ -82,6 +84,8 @@
 		0F95C6771F68434D009E3651 /* SignatureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureVC.swift; sourceTree = "<group>"; };
 		0F95C6791F684EA4009E3651 /* FilesMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesMethods.swift; sourceTree = "<group>"; };
 		0FAE9B121F6D382500279F1F /* IssueListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListVC.swift; sourceTree = "<group>"; };
+		0FAE9B141F6E631100279F1F /* PriorityGraph.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = PriorityGraph.jpg; path = "Sample PDF/PriorityGraph.jpg"; sourceTree = "<group>"; };
+		0FAE9B151F6E631100279F1F /* PriorityImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = PriorityImage.jpg; path = "Sample PDF/PriorityImage.jpg"; sourceTree = "<group>"; };
 		0FFC219E1F69971000B65D6B /* Sample PDF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sample PDF"; sourceTree = "<group>"; };
 		0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFBuilderManage.swift; sourceTree = "<group>"; };
 		5C161399D6532942B6624185 /* Pods_Mstrataspot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mstrataspot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +206,8 @@
 		5D8F57A41F5E752F0098B13B /* Mstrataspot */ = {
 			isa = PBXGroup;
 			children = (
+				0FAE9B141F6E631100279F1F /* PriorityGraph.jpg */,
+				0FAE9B151F6E631100279F1F /* PriorityImage.jpg */,
 				5DDCE4701F6135DE000D987C /* Reports */,
 				5DDCE4681F612039000D987C /* Cell */,
 				5DDCE45E1F61152A000D987C /* Projects */,
@@ -432,7 +438,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAE9B161F6E631100279F1F /* PriorityGraph.jpg in Resources */,
 				5D8F57B31F5E75310098B13B /* LaunchScreen.storyboard in Resources */,
+				0FAE9B171F6E631100279F1F /* PriorityImage.jpg in Resources */,
 				5D8F57B01F5E75310098B13B /* Assets.xcassets in Resources */,
 				5D8F57AB1F5E75300098B13B /* Main.storyboard in Resources */,
 				0FFC219F1F69971000B65D6B /* Sample PDF in Resources */,

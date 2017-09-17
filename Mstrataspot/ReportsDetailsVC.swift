@@ -200,6 +200,91 @@ class ReportsDetailsVC: UIViewController,MFMailComposeViewControllerDelegate {
                 if let data = NSData(contentsOfFile: docfileName) {
                     //Does not print. Nil?
                     composeVC.addAttachmentData(data as Data, mimeType: "application/msword", fileName: "\(attachFileName)")
+                    
+                    
+                    if self.detailProjectManageobj.value(forKey: "projectLogoImage") != nil {
+                        let image = UIImage(data:self.detailProjectManageobj.value(forKey: "projectLogoImage") as! Data,scale:1.0)
+                        let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
+                       
+                        var Pname = "Project"
+                        if let name = self.detailProjectManageobj.value(forKey: "title") {
+                            Pname = name as! String
+                        }
+                        composeVC.addAttachmentData(imageData as Data, mimeType: "image/png", fileName: "\(Pname).png")
+                        
+                    }
+                    
+                    //signature
+                    if self.detailProjectManageobj.value(forKey: "clientsSignatureFileName") != nil {
+                        let image = UIImage(data:self.detailProjectManageobj.value(forKey: "clientsSignatureFileName") as! Data,scale:1.0)
+                        let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
+                        composeVC.addAttachmentData(imageData as Data, mimeType: "image/png", fileName: "Signature.png")
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                  if  let comp = companyInfo {
+                        
+                        
+                        //company image
+                        if comp.value(forKey: "companyLogoImage") != nil {
+                            let image = UIImage(data:comp.value(forKey: "companyLogoImage") as! Data,scale:1.0)
+                            let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
+                            
+                            var Cname = "Company"
+                            if let name = comp.value(forKey: "companyName") {
+                                Cname = name as! String
+                            }
+                            composeVC.addAttachmentData(imageData as Data, mimeType: "image/png", fileName: "\(Cname).png")
+                            
+                        }
+                        
+                        if comp.value(forKey: "signatureImage") != nil {
+                            let image = UIImage(data:comp.value(forKey: "signatureImage") as! Data,scale:1.0)
+                            let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
+                            
+                            var Pname = "Company_Signature"
+                            
+                            composeVC.addAttachmentData(imageData as Data, mimeType: "image/png", fileName: "\(Pname).png")
+                            
+                        }
+                        
+                    }
+                    
+                    //Issues data
+                    let sectionSortDescriptor1 = NSSortDescriptor(key: "creationDate", ascending: true)
+                    let sortDescriptors1 = [sectionSortDescriptor1]
+                    let data = ((self.detailProjectManageobj.value(forKey: "issues") as AnyObject).allObjects! as NSArray).sortedArray(using: sortDescriptors1)
+
+                    if data.count > 0 {
+                        for i in 0...(data.count-1){
+                            
+                            let issue = data[i] as! Issues
+                            
+                            if issue.value(forKey: "issueImage") != nil {
+                                let image = UIImage(data:issue.value(forKey: "issueImage") as! Data,scale:1.0)
+                                let imageData: NSData = UIImagePNGRepresentation(image!)! as NSData
+                                
+                                var Pname = "issue"
+                                if let name = issue.value(forKey: "title") {
+                                    Pname = name as! String
+                                }
+                                composeVC.addAttachmentData(imageData as Data, mimeType: "image/png", fileName: "\(Pname).png")
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
                 }
                 
                 //************* Attached projectImage

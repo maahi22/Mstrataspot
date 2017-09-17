@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mstrataspot/PDFBuilderManage.swift"
-            timestampString = "527289409.149149"
+            timestampString = "527359687.317962"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "761"
-            endingLineNumber = "761"
+            startingLineNumber = "1070"
+            endingLineNumber = "1070"
             landmarkName = "generate_DocFromProject(_:companyInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -822,7 +822,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mstrataspot/PDFBuilderManage.swift"
@@ -838,7 +838,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Mstrataspot/PDFBuilderManage.swift"
@@ -847,6 +847,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "489"
             endingLineNumber = "489"
+            landmarkName = "generatePdf(_:companyInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mstrataspot/PDFBuilderManage.swift"
+            timestampString = "527327722.06851"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "762"
+            endingLineNumber = "762"
+            landmarkName = "generatePdf(_:companyInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Mstrataspot/PDFBuilderManage.swift"
+            timestampString = "527327723.421839"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "767"
+            endingLineNumber = "767"
             landmarkName = "generatePdf(_:companyInfo:)"
             landmarkType = "7">
          </BreakpointContent>
