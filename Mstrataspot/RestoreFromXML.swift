@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class RestoreFromXML: UIViewController {
 
     @IBOutlet weak var txtViewXML: UITextView!
@@ -30,7 +31,29 @@ class RestoreFromXML: UIViewController {
     
     @IBAction func RestoreClicked(_ sender: Any) {
         
+        let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to restore this?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { action in
+            
+           
+            
+            let alert = UIAlertController(title: "Error", message: "This is not a valid XML!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            
+            
+            
+            
+            
+            
+            
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: { action in
+            
+        }))
+
         
+        self.present(alert, animated: true, completion: nil)
         
         
         

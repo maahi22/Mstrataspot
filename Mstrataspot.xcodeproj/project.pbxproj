@@ -26,6 +26,11 @@
 		5D1B1F691F67A603005FE69F /* QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1B1F681F67A603005FE69F /* QRCodeReader.framework */; };
 		5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6A1F67A773005FE69F /* LocationManager.swift */; };
 		5D1B1F6E1F67BA5E005FE69F /* DefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */; };
+		5D20C3CA1F6FA70900245D24 /* RestoreDataFromXML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D20C3C91F6FA70900245D24 /* RestoreDataFromXML.swift */; };
+		5D20C3CC1F6FA76500245D24 /* RestoreDataFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D20C3CB1F6FA76500245D24 /* RestoreDataFromJSON.swift */; };
+		5D20C3CE1F6FA7CA00245D24 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D20C3CD1F6FA7CA00245D24 /* Note.swift */; };
+		5D20C3D01F6FB19E00245D24 /* BdXmlParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D20C3CF1F6FB19E00245D24 /* BdXmlParser.swift */; };
+		5D20C3D21F6FB1AD00245D24 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5D20C3D11F6FB1AD00245D24 /* README.md */; };
 		5D5F89AE1F5FB651008320CA /* PinSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */; };
 		5D5F89B01F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */; };
 		5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */; };
@@ -49,6 +54,7 @@
 		5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */; };
 		5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */; };
 		5DA23DBA1F69667900EBD388 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA23DB91F69667900EBD388 /* ContactListVC.swift */; };
+		5DDB897D1F6FC77300326F5C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDB897C1F6FC77300326F5C /* DBManager.swift */; };
 		5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4611F6115E2000D987C /* NewProjectVC.swift */; };
 		5DDCE4641F611969000D987C /* IssueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE4631F611969000D987C /* IssueVC.swift */; };
 		5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDCE46A1F61206C000D987C /* IssueListCell.swift */; };
@@ -93,6 +99,11 @@
 		5D1B1F681F67A603005FE69F /* QRCodeReader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCodeReader.framework; path = "../../../Library/Developer/Xcode/DerivedData/Mstrataspot-azbkgkkqybhjlqglvjhxqecwlupd/Build/Products/Debug-iphonesimulator/QRCodeReader.swift/QRCodeReader.framework"; sourceTree = "<group>"; };
 		5D1B1F6A1F67A773005FE69F /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultDataManager.swift; sourceTree = "<group>"; };
+		5D20C3C91F6FA70900245D24 /* RestoreDataFromXML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreDataFromXML.swift; sourceTree = "<group>"; };
+		5D20C3CB1F6FA76500245D24 /* RestoreDataFromJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoreDataFromJSON.swift; sourceTree = "<group>"; };
+		5D20C3CD1F6FA7CA00245D24 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		5D20C3CF1F6FB19E00245D24 /* BdXmlParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BdXmlParser.swift; sourceTree = "<group>"; };
+		5D20C3D11F6FB1AD00245D24 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5D5F89AD1F5FB651008320CA /* PinSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSettingVC.swift; sourceTree = "<group>"; };
 		5D5F89AF1F5FBAFB008320CA /* RouteenInspectionSettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteenInspectionSettingsVC.swift; sourceTree = "<group>"; };
 		5D5F89B11F5FBB6F008320CA /* BuildingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingVC.swift; sourceTree = "<group>"; };
@@ -120,6 +131,7 @@
 		5D8F57DD1F5EA6520098B13B /* EditCompanyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCompanyInfoVC.swift; sourceTree = "<group>"; };
 		5D8F57DF1F5EA66A0098B13B /* MailSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailSettingVC.swift; sourceTree = "<group>"; };
 		5DA23DB91F69667900EBD388 /* ContactListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
+		5DDB897C1F6FC77300326F5C /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		5DDCE4611F6115E2000D987C /* NewProjectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewProjectVC.swift; sourceTree = "<group>"; };
 		5DDCE4631F611969000D987C /* IssueVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueVC.swift; sourceTree = "<group>"; };
 		5DDCE46A1F61206C000D987C /* IssueListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueListCell.swift; sourceTree = "<group>"; };
@@ -181,6 +193,18 @@
 				EDD18F113F31C6D1ADBAE036 /* Pods_MstrataspotTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D20C3C81F6FA6E400245D24 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				5D20C3CF1F6FB19E00245D24 /* BdXmlParser.swift */,
+				5D20C3D11F6FB1AD00245D24 /* README.md */,
+				5D20C3C91F6FA70900245D24 /* RestoreDataFromXML.swift */,
+				5D20C3CB1F6FA76500245D24 /* RestoreDataFromJSON.swift */,
+				5D20C3CD1F6FA7CA00245D24 /* Note.swift */,
+			);
+			name = Class;
 			sourceTree = "<group>";
 		};
 		5D8F57991F5E752D0098B13B = {
@@ -276,6 +300,7 @@
 				0F95C6751F6719DD009E3651 /* Validations.swift */,
 				5D1B1F6D1F67BA5E005FE69F /* DefaultDataManager.swift */,
 				0FFC21A01F6998CA00B65D6B /* PDFBuilderManage.swift */,
+				5DDB897C1F6FC77300326F5C /* DBManager.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -302,6 +327,7 @@
 		5DDCE4671F611FFC000D987C /* BackUp */ = {
 			isa = PBXGroup;
 			children = (
+				5D20C3C81F6FA6E400245D24 /* Class */,
 				5D7E2CBC1F626E1E00CC851A /* RestoreFromServerVC.swift */,
 				5D7E2CBE1F626E3A00CC851A /* BackUpVC.swift */,
 				0F95C66A1F632A7D009E3651 /* BackupRestoreVC.swift */,
@@ -518,7 +544,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EAD6BCD536ECDD3CF0282AAD /* [CP] Embed Pods Frameworks */ = {
@@ -528,12 +554,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Mstrataspot/Pods-Mstrataspot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEXML/AEXML.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/ReachabilitySwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSignatureView/SwiftSignatureView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCodeReader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReachabilitySwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSignatureView.framework",
@@ -558,7 +588,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -570,13 +600,16 @@
 			files = (
 				5D8F57E01F5EA66A0098B13B /* MailSettingVC.swift in Sources */,
 				5DDCE4761F6149C9000D987C /* LevelVC.swift in Sources */,
+				5D20C3CA1F6FA70900245D24 /* RestoreDataFromXML.swift in Sources */,
 				5DDCE46F1F612A3F000D987C /* ProjectListCell.swift in Sources */,
 				0F95C6741F67167C009E3651 /* CreatePinVC.swift in Sources */,
+				5D20C3CE1F6FA7CA00245D24 /* Note.swift in Sources */,
 				5D8F57DE1F5EA6520098B13B /* EditCompanyInfoVC.swift in Sources */,
 				0FFC21A11F6998CA00B65D6B /* PDFBuilderManage.swift in Sources */,
 				5DDCE4781F614A46000D987C /* BuildingList.swift in Sources */,
 				0F95C66F1F632B21009E3651 /* RestoreFromXML.swift in Sources */,
 				5D8F57A81F5E752F0098B13B /* ViewController.swift in Sources */,
+				5D20C3D21F6FB1AD00245D24 /* README.md in Sources */,
 				5DDCE47C1F614D9D000D987C /* AddArea.swift in Sources */,
 				5D8F57C91F5E77720098B13B /* HomeVC.swift in Sources */,
 				5DDCE4721F613601000D987C /* ReportsDetailsVC.swift in Sources */,
@@ -596,6 +629,7 @@
 				0F95C6761F6719DD009E3651 /* Validations.swift in Sources */,
 				5DDCE4621F6115E2000D987C /* NewProjectVC.swift in Sources */,
 				5D8F57DC1F5EA6370098B13B /* AboutUsVC.swift in Sources */,
+				5D20C3D01F6FB19E00245D24 /* BdXmlParser.swift in Sources */,
 				5D8F57CB1F5E77880098B13B /* ProjectsVC.swift in Sources */,
 				5DDCE4641F611969000D987C /* IssueVC.swift in Sources */,
 				0F95C6691F631C5F009E3651 /* UIColor+MColor.swift in Sources */,
@@ -603,9 +637,11 @@
 				5D8F57AE1F5E75310098B13B /* Mstrataspot.xcdatamodeld in Sources */,
 				5D8F57CD1F5E77980098B13B /* Reports.swift in Sources */,
 				5D8F57CF1F5E77AB0098B13B /* SettingsVC.swift in Sources */,
+				5D20C3CC1F6FA76500245D24 /* RestoreDataFromJSON.swift in Sources */,
 				5DDCE46B1F61206C000D987C /* IssueListCell.swift in Sources */,
 				5D8F57D61F5E883F0098B13B /* ConnectionHelper.swift in Sources */,
 				0F95C6781F68434D009E3651 /* SignatureVC.swift in Sources */,
+				5DDB897D1F6FC77300326F5C /* DBManager.swift in Sources */,
 				0FAE9B131F6D382500279F1F /* IssueListVC.swift in Sources */,
 				5D5F89B21F5FBB6F008320CA /* BuildingVC.swift in Sources */,
 				5D1B1F6B1F67A773005FE69F /* LocationManager.swift in Sources */,

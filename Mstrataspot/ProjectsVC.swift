@@ -215,14 +215,29 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
 
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row % 2 == 1{
+            cell.backgroundColor = UIColor.hexStringToUIColor(hex: tableOddRowColor)
+        }else{
+            cell.backgroundColor = .white
+        }
+        
+    }
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProjectListCell.reuseIdentifier, for: indexPath) as? ProjectListCell else {
             fatalError("Unexpected Index Path")
         }
+        
+        if indexPath.row % 2 == 1{
+            cell.backgroundColor = UIColor.hexStringToUIColor(hex: tableOddRowColor)
+        }else{
+            cell.backgroundColor = .white
+        }
+        
+        
         
         // Fetch Quote
         let Projects = fetchedResultsController.object(at: indexPath)

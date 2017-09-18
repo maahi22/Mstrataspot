@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AEXML.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Mstrataspot.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A14C306ADF783FC47D46789B3E651FC</key>
+		<key>0AFACCB80B72CADEA904297CFF3A3681</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37A0DC649FA2EB94B285C199EC8F755B</key>
+		<key>290F4F6FEC072A50FB5B99E4650BE606</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41B93718F16991D5DE0C29DE5F891C04</key>
+		<key>88C257C954247EE49E09C66A8B19E56A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A277A82FE12F432EE9F71A3F5F8A08C6</key>
+		<key>C235F77E101E742652CCF98FFDFA5182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D97509A25875E9FC4921F85D883E5E27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD499EF5092440584B7FEA13FA4F6AE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

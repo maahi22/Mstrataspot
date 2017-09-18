@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IQKeyboardManagerSwift
 
 
 let kEntityAreas = "Areas"
@@ -42,8 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        
+        IQKeyboardManager.sharedManager().enable = true
+     //   IQKeyboardManager.sharedManager().enabledToolbarClasses.append(ToolbarEnabledViewController.self)
+     //   IQKeyboardManager.sharedManager().disabledToolbarClasses.append(ToolbarDisabledViewController.self)
         //Start
         
         let formatter = DateFormatter()

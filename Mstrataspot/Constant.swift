@@ -7,9 +7,11 @@
 //
 
 
-let     stratspotBaseUrl = "http://apps.oenju.com/"//"http://www.mydunia.com/api/V_1/"
+let     stratspotBaseUrl = "http://apps.oenju.com/"
 let     supportmailId = "info@oenju.com"
 
 
 let     ViewBackgroundColor = "#"
 let     InerViewBackgroundColor = "#8EBE91"
+
+let     tableOddRowColor = "#FEF5D6"

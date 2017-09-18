@@ -13,7 +13,7 @@ target 'Mstrataspot' do
     pod 'SwiftSignatureView'
     pod 'QRCodeReader.swift', '~> 7.5.1'
     pod 'IQKeyboardManagerSwift'
-    # pod 'AEXML'
+    pod 'AEXML'
     
     
   target 'MstrataspotTests' do
