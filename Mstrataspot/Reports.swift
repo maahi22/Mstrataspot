@@ -232,6 +232,17 @@ extension Reports: UITableViewDelegate, UITableViewDataSource {
         return Projects.count
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.section ,indexPath.row)
+       
+        
+        if indexPath.row % 2 == 1{
+            cell.backgroundColor = UIColor.hexStringToUIColor(hex: stratspot_Rollover_colour_nav_colour)
+        }else{
+            cell.backgroundColor = UIColor.white
+        }
+        
+    }
     
     
     @available(iOS 2.0, *)

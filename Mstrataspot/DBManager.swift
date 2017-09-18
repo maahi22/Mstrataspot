@@ -93,21 +93,172 @@ class DBManager: NSObject {
                 
                 let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
                 let sortDescriptors = [sortDescriptor]
-              //  let sections = inspection.sections?.allObjects sort
+                var sections = (inspection.sections?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
+              
                 
+                
+                if sections.count > 0 {
+                    
+                    for i in 0...(sections.count-1){
+                        
+                     let   section :Sections = sections[i] as! Sections
+                        content = "\(content)<Section>"
+                        var name = ""
+                        if let name1 = section.name{
+                            name = name1
+                        }
+                        content = "\(content)<Name>\(name)</Name>"
+                        var gps = ""
+                        if let name1 = section.gpsLocation{
+                            gps = name1
+                        }
+                        content = "\(content)<GPSLocation>\(gps)</GPSLocation>"
+                        var qrCode = ""
+                        if let name1 = section.qrCode{
+                            qrCode = name1
+                        }
+                        content = "\(content)<QRCode>\(qrCode)</QRCode>"
+                        
+
+                        content = "\(content)<Areas>"
+                        
+                      let  areas = (section.areas?.allObjects as! NSArray)
+                        if areas.count > 0 {
+                            
+                            for i in 0...(areas.count-1){
+                               let   area :Areas = areas[i] as! Areas
+                                
+                                content = "\(content)<Area>"
+                                var name = ""
+                                if let name1 = area.name{
+                                    name = name1
+                                }
+                                content = "\(content)<Name>\(name)</Name>"
+                                var loc = ""
+                                if let name1 = section.gpsLocation{
+                                    loc = name1
+                                }
+                                content = "\(content)<GPSLocation>\(loc)</GPSLocation>"
+                                content = "\(content)<Reports>"
+                                
+                                
+                                let  reports = (area.areasReport?.allObjects as! NSArray)
+                                
+                                if reports.count > 0 {
+                                    
+                                    for i in 0...(reports.count-1){
+                                        let   report :AreasReport = reports[i] as! AreasReport
+                                        
+                                        content = "\(content)<Report>"
+                                        var comment = ""
+                                        if let name1 = report.comment{
+                                            comment = name1
+                                        }
+                                        content = "\(content)<Comment>\(comment)</Comment>"
+                                        
+                                        if let date = report.date{
+                                            content = "\(content)<Date>\(date)</Date>"
+                                        }else{
+                                            content = "\(content)<Date></Date>"
+                                        }
+                                        
+                                        var location = ""
+                                        if let name1 = report.geoLocation{
+                                            location = name1
+                                        }
+                                        content = "\(content)<GEOLocation>\(location)</GEOLocation>"
+                                        content = "\(content)<Ok>\(report.isOk)</Ok>"
+                                        
+                                        if let date = report.reportDate{
+                                            content = "\(content)<ReportDate>\(date)</ReportDate>"
+                                        }else{
+                                            content = "\(content)<ReportDate></ReportDate>"
+                                        }
+                                        
+                                        content = "\(content)</Report>"
+                                        
+                                    }
+                                }
+                                
+                                content = "\(content)</Reports>"
+                                content = "\(content)</Area>"
+                                
+                                
+                                
+                                
+                            }
+                        }
+                        
+                        content = "\(content)</Areas>"
+                        content = "\(content)</Section>"
+                        
+                    }
+                }
+                
+                
+                content = "\(content)</Sections></RoutineInspection>"
                 
                 
             }
             
         }
         
+        content = "\(content)</RoutineInspections></DataBase>"
         
+        content = content.replacingOccurrences(of: "&", with: "*and*")
         
-        retrun content
+        return content
     }
     
     
     class func DeleteAllRoutineInspection(){
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.getContext()
+    
+        var inspections:[NSManagedObject] = self.GetAllRoutineInspections()
+        if inspections.count > 0 {
+            
+            for i in 0...(inspections.count-1){
+                
+                let inspection :RoutineInspections = inspections[i] as! RoutineInspections
+                let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+                let sortDescriptors = [sortDescriptor]
+                var sections = (inspection.sections?.allObjects as! NSArray).sortedArray(using: sortDescriptors)
+                
+                if sections.count > 0 {
+                    for i in 0...(sections.count-1){
+                         let   section :Sections = sections[i] as! Sections
+                        let  areas = (section.areas?.allObjects as! NSArray)
+                        if areas.count > 0 {
+                            
+                            for i in 0...(areas.count-1){
+                                let   area :Areas = areas[i] as! Areas
+                                
+                                let  reports = (area.areasReport?.allObjects as! NSArray)
+                                if reports.count > 0 {
+                                    
+                                    for i in 0...(reports.count-1){
+                                        let   report :AreasReport = reports[i] as! AreasReport
+                                        
+                                       context.delete(report)
+                                        
+                                    }
+                                }
+                                
+                                context.delete(area)
+                            }
+                        }
+                        
+                        context.delete(section)
+                        
+                    }
+                    
+                }
+                
+                 context.delete(inspection)
+            }
+        }
         
         
     }

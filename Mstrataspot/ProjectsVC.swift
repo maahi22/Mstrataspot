@@ -215,15 +215,19 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        if indexPath.row % 2 == 1{
-            cell.backgroundColor = UIColor.hexStringToUIColor(hex: tableOddRowColor)
+  
+    
+     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.row ,indexPath.section)
+        if indexPath.section % 2 == 1{
+            cell.backgroundColor = UIColor.hexStringToUIColor(hex: stratspot_Rollover_colour_nav_colour)
         }else{
-            cell.backgroundColor = .white
-        }
+            cell.backgroundColor = UIColor.white
+             }
         
     }
+    
+    
     
     @available(iOS 2.0, *)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,15 +235,7 @@ extension ProjectsVC: UITableViewDelegate, UITableViewDataSource {
             fatalError("Unexpected Index Path")
         }
         
-        if indexPath.row % 2 == 1{
-            cell.backgroundColor = UIColor.hexStringToUIColor(hex: tableOddRowColor)
-        }else{
-            cell.backgroundColor = .white
-        }
-        
-        
-        
-        // Fetch Quote
+       // Fetch Quote
         let Projects = fetchedResultsController.object(at: indexPath)
         
         // Configure Cell

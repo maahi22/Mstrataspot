@@ -12,11 +12,13 @@ import MessageUI
 
 class CreateBackupVC: UIViewController,MFMailComposeViewControllerDelegate {
 
+    @IBOutlet weak var txtViewBackup: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        
+        txtViewBackup.text = DBManager.GetXMLContentOfRoutineInspections()
         
         
         

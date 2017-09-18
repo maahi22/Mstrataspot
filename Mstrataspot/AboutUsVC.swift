@@ -17,7 +17,13 @@ class AboutUsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let btn1 = UIButton(type: .custom)
+        btn1.setImage(UIImage(named: "Logo"), for: .normal)
+        btn1.frame = CGRect(x: 0, y: 0, width: 134, height: 30)
+        let item1 = UIBarButtonItem(customView: btn1)
+        self.navigationItem.setRightBarButtonItems([item1], animated: true)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

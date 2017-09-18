@@ -94,6 +94,17 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource,MFMailComposeV
         return 40
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print(indexPath.row ,indexPath.section)
+        if indexPath.row % 2 == 1{
+            cell.backgroundColor = UIColor.hexStringToUIColor(hex: stratspot_Rollover_colour_nav_colour)
+        }else{
+            cell.backgroundColor = UIColor.white
+        }
+        
+    }
+    
+    
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

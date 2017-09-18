@@ -4,45 +4,77 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AEXML.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-Mstrataspot.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-MstrataspotTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>QRCodeReader.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>SwiftSignatureView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0AFACCB80B72CADEA904297CFF3A3681</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C6810D3282087773E2E53144DE3E40E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>290F4F6FEC072A50FB5B99E4650BE606</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>55C10C531EF8BA4AF565FF3F6EB4FD02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88C257C954247EE49E09C66A8B19E56A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +94,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D97509A25875E9FC4921F85D883E5E27</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DC78402D4BC831D2E43A3688883B6572</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD499EF5092440584B7FEA13FA4F6AE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
